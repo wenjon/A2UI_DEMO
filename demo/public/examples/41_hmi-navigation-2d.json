@@ -1,0 +1,50 @@
+{
+  "name": "HMI 导航（2D）",
+  "description": "同一套 A2UI 组件的 2D 变体，只改 HmiScreen.variant。",
+  "messages": [
+    {
+      "version": "v0.9",
+      "createSurface": {
+        "surfaceId": "hmi-navigation-2d",
+        "catalogId": "https://luckplusone.cfifa.com/a2ui/hmi/catalog.json"
+      }
+    },
+    {
+      "version": "v0.9",
+      "updateComponents": {
+        "surfaceId": "hmi-navigation-2d",
+        "components": [
+          {
+            "id": "root",
+            "component": "HmiScreen",
+            "variant": "2d",
+            "children": ["nav", "routeInfo", "speed", "status", "buttons", "zoom", "progress", "controlBar"]
+          },
+          {
+            "id": "nav",
+            "component": "HmiNavInstruction",
+            "distance": "1.2 公里后",
+            "label": "右转",
+            "road": "中山北路"
+          },
+          {
+            "id": "routeInfo",
+            "component": "HmiRouteInfo",
+            "remainingDistance": "8",
+            "remainingTime": "19"
+          },
+          {
+            "id": "speed",
+            "component": "HmiSpeedometer",
+            "speed": 42
+          },
+          {"id": "status", "component": "HmiStatusBar"},
+          {"id": "buttons", "component": "HmiMapButtons"},
+          {"id": "zoom", "component": "HmiZoomControl"},
+          {"id": "progress", "component": "HmiRouteProgress"},
+          {"id": "controlBar", "component": "HmiControlBar"}
+        ]
+      }
+    }
+  ]
+}

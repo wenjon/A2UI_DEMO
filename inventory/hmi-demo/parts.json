@@ -1,0 +1,2153 @@
+{
+  "generatedAt": "2026-11-20T05:10:50.247Z",
+  "design": {
+    "width": 1920,
+    "height": 1200
+  },
+  "parts": [
+    {
+      "key": "3d-part",
+      "order": 52,
+      "name": "Rectangle 89",
+      "context": null,
+      "variant": "3d",
+      "group": "parts",
+      "kind": "background",
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "width": 1920,
+        "height": 1080
+      },
+      "hit": {
+        "x": 0,
+        "y": 0,
+        "width": 1920,
+        "height": 1080
+      },
+      "svg": {
+        "width": 1920,
+        "height": 1080
+      },
+      "src": "/hmi/parts/3d/3d-part.svg",
+      "file": "parts/3d/3d-part.svg",
+      "texts": []
+    },
+    {
+      "key": "3d-601640329172-1",
+      "order": 55,
+      "name": "601640329172_ 1",
+      "context": null,
+      "variant": "3d",
+      "group": "parts",
+      "kind": "background",
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "width": 1920,
+        "height": 1178
+      },
+      "hit": {
+        "x": 0,
+        "y": 0,
+        "width": 1920,
+        "height": 1178
+      },
+      "svg": {
+        "width": 1920,
+        "height": 1178
+      },
+      "src": "/hmi/parts/3d/3d-601640329172-1.svg",
+      "file": "parts/3d/3d-601640329172-1.svg",
+      "texts": []
+    },
+    {
+      "key": "3d-wechatimg62-1",
+      "order": 57,
+      "name": "WechatIMG62 1",
+      "context": null,
+      "variant": "3d",
+      "group": "parts",
+      "kind": "background",
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "width": 1920,
+        "height": 1080
+      },
+      "hit": {
+        "x": 0,
+        "y": 0,
+        "width": 1920,
+        "height": 1080
+      },
+      "svg": {
+        "width": 1920,
+        "height": 1080
+      },
+      "src": "/hmi/parts/3d/3d-wechatimg62-1.svg",
+      "file": "parts/3d/3d-wechatimg62-1.svg",
+      "texts": []
+    },
+    {
+      "key": "3d-main-control-bar-light",
+      "order": 64,
+      "name": "路径",
+      "context": "main control bar / light",
+      "variant": "3d",
+      "group": "parts",
+      "kind": "panel",
+      "rect": {
+        "x": 0,
+        "y": 1080,
+        "width": 1920,
+        "height": 120
+      },
+      "hit": {
+        "x": 0,
+        "y": 1080,
+        "width": 1920,
+        "height": 120
+      },
+      "svg": {
+        "width": 1920,
+        "height": 120
+      },
+      "src": "/hmi/parts/3d/3d-main-control-bar-light.svg",
+      "file": "parts/3d/3d-main-control-bar-light.svg",
+      "texts": []
+    },
+    {
+      "key": "3d-phone",
+      "order": 66,
+      "name": "phone",
+      "context": "main control bar / light",
+      "variant": "3d",
+      "group": "parts",
+      "kind": "icon-button",
+      "rect": {
+        "x": 1571,
+        "y": 1119,
+        "width": 26,
+        "height": 40
+      },
+      "hit": {
+        "x": 1556,
+        "y": 1111,
+        "width": 56,
+        "height": 56
+      },
+      "svg": {
+        "width": 26,
+        "height": 40
+      },
+      "src": "/hmi/parts/3d/3d-phone.svg",
+      "file": "parts/3d/3d-phone.svg",
+      "texts": []
+    },
+    {
+      "key": "3d-volume",
+      "order": 72,
+      "name": "Volume",
+      "context": "main control bar / light",
+      "variant": "3d",
+      "group": "parts",
+      "kind": "icon-button",
+      "rect": {
+        "x": 1710,
+        "y": 1118,
+        "width": 48,
+        "height": 42
+      },
+      "hit": {
+        "x": 1706,
+        "y": 1111,
+        "width": 56,
+        "height": 56
+      },
+      "svg": {
+        "width": 48,
+        "height": 42
+      },
+      "src": "/hmi/parts/3d/3d-volume.svg",
+      "file": "parts/3d/3d-volume.svg",
+      "texts": []
+    },
+    {
+      "key": "3d-music",
+      "order": 93,
+      "name": "music",
+      "context": "main control bar / light",
+      "variant": "3d",
+      "group": "parts",
+      "kind": "icon-button",
+      "rect": {
+        "x": 1417,
+        "y": 1118,
+        "width": 32,
+        "height": 42
+      },
+      "hit": {
+        "x": 1405,
+        "y": 1111,
+        "width": 56,
+        "height": 56
+      },
+      "svg": {
+        "width": 32,
+        "height": 42
+      },
+      "src": "/hmi/parts/3d/3d-music.svg",
+      "file": "parts/3d/3d-music.svg",
+      "texts": []
+    },
+    {
+      "key": "3d-seat-passenger",
+      "order": 99,
+      "name": "seat",
+      "context": "main control bar / light",
+      "variant": "3d",
+      "group": "parts",
+      "kind": "icon-button",
+      "rect": {
+        "x": 1272,
+        "y": 1121,
+        "width": 29,
+        "height": 37
+      },
+      "hit": {
+        "x": 1259,
+        "y": 1112,
+        "width": 56,
+        "height": 56
+      },
+      "svg": {
+        "width": 29,
+        "height": 37
+      },
+      "src": "/hmi/parts/3d/3d-seat-passenger.svg",
+      "file": "parts/3d/3d-seat-passenger.svg",
+      "texts": []
+    },
+    {
+      "key": "3d-temp-passenger",
+      "order": 105,
+      "name": "Passenger Temp",
+      "context": "main control bar / light",
+      "variant": "3d",
+      "group": "parts",
+      "kind": "text",
+      "rect": {
+        "x": 1075,
+        "y": 1119,
+        "width": 69,
+        "height": 37
+      },
+      "hit": {
+        "x": 1075,
+        "y": 1110,
+        "width": 69,
+        "height": 56
+      },
+      "svg": {
+        "width": 69,
+        "height": 37
+      },
+      "src": "/hmi/parts/3d/3d-temp-passenger.svg",
+      "file": "parts/3d/3d-temp-passenger.svg",
+      "texts": [
+        "38",
+        "º"
+      ]
+    },
+    {
+      "key": "3d-fan-level",
+      "order": 110,
+      "name": "Fan Level",
+      "context": "main control bar / light",
+      "variant": "3d",
+      "group": "parts",
+      "kind": "text",
+      "rect": {
+        "x": 931,
+        "y": 1106,
+        "width": 59,
+        "height": 65
+      },
+      "hit": {
+        "x": 931,
+        "y": 1106,
+        "width": 59,
+        "height": 65
+      },
+      "svg": {
+        "width": 59,
+        "height": 65
+      },
+      "src": "/hmi/parts/3d/3d-fan-level.svg",
+      "file": "parts/3d/3d-fan-level.svg",
+      "texts": [
+        "MANUAL"
+      ]
+    },
+    {
+      "key": "3d-temp-driver",
+      "order": 120,
+      "name": "Driver Temp",
+      "context": "main control bar / light",
+      "variant": "3d",
+      "group": "parts",
+      "kind": "text",
+      "rect": {
+        "x": 777,
+        "y": 1119,
+        "width": 67,
+        "height": 37
+      },
+      "hit": {
+        "x": 777,
+        "y": 1110,
+        "width": 67,
+        "height": 56
+      },
+      "svg": {
+        "width": 67,
+        "height": 37
+      },
+      "src": "/hmi/parts/3d/3d-temp-driver.svg",
+      "file": "parts/3d/3d-temp-driver.svg",
+      "texts": [
+        "20",
+        "º"
+      ]
+    },
+    {
+      "key": "3d-seat-driver",
+      "order": 125,
+      "name": "seat",
+      "context": "main control bar / light",
+      "variant": "3d",
+      "group": "parts",
+      "kind": "icon-button",
+      "rect": {
+        "x": 619,
+        "y": 1121,
+        "width": 29,
+        "height": 37
+      },
+      "hit": {
+        "x": 606,
+        "y": 1112,
+        "width": 56,
+        "height": 56
+      },
+      "svg": {
+        "width": 29,
+        "height": 37
+      },
+      "src": "/hmi/parts/3d/3d-seat-driver.svg",
+      "file": "parts/3d/3d-seat-driver.svg",
+      "texts": []
+    },
+    {
+      "key": "3d-heater",
+      "order": 131,
+      "name": "heater",
+      "context": "main control bar / light",
+      "variant": "3d",
+      "group": "parts",
+      "kind": "icon-button",
+      "rect": {
+        "x": 466,
+        "y": 1123,
+        "width": 36,
+        "height": 32
+      },
+      "hit": {
+        "x": 456,
+        "y": 1111,
+        "width": 56,
+        "height": 56
+      },
+      "svg": {
+        "width": 36,
+        "height": 32
+      },
+      "src": "/hmi/parts/3d/3d-heater.svg",
+      "file": "parts/3d/3d-heater.svg",
+      "texts": []
+    },
+    {
+      "key": "3d-defrost",
+      "order": 137,
+      "name": "defrost",
+      "context": "main control bar / light",
+      "variant": "3d",
+      "group": "parts",
+      "kind": "icon-button",
+      "rect": {
+        "x": 314,
+        "y": 1123,
+        "width": 40,
+        "height": 34
+      },
+      "hit": {
+        "x": 306,
+        "y": 1112,
+        "width": 56,
+        "height": 56
+      },
+      "svg": {
+        "width": 40,
+        "height": 34
+      },
+      "src": "/hmi/parts/3d/3d-defrost.svg",
+      "file": "parts/3d/3d-defrost.svg",
+      "texts": []
+    },
+    {
+      "key": "3d-vehicle-model",
+      "order": 143,
+      "name": "model3-icon",
+      "context": "main control bar / light",
+      "variant": "3d",
+      "group": "parts",
+      "kind": "icon-button",
+      "rect": {
+        "x": 161,
+        "y": 1122,
+        "width": 46,
+        "height": 34
+      },
+      "hit": {
+        "x": 156,
+        "y": 1111,
+        "width": 56,
+        "height": 56
+      },
+      "svg": {
+        "width": 46,
+        "height": 34
+      },
+      "src": "/hmi/parts/3d/3d-vehicle-model.svg",
+      "file": "parts/3d/3d-vehicle-model.svg",
+      "texts": []
+    },
+    {
+      "key": "3d-status-clock",
+      "order": 149,
+      "name": "Group 29",
+      "context": null,
+      "variant": "3d",
+      "group": "parts",
+      "kind": "text",
+      "rect": {
+        "x": 128,
+        "y": 41,
+        "width": 415,
+        "height": 28
+      },
+      "hit": {
+        "x": 128,
+        "y": 27,
+        "width": 415,
+        "height": 56
+      },
+      "svg": {
+        "width": 415,
+        "height": 28
+      },
+      "src": "/hmi/parts/3d/3d-status-clock.svg",
+      "file": "parts/3d/3d-status-clock.svg",
+      "texts": [
+        "10:21 AM"
+      ]
+    },
+    {
+      "key": "3d-nav-card",
+      "order": 187,
+      "name": "button",
+      "context": "Group 35217",
+      "variant": "3d",
+      "group": "parts",
+      "kind": "panel",
+      "rect": {
+        "x": 119,
+        "y": 119,
+        "width": 444,
+        "height": 194
+      },
+      "hit": {
+        "x": 119,
+        "y": 119,
+        "width": 444,
+        "height": 194
+      },
+      "svg": {
+        "width": 444,
+        "height": 194
+      },
+      "src": "/hmi/parts/3d/3d-nav-card.svg",
+      "file": "parts/3d/3d-nav-card.svg",
+      "texts": []
+    },
+    {
+      "key": "3d-nav-text-block",
+      "order": 189,
+      "name": "Group 35215",
+      "context": "Group 35217",
+      "variant": "3d",
+      "group": "parts",
+      "kind": "text",
+      "rect": {
+        "x": 308,
+        "y": 172,
+        "width": 210,
+        "height": 97
+      },
+      "hit": {
+        "x": 308,
+        "y": 172,
+        "width": 210,
+        "height": 97
+      },
+      "svg": {
+        "width": 210,
+        "height": 97
+      },
+      "src": "/hmi/parts/3d/3d-nav-text-block.svg",
+      "file": "parts/3d/3d-nav-text-block.svg",
+      "texts": [
+        "268",
+        "米后",
+        "进入",
+        "世纪大道西辅路"
+      ]
+    },
+    {
+      "key": "3d-nav-turn-icon",
+      "order": 202,
+      "name": "Group 35213",
+      "context": "Group 35217",
+      "variant": "3d",
+      "group": "parts",
+      "kind": "shape",
+      "rect": {
+        "x": 198,
+        "y": 153,
+        "width": 79,
+        "height": 123
+      },
+      "hit": {
+        "x": 198,
+        "y": 153,
+        "width": 79,
+        "height": 123
+      },
+      "svg": {
+        "width": 79,
+        "height": 123
+      },
+      "src": "/hmi/parts/3d/3d-nav-turn-icon.svg",
+      "file": "parts/3d/3d-nav-turn-icon.svg",
+      "texts": []
+    },
+    {
+      "key": "3d-route-bar",
+      "order": 211,
+      "name": "button",
+      "context": "Group 35355",
+      "variant": "3d",
+      "group": "parts",
+      "kind": "panel",
+      "rect": {
+        "x": 119,
+        "y": 341,
+        "width": 444,
+        "height": 74
+      },
+      "hit": {
+        "x": 119,
+        "y": 341,
+        "width": 444,
+        "height": 74
+      },
+      "svg": {
+        "width": 444,
+        "height": 74
+      },
+      "src": "/hmi/parts/3d/3d-route-bar.svg",
+      "file": "parts/3d/3d-route-bar.svg",
+      "texts": []
+    },
+    {
+      "key": "3d-剩余",
+      "order": 215,
+      "name": "剩余",
+      "context": "Group 35355",
+      "variant": "3d",
+      "group": "parts",
+      "kind": "text",
+      "rect": {
+        "x": 136,
+        "y": 366,
+        "width": 48,
+        "height": 24
+      },
+      "hit": {
+        "x": 132,
+        "y": 350,
+        "width": 56,
+        "height": 56
+      },
+      "svg": {
+        "width": 48,
+        "height": 24
+      },
+      "src": "/hmi/parts/3d/3d-剩余.svg",
+      "file": "parts/3d/3d-剩余.svg",
+      "texts": [
+        "剩余"
+      ]
+    },
+    {
+      "key": "3d-20",
+      "order": 218,
+      "name": "20",
+      "context": "Group 35355",
+      "variant": "3d",
+      "group": "parts",
+      "kind": "text",
+      "rect": {
+        "x": 209,
+        "y": 361,
+        "width": 29,
+        "height": 23
+      },
+      "hit": {
+        "x": 196,
+        "y": 345,
+        "width": 56,
+        "height": 56
+      },
+      "svg": {
+        "width": 29,
+        "height": 23
+      },
+      "src": "/hmi/parts/3d/3d-20.svg",
+      "file": "parts/3d/3d-20.svg",
+      "texts": [
+        "20"
+      ]
+    },
+    {
+      "key": "3d-公里",
+      "order": 222,
+      "name": "公里",
+      "context": "Group 35355",
+      "variant": "3d",
+      "group": "parts",
+      "kind": "text",
+      "rect": {
+        "x": 244,
+        "y": 367,
+        "width": 48,
+        "height": 23
+      },
+      "hit": {
+        "x": 240,
+        "y": 351,
+        "width": 56,
+        "height": 56
+      },
+      "svg": {
+        "width": 48,
+        "height": 23
+      },
+      "src": "/hmi/parts/3d/3d-公里.svg",
+      "file": "parts/3d/3d-公里.svg",
+      "texts": [
+        "公里"
+      ]
+    },
+    {
+      "key": "3d-分钟",
+      "order": 225,
+      "name": "分钟",
+      "context": "Group 35355",
+      "variant": "3d",
+      "group": "parts",
+      "kind": "text",
+      "rect": {
+        "x": 344,
+        "y": 366,
+        "width": 48,
+        "height": 24
+      },
+      "hit": {
+        "x": 340,
+        "y": 350,
+        "width": 56,
+        "height": 56
+      },
+      "svg": {
+        "width": 48,
+        "height": 24
+      },
+      "src": "/hmi/parts/3d/3d-分钟.svg",
+      "file": "parts/3d/3d-分钟.svg",
+      "texts": [
+        "分钟"
+      ]
+    },
+    {
+      "key": "3d-36",
+      "order": 228,
+      "name": "36",
+      "context": "Group 35355",
+      "variant": "3d",
+      "group": "parts",
+      "kind": "text",
+      "rect": {
+        "x": 309,
+        "y": 362,
+        "width": 29,
+        "height": 22
+      },
+      "hit": {
+        "x": 296,
+        "y": 345,
+        "width": 56,
+        "height": 56
+      },
+      "svg": {
+        "width": 29,
+        "height": 22
+      },
+      "src": "/hmi/parts/3d/3d-36.svg",
+      "file": "parts/3d/3d-36.svg",
+      "texts": [
+        "36"
+      ]
+    },
+    {
+      "key": "3d-退出",
+      "order": 231,
+      "name": "退出",
+      "context": "Group 35355",
+      "variant": "3d",
+      "group": "parts",
+      "kind": "text",
+      "rect": {
+        "x": 498,
+        "y": 366,
+        "width": 47,
+        "height": 24
+      },
+      "hit": {
+        "x": 494,
+        "y": 350,
+        "width": 56,
+        "height": 56
+      },
+      "svg": {
+        "width": 47,
+        "height": 24
+      },
+      "src": "/hmi/parts/3d/3d-退出.svg",
+      "file": "parts/3d/3d-退出.svg",
+      "texts": [
+        "退出"
+      ]
+    },
+    {
+      "key": "3d-暂停",
+      "order": 234,
+      "name": "暂停",
+      "context": "Group 35355",
+      "variant": "3d",
+      "group": "parts",
+      "kind": "text",
+      "rect": {
+        "x": 416,
+        "y": 366,
+        "width": 48,
+        "height": 24
+      },
+      "hit": {
+        "x": 412,
+        "y": 350,
+        "width": 56,
+        "height": 56
+      },
+      "svg": {
+        "width": 48,
+        "height": 24
+      },
+      "src": "/hmi/parts/3d/3d-暂停.svg",
+      "file": "parts/3d/3d-暂停.svg",
+      "texts": [
+        "暂停"
+      ]
+    },
+    {
+      "key": "3d-gauge-dial",
+      "order": 237,
+      "name": "Group 35356",
+      "context": null,
+      "variant": "3d",
+      "group": "parts",
+      "kind": "text",
+      "rect": {
+        "x": 117,
+        "y": 447,
+        "width": 106,
+        "height": 106
+      },
+      "hit": {
+        "x": 117,
+        "y": 447,
+        "width": 106,
+        "height": 106
+      },
+      "svg": {
+        "width": 106,
+        "height": 106
+      },
+      "src": "/hmi/parts/3d/3d-gauge-dial.svg",
+      "file": "parts/3d/3d-gauge-dial.svg",
+      "texts": [
+        "63",
+        "KM/H"
+      ]
+    },
+    {
+      "key": "3d-map-buttons-body",
+      "order": 247,
+      "name": "Group 35211",
+      "context": null,
+      "variant": "3d",
+      "group": "parts",
+      "kind": "shape",
+      "rect": {
+        "x": 119,
+        "y": 584,
+        "width": 62,
+        "height": 222
+      },
+      "hit": {
+        "x": 119,
+        "y": 584,
+        "width": 62,
+        "height": 222
+      },
+      "svg": {
+        "width": 62,
+        "height": 222
+      },
+      "src": "/hmi/parts/3d/3d-map-buttons-body.svg",
+      "file": "parts/3d/3d-map-buttons-body.svg",
+      "texts": []
+    },
+    {
+      "key": "3d-zoom-body",
+      "order": 278,
+      "name": "Group 35361",
+      "context": null,
+      "variant": "3d",
+      "group": "parts",
+      "kind": "shape",
+      "rect": {
+        "x": 119,
+        "y": 839,
+        "width": 62,
+        "height": 122
+      },
+      "hit": {
+        "x": 119,
+        "y": 839,
+        "width": 62,
+        "height": 122
+      },
+      "svg": {
+        "width": 62,
+        "height": 122
+      },
+      "src": "/hmi/parts/3d/3d-zoom-body.svg",
+      "file": "parts/3d/3d-zoom-body.svg",
+      "texts": []
+    },
+    {
+      "key": "3d-progress-track",
+      "order": 289,
+      "name": "Group 35364",
+      "context": null,
+      "variant": "3d",
+      "group": "parts",
+      "kind": "shape",
+      "rect": {
+        "x": 1763,
+        "y": 118,
+        "width": 38,
+        "height": 689
+      },
+      "hit": {
+        "x": 1754,
+        "y": 118,
+        "width": 56,
+        "height": 689
+      },
+      "svg": {
+        "width": 38,
+        "height": 689
+      },
+      "src": "/hmi/parts/3d/3d-progress-track.svg",
+      "file": "parts/3d/3d-progress-track.svg",
+      "texts": []
+    },
+    {
+      "key": "3d-poi-parking-mark",
+      "order": 305,
+      "name": "Group 35365",
+      "context": "Group 35366",
+      "variant": "3d",
+      "group": "parts",
+      "kind": "text",
+      "rect": {
+        "x": 313,
+        "y": 720,
+        "width": 35,
+        "height": 42
+      },
+      "hit": {
+        "x": 303,
+        "y": 713,
+        "width": 56,
+        "height": 56
+      },
+      "svg": {
+        "width": 35,
+        "height": 42
+      },
+      "src": "/hmi/parts/3d/3d-poi-parking-mark.svg",
+      "file": "parts/3d/3d-poi-parking-mark.svg",
+      "texts": [
+        "P"
+      ]
+    },
+    {
+      "key": "3d-poi-parking",
+      "order": 311,
+      "name": "停车场",
+      "context": "Group 35366",
+      "variant": "3d",
+      "group": "parts",
+      "kind": "text",
+      "rect": {
+        "x": 353,
+        "y": 726,
+        "width": 71,
+        "height": 24
+      },
+      "hit": {
+        "x": 353,
+        "y": 710,
+        "width": 71,
+        "height": 56
+      },
+      "svg": {
+        "width": 71,
+        "height": 24
+      },
+      "src": "/hmi/parts/3d/3d-poi-parking.svg",
+      "file": "parts/3d/3d-poi-parking.svg",
+      "texts": [
+        "停车场"
+      ]
+    },
+    {
+      "key": "3d-part-2",
+      "order": 314,
+      "name": "Group 35367",
+      "context": null,
+      "variant": "3d",
+      "group": "parts",
+      "kind": "text",
+      "rect": {
+        "x": 744,
+        "y": 541,
+        "width": 135,
+        "height": 44
+      },
+      "hit": {
+        "x": 744,
+        "y": 535,
+        "width": 135,
+        "height": 56
+      },
+      "svg": {
+        "width": 135,
+        "height": 44
+      },
+      "src": "/hmi/parts/3d/3d-part-2.svg",
+      "file": "parts/3d/3d-part-2.svg",
+      "texts": [
+        "万达广场"
+      ]
+    },
+    {
+      "key": "3d-part-3",
+      "order": 325,
+      "name": "Group 35368",
+      "context": null,
+      "variant": "3d",
+      "group": "parts",
+      "kind": "text",
+      "rect": {
+        "x": 1397,
+        "y": 381,
+        "width": 135,
+        "height": 43
+      },
+      "hit": {
+        "x": 1397,
+        "y": 375,
+        "width": 135,
+        "height": 56
+      },
+      "svg": {
+        "width": 135,
+        "height": 43
+      },
+      "src": "/hmi/parts/3d/3d-part-3.svg",
+      "file": "parts/3d/3d-part-3.svg",
+      "texts": [
+        "山河花园"
+      ]
+    },
+    {
+      "key": "3d-poi-garden-dot",
+      "order": 335,
+      "name": "Union",
+      "context": null,
+      "variant": "3d",
+      "group": "parts",
+      "kind": "shape",
+      "rect": {
+        "x": 1409,
+        "y": 393,
+        "width": 12,
+        "height": 13
+      },
+      "hit": {
+        "x": 1387,
+        "y": 372,
+        "width": 56,
+        "height": 56
+      },
+      "svg": {
+        "width": 12,
+        "height": 13
+      },
+      "src": "/hmi/parts/3d/3d-poi-garden-dot.svg",
+      "file": "parts/3d/3d-poi-garden-dot.svg",
+      "texts": []
+    },
+    {
+      "key": "3d-route-path",
+      "order": 337,
+      "name": "Group 35369",
+      "context": null,
+      "variant": "3d",
+      "group": "parts",
+      "kind": "background",
+      "rect": {
+        "x": 685,
+        "y": 223,
+        "width": 557,
+        "height": 637
+      },
+      "hit": {
+        "x": 685,
+        "y": 223,
+        "width": 557,
+        "height": 637
+      },
+      "svg": {
+        "width": 557,
+        "height": 637
+      },
+      "src": "/hmi/parts/3d/3d-route-path.svg",
+      "file": "parts/3d/3d-route-path.svg",
+      "texts": []
+    },
+    {
+      "key": "3d-location-halo",
+      "order": 342,
+      "name": "Group 35212",
+      "context": null,
+      "variant": "3d",
+      "group": "parts",
+      "kind": "panel",
+      "rect": {
+        "x": 632,
+        "y": 794,
+        "width": 121,
+        "height": 121
+      },
+      "hit": {
+        "x": 632,
+        "y": 794,
+        "width": 121,
+        "height": 121
+      },
+      "svg": {
+        "width": 121,
+        "height": 121
+      },
+      "src": "/hmi/parts/3d/3d-location-halo.svg",
+      "file": "parts/3d/3d-location-halo.svg",
+      "texts": []
+    },
+    {
+      "key": "3d-location-arrow",
+      "order": 349,
+      "name": "Group 35372",
+      "context": null,
+      "variant": "3d",
+      "group": "parts",
+      "kind": "shape",
+      "rect": {
+        "x": 677,
+        "y": 847,
+        "width": 26,
+        "height": 22
+      },
+      "hit": {
+        "x": 662,
+        "y": 830,
+        "width": 56,
+        "height": 56
+      },
+      "svg": {
+        "width": 26,
+        "height": 22
+      },
+      "src": "/hmi/parts/3d/3d-location-arrow.svg",
+      "file": "parts/3d/3d-location-arrow.svg",
+      "texts": []
+    },
+    {
+      "key": "3d-location-arrow-outline",
+      "order": 356,
+      "name": "Group 35371",
+      "context": null,
+      "variant": "3d",
+      "group": "parts",
+      "kind": "shape",
+      "rect": {
+        "x": 676,
+        "y": 840,
+        "width": 36,
+        "height": 30
+      },
+      "hit": {
+        "x": 666,
+        "y": 827,
+        "width": 56,
+        "height": 56
+      },
+      "svg": {
+        "width": 36,
+        "height": 30
+      },
+      "src": "/hmi/parts/3d/3d-location-arrow-outline.svg",
+      "file": "parts/3d/3d-location-arrow-outline.svg",
+      "texts": []
+    },
+    {
+      "key": "3d-part-4",
+      "order": 363,
+      "name": "路径",
+      "context": null,
+      "variant": "3d",
+      "group": "parts",
+      "kind": "shape",
+      "rect": {
+        "x": 323,
+        "y": 758,
+        "width": 16,
+        "height": 5
+      },
+      "hit": {
+        "x": 303,
+        "y": 733,
+        "width": 56,
+        "height": 56
+      },
+      "svg": {
+        "width": 16,
+        "height": 5
+      },
+      "src": "/hmi/parts/3d/3d-part-4.svg",
+      "file": "parts/3d/3d-part-4.svg",
+      "texts": []
+    },
+    {
+      "key": "2d-part",
+      "order": 35,
+      "name": "Rectangle 89",
+      "context": null,
+      "variant": "2d",
+      "group": "parts",
+      "kind": "background",
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "width": 1920,
+        "height": 1080
+      },
+      "hit": {
+        "x": 0,
+        "y": 0,
+        "width": 1920,
+        "height": 1080
+      },
+      "svg": {
+        "width": 1920,
+        "height": 1080
+      },
+      "src": "/hmi/parts/2d/2d-part.svg",
+      "file": "parts/2d/2d-part.svg",
+      "texts": []
+    },
+    {
+      "key": "2d-main-control-bar-light",
+      "order": 40,
+      "name": "路径",
+      "context": "main control bar / light",
+      "variant": "2d",
+      "group": "parts",
+      "kind": "panel",
+      "rect": {
+        "x": 0,
+        "y": 1080,
+        "width": 1920,
+        "height": 120
+      },
+      "hit": {
+        "x": 0,
+        "y": 1080,
+        "width": 1920,
+        "height": 120
+      },
+      "svg": {
+        "width": 1920,
+        "height": 120
+      },
+      "src": "/hmi/parts/2d/2d-main-control-bar-light.svg",
+      "file": "parts/2d/2d-main-control-bar-light.svg",
+      "texts": []
+    },
+    {
+      "key": "2d-phone",
+      "order": 42,
+      "name": "phone",
+      "context": "main control bar / light",
+      "variant": "2d",
+      "group": "parts",
+      "kind": "icon-button",
+      "rect": {
+        "x": 1571,
+        "y": 1119,
+        "width": 26,
+        "height": 40
+      },
+      "hit": {
+        "x": 1556,
+        "y": 1111,
+        "width": 56,
+        "height": 56
+      },
+      "svg": {
+        "width": 26,
+        "height": 40
+      },
+      "src": "/hmi/parts/2d/2d-phone.svg",
+      "file": "parts/2d/2d-phone.svg",
+      "texts": []
+    },
+    {
+      "key": "2d-volume",
+      "order": 48,
+      "name": "Volume",
+      "context": "main control bar / light",
+      "variant": "2d",
+      "group": "parts",
+      "kind": "icon-button",
+      "rect": {
+        "x": 1710,
+        "y": 1118,
+        "width": 48,
+        "height": 42
+      },
+      "hit": {
+        "x": 1706,
+        "y": 1111,
+        "width": 56,
+        "height": 56
+      },
+      "svg": {
+        "width": 48,
+        "height": 42
+      },
+      "src": "/hmi/parts/2d/2d-volume.svg",
+      "file": "parts/2d/2d-volume.svg",
+      "texts": []
+    },
+    {
+      "key": "2d-music",
+      "order": 69,
+      "name": "music",
+      "context": "main control bar / light",
+      "variant": "2d",
+      "group": "parts",
+      "kind": "icon-button",
+      "rect": {
+        "x": 1417,
+        "y": 1118,
+        "width": 32,
+        "height": 42
+      },
+      "hit": {
+        "x": 1405,
+        "y": 1111,
+        "width": 56,
+        "height": 56
+      },
+      "svg": {
+        "width": 32,
+        "height": 42
+      },
+      "src": "/hmi/parts/2d/2d-music.svg",
+      "file": "parts/2d/2d-music.svg",
+      "texts": []
+    },
+    {
+      "key": "2d-seat-passenger",
+      "order": 75,
+      "name": "seat",
+      "context": "main control bar / light",
+      "variant": "2d",
+      "group": "parts",
+      "kind": "icon-button",
+      "rect": {
+        "x": 1272,
+        "y": 1121,
+        "width": 29,
+        "height": 37
+      },
+      "hit": {
+        "x": 1259,
+        "y": 1112,
+        "width": 56,
+        "height": 56
+      },
+      "svg": {
+        "width": 29,
+        "height": 37
+      },
+      "src": "/hmi/parts/2d/2d-seat-passenger.svg",
+      "file": "parts/2d/2d-seat-passenger.svg",
+      "texts": []
+    },
+    {
+      "key": "2d-temp-passenger",
+      "order": 81,
+      "name": "Passenger Temp",
+      "context": "main control bar / light",
+      "variant": "2d",
+      "group": "parts",
+      "kind": "text",
+      "rect": {
+        "x": 1075,
+        "y": 1119,
+        "width": 69,
+        "height": 37
+      },
+      "hit": {
+        "x": 1075,
+        "y": 1110,
+        "width": 69,
+        "height": 56
+      },
+      "svg": {
+        "width": 69,
+        "height": 37
+      },
+      "src": "/hmi/parts/2d/2d-temp-passenger.svg",
+      "file": "parts/2d/2d-temp-passenger.svg",
+      "texts": [
+        "38",
+        "º"
+      ]
+    },
+    {
+      "key": "2d-fan-level",
+      "order": 86,
+      "name": "Fan Level",
+      "context": "main control bar / light",
+      "variant": "2d",
+      "group": "parts",
+      "kind": "text",
+      "rect": {
+        "x": 931,
+        "y": 1106,
+        "width": 59,
+        "height": 65
+      },
+      "hit": {
+        "x": 931,
+        "y": 1106,
+        "width": 59,
+        "height": 65
+      },
+      "svg": {
+        "width": 59,
+        "height": 65
+      },
+      "src": "/hmi/parts/2d/2d-fan-level.svg",
+      "file": "parts/2d/2d-fan-level.svg",
+      "texts": [
+        "MANUAL"
+      ]
+    },
+    {
+      "key": "2d-temp-driver",
+      "order": 96,
+      "name": "Driver Temp",
+      "context": "main control bar / light",
+      "variant": "2d",
+      "group": "parts",
+      "kind": "text",
+      "rect": {
+        "x": 777,
+        "y": 1119,
+        "width": 67,
+        "height": 37
+      },
+      "hit": {
+        "x": 777,
+        "y": 1110,
+        "width": 67,
+        "height": 56
+      },
+      "svg": {
+        "width": 67,
+        "height": 37
+      },
+      "src": "/hmi/parts/2d/2d-temp-driver.svg",
+      "file": "parts/2d/2d-temp-driver.svg",
+      "texts": [
+        "20",
+        "º"
+      ]
+    },
+    {
+      "key": "2d-seat-driver",
+      "order": 101,
+      "name": "seat",
+      "context": "main control bar / light",
+      "variant": "2d",
+      "group": "parts",
+      "kind": "icon-button",
+      "rect": {
+        "x": 619,
+        "y": 1121,
+        "width": 29,
+        "height": 37
+      },
+      "hit": {
+        "x": 606,
+        "y": 1112,
+        "width": 56,
+        "height": 56
+      },
+      "svg": {
+        "width": 29,
+        "height": 37
+      },
+      "src": "/hmi/parts/2d/2d-seat-driver.svg",
+      "file": "parts/2d/2d-seat-driver.svg",
+      "texts": []
+    },
+    {
+      "key": "2d-heater",
+      "order": 107,
+      "name": "heater",
+      "context": "main control bar / light",
+      "variant": "2d",
+      "group": "parts",
+      "kind": "icon-button",
+      "rect": {
+        "x": 466,
+        "y": 1123,
+        "width": 36,
+        "height": 32
+      },
+      "hit": {
+        "x": 456,
+        "y": 1111,
+        "width": 56,
+        "height": 56
+      },
+      "svg": {
+        "width": 36,
+        "height": 32
+      },
+      "src": "/hmi/parts/2d/2d-heater.svg",
+      "file": "parts/2d/2d-heater.svg",
+      "texts": []
+    },
+    {
+      "key": "2d-defrost",
+      "order": 113,
+      "name": "defrost",
+      "context": "main control bar / light",
+      "variant": "2d",
+      "group": "parts",
+      "kind": "icon-button",
+      "rect": {
+        "x": 314,
+        "y": 1123,
+        "width": 40,
+        "height": 34
+      },
+      "hit": {
+        "x": 306,
+        "y": 1112,
+        "width": 56,
+        "height": 56
+      },
+      "svg": {
+        "width": 40,
+        "height": 34
+      },
+      "src": "/hmi/parts/2d/2d-defrost.svg",
+      "file": "parts/2d/2d-defrost.svg",
+      "texts": []
+    },
+    {
+      "key": "2d-vehicle-model",
+      "order": 119,
+      "name": "model3-icon",
+      "context": "main control bar / light",
+      "variant": "2d",
+      "group": "parts",
+      "kind": "icon-button",
+      "rect": {
+        "x": 161,
+        "y": 1122,
+        "width": 46,
+        "height": 34
+      },
+      "hit": {
+        "x": 156,
+        "y": 1111,
+        "width": 56,
+        "height": 56
+      },
+      "svg": {
+        "width": 46,
+        "height": 34
+      },
+      "src": "/hmi/parts/2d/2d-vehicle-model.svg",
+      "file": "parts/2d/2d-vehicle-model.svg",
+      "texts": []
+    },
+    {
+      "key": "2d-part-2",
+      "order": 125,
+      "name": "Group 29",
+      "context": null,
+      "variant": "2d",
+      "group": "parts",
+      "kind": "text",
+      "rect": {
+        "x": 132,
+        "y": 38,
+        "width": 415,
+        "height": 28
+      },
+      "hit": {
+        "x": 132,
+        "y": 24,
+        "width": 415,
+        "height": 56
+      },
+      "svg": {
+        "width": 415,
+        "height": 28
+      },
+      "src": "/hmi/parts/2d/2d-part-2.svg",
+      "file": "parts/2d/2d-part-2.svg",
+      "texts": [
+        "10:21 AM"
+      ]
+    },
+    {
+      "key": "2d-nav-card",
+      "order": 163,
+      "name": "button",
+      "context": "Group 35217",
+      "variant": "2d",
+      "group": "parts",
+      "kind": "panel",
+      "rect": {
+        "x": 119,
+        "y": 119,
+        "width": 444,
+        "height": 194
+      },
+      "hit": {
+        "x": 119,
+        "y": 119,
+        "width": 444,
+        "height": 194
+      },
+      "svg": {
+        "width": 444,
+        "height": 194
+      },
+      "src": "/hmi/parts/2d/2d-nav-card.svg",
+      "file": "parts/2d/2d-nav-card.svg",
+      "texts": []
+    },
+    {
+      "key": "2d-nav-text-block",
+      "order": 165,
+      "name": "Group 35215",
+      "context": "Group 35217",
+      "variant": "2d",
+      "group": "parts",
+      "kind": "text",
+      "rect": {
+        "x": 308,
+        "y": 172,
+        "width": 210,
+        "height": 97
+      },
+      "hit": {
+        "x": 308,
+        "y": 172,
+        "width": 210,
+        "height": 97
+      },
+      "svg": {
+        "width": 210,
+        "height": 97
+      },
+      "src": "/hmi/parts/2d/2d-nav-text-block.svg",
+      "file": "parts/2d/2d-nav-text-block.svg",
+      "texts": [
+        "268",
+        "米后",
+        "进入",
+        "世纪大道西辅路"
+      ]
+    },
+    {
+      "key": "2d-nav-turn-icon",
+      "order": 178,
+      "name": "Group 35213",
+      "context": "Group 35217",
+      "variant": "2d",
+      "group": "parts",
+      "kind": "shape",
+      "rect": {
+        "x": 198,
+        "y": 153,
+        "width": 79,
+        "height": 123
+      },
+      "hit": {
+        "x": 198,
+        "y": 153,
+        "width": 79,
+        "height": 123
+      },
+      "svg": {
+        "width": 79,
+        "height": 123
+      },
+      "src": "/hmi/parts/2d/2d-nav-turn-icon.svg",
+      "file": "parts/2d/2d-nav-turn-icon.svg",
+      "texts": []
+    },
+    {
+      "key": "2d-route-bar",
+      "order": 187,
+      "name": "button",
+      "context": "Group 35355",
+      "variant": "2d",
+      "group": "parts",
+      "kind": "panel",
+      "rect": {
+        "x": 119,
+        "y": 341,
+        "width": 444,
+        "height": 74
+      },
+      "hit": {
+        "x": 119,
+        "y": 341,
+        "width": 444,
+        "height": 74
+      },
+      "svg": {
+        "width": 444,
+        "height": 74
+      },
+      "src": "/hmi/parts/2d/2d-route-bar.svg",
+      "file": "parts/2d/2d-route-bar.svg",
+      "texts": []
+    },
+    {
+      "key": "2d-剩余",
+      "order": 191,
+      "name": "剩余",
+      "context": "Group 35355",
+      "variant": "2d",
+      "group": "parts",
+      "kind": "text",
+      "rect": {
+        "x": 136,
+        "y": 366,
+        "width": 48,
+        "height": 24
+      },
+      "hit": {
+        "x": 132,
+        "y": 350,
+        "width": 56,
+        "height": 56
+      },
+      "svg": {
+        "width": 48,
+        "height": 24
+      },
+      "src": "/hmi/parts/2d/2d-剩余.svg",
+      "file": "parts/2d/2d-剩余.svg",
+      "texts": [
+        "剩余"
+      ]
+    },
+    {
+      "key": "2d-20",
+      "order": 194,
+      "name": "20",
+      "context": "Group 35355",
+      "variant": "2d",
+      "group": "parts",
+      "kind": "text",
+      "rect": {
+        "x": 209,
+        "y": 361,
+        "width": 29,
+        "height": 23
+      },
+      "hit": {
+        "x": 196,
+        "y": 345,
+        "width": 56,
+        "height": 56
+      },
+      "svg": {
+        "width": 29,
+        "height": 23
+      },
+      "src": "/hmi/parts/2d/2d-20.svg",
+      "file": "parts/2d/2d-20.svg",
+      "texts": [
+        "20"
+      ]
+    },
+    {
+      "key": "2d-公里",
+      "order": 198,
+      "name": "公里",
+      "context": "Group 35355",
+      "variant": "2d",
+      "group": "parts",
+      "kind": "text",
+      "rect": {
+        "x": 244,
+        "y": 367,
+        "width": 48,
+        "height": 23
+      },
+      "hit": {
+        "x": 240,
+        "y": 351,
+        "width": 56,
+        "height": 56
+      },
+      "svg": {
+        "width": 48,
+        "height": 23
+      },
+      "src": "/hmi/parts/2d/2d-公里.svg",
+      "file": "parts/2d/2d-公里.svg",
+      "texts": [
+        "公里"
+      ]
+    },
+    {
+      "key": "2d-分钟",
+      "order": 201,
+      "name": "分钟",
+      "context": "Group 35355",
+      "variant": "2d",
+      "group": "parts",
+      "kind": "text",
+      "rect": {
+        "x": 344,
+        "y": 366,
+        "width": 48,
+        "height": 24
+      },
+      "hit": {
+        "x": 340,
+        "y": 350,
+        "width": 56,
+        "height": 56
+      },
+      "svg": {
+        "width": 48,
+        "height": 24
+      },
+      "src": "/hmi/parts/2d/2d-分钟.svg",
+      "file": "parts/2d/2d-分钟.svg",
+      "texts": [
+        "分钟"
+      ]
+    },
+    {
+      "key": "2d-36",
+      "order": 204,
+      "name": "36",
+      "context": "Group 35355",
+      "variant": "2d",
+      "group": "parts",
+      "kind": "text",
+      "rect": {
+        "x": 309,
+        "y": 362,
+        "width": 29,
+        "height": 22
+      },
+      "hit": {
+        "x": 296,
+        "y": 345,
+        "width": 56,
+        "height": 56
+      },
+      "svg": {
+        "width": 29,
+        "height": 22
+      },
+      "src": "/hmi/parts/2d/2d-36.svg",
+      "file": "parts/2d/2d-36.svg",
+      "texts": [
+        "36"
+      ]
+    },
+    {
+      "key": "2d-退出",
+      "order": 207,
+      "name": "退出",
+      "context": "Group 35355",
+      "variant": "2d",
+      "group": "parts",
+      "kind": "text",
+      "rect": {
+        "x": 498,
+        "y": 366,
+        "width": 47,
+        "height": 24
+      },
+      "hit": {
+        "x": 494,
+        "y": 350,
+        "width": 56,
+        "height": 56
+      },
+      "svg": {
+        "width": 47,
+        "height": 24
+      },
+      "src": "/hmi/parts/2d/2d-退出.svg",
+      "file": "parts/2d/2d-退出.svg",
+      "texts": [
+        "退出"
+      ]
+    },
+    {
+      "key": "2d-暂停",
+      "order": 210,
+      "name": "暂停",
+      "context": "Group 35355",
+      "variant": "2d",
+      "group": "parts",
+      "kind": "text",
+      "rect": {
+        "x": 416,
+        "y": 366,
+        "width": 48,
+        "height": 24
+      },
+      "hit": {
+        "x": 412,
+        "y": 350,
+        "width": 56,
+        "height": 56
+      },
+      "svg": {
+        "width": 48,
+        "height": 24
+      },
+      "src": "/hmi/parts/2d/2d-暂停.svg",
+      "file": "parts/2d/2d-暂停.svg",
+      "texts": [
+        "暂停"
+      ]
+    },
+    {
+      "key": "2d-gauge-dial",
+      "order": 213,
+      "name": "Group 35356",
+      "context": null,
+      "variant": "2d",
+      "group": "parts",
+      "kind": "text",
+      "rect": {
+        "x": 117,
+        "y": 447,
+        "width": 106,
+        "height": 106
+      },
+      "hit": {
+        "x": 117,
+        "y": 447,
+        "width": 106,
+        "height": 106
+      },
+      "svg": {
+        "width": 106,
+        "height": 106
+      },
+      "src": "/hmi/parts/2d/2d-gauge-dial.svg",
+      "file": "parts/2d/2d-gauge-dial.svg",
+      "texts": [
+        "63",
+        "KM/H"
+      ]
+    },
+    {
+      "key": "2d-map-buttons-body",
+      "order": 223,
+      "name": "Group 35211",
+      "context": null,
+      "variant": "2d",
+      "group": "parts",
+      "kind": "shape",
+      "rect": {
+        "x": 119,
+        "y": 584,
+        "width": 62,
+        "height": 222
+      },
+      "hit": {
+        "x": 119,
+        "y": 584,
+        "width": 62,
+        "height": 222
+      },
+      "svg": {
+        "width": 62,
+        "height": 222
+      },
+      "src": "/hmi/parts/2d/2d-map-buttons-body.svg",
+      "file": "parts/2d/2d-map-buttons-body.svg",
+      "texts": []
+    },
+    {
+      "key": "2d-zoom-body",
+      "order": 254,
+      "name": "Group 35361",
+      "context": null,
+      "variant": "2d",
+      "group": "parts",
+      "kind": "shape",
+      "rect": {
+        "x": 119,
+        "y": 839,
+        "width": 62,
+        "height": 122
+      },
+      "hit": {
+        "x": 119,
+        "y": 839,
+        "width": 62,
+        "height": 122
+      },
+      "svg": {
+        "width": 62,
+        "height": 122
+      },
+      "src": "/hmi/parts/2d/2d-zoom-body.svg",
+      "file": "parts/2d/2d-zoom-body.svg",
+      "texts": []
+    },
+    {
+      "key": "2d-progress-track",
+      "order": 265,
+      "name": "Group 35364",
+      "context": null,
+      "variant": "2d",
+      "group": "parts",
+      "kind": "shape",
+      "rect": {
+        "x": 1764,
+        "y": 118,
+        "width": 36,
+        "height": 689
+      },
+      "hit": {
+        "x": 1754,
+        "y": 118,
+        "width": 56,
+        "height": 689
+      },
+      "svg": {
+        "width": 36,
+        "height": 689
+      },
+      "src": "/hmi/parts/2d/2d-progress-track.svg",
+      "file": "parts/2d/2d-progress-track.svg",
+      "texts": []
+    },
+    {
+      "key": "2d-poi-garden-dot",
+      "order": 280,
+      "name": "Union",
+      "context": null,
+      "variant": "2d",
+      "group": "parts",
+      "kind": "shape",
+      "rect": {
+        "x": 1409,
+        "y": 393,
+        "width": 12,
+        "height": 13
+      },
+      "hit": {
+        "x": 1387,
+        "y": 372,
+        "width": 56,
+        "height": 56
+      },
+      "svg": {
+        "width": 12,
+        "height": 13
+      },
+      "src": "/hmi/parts/2d/2d-poi-garden-dot.svg",
+      "file": "parts/2d/2d-poi-garden-dot.svg",
+      "texts": []
+    },
+    {
+      "key": "2d-part-3",
+      "order": 282,
+      "name": "路径",
+      "context": null,
+      "variant": "2d",
+      "group": "parts",
+      "kind": "background",
+      "rect": {
+        "x": 650,
+        "y": 323,
+        "width": 449,
+        "height": 468
+      },
+      "hit": {
+        "x": 650,
+        "y": 323,
+        "width": 449,
+        "height": 468
+      },
+      "svg": {
+        "width": 449,
+        "height": 468
+      },
+      "src": "/hmi/parts/2d/2d-part-3.svg",
+      "file": "parts/2d/2d-part-3.svg",
+      "texts": []
+    },
+    {
+      "key": "2d-part-4",
+      "order": 284,
+      "name": "Group 35218",
+      "context": null,
+      "variant": "2d",
+      "group": "parts",
+      "kind": "shape",
+      "rect": {
+        "x": 1058,
+        "y": 295,
+        "width": 74,
+        "height": 74
+      },
+      "hit": {
+        "x": 1058,
+        "y": 295,
+        "width": 74,
+        "height": 74
+      },
+      "svg": {
+        "width": 74,
+        "height": 74
+      },
+      "src": "/hmi/parts/2d/2d-part-4.svg",
+      "file": "parts/2d/2d-part-4.svg",
+      "texts": []
+    },
+    {
+      "key": "2d-part-5",
+      "order": 291,
+      "name": "Group 35212",
+      "context": null,
+      "variant": "2d",
+      "group": "parts",
+      "kind": "panel",
+      "rect": {
+        "x": 549,
+        "y": 692,
+        "width": 185,
+        "height": 185
+      },
+      "hit": {
+        "x": 549,
+        "y": 692,
+        "width": 185,
+        "height": 185
+      },
+      "svg": {
+        "width": 185,
+        "height": 185
+      },
+      "src": "/hmi/parts/2d/2d-part-5.svg",
+      "file": "parts/2d/2d-part-5.svg",
+      "texts": []
+    }
+  ]
+}

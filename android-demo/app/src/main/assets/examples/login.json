@@ -1,0 +1,54 @@
+{
+  "name": "登录表单",
+  "messages": [
+    {
+      "version": "v0.9",
+      "createSurface": {
+        "surfaceId": "login",
+        "catalogId": "https://a2ui.org/specification/v0_9/catalogs/basic/catalog.json",
+        "sendDataModel": true
+      }
+    },
+    {
+      "version": "v0.9",
+      "updateComponents": {
+        "surfaceId": "login",
+        "components": [
+          { "id": "root", "component": "Column", "children": ["header", "subtitle", "card", "footer"], "align": "stretch" },
+          { "id": "header", "component": "Text", "text": "欢迎回来", "variant": "h2" },
+          { "id": "subtitle", "component": "Text", "text": "登录后继续使用你的工作区", "variant": "caption" },
+          { "id": "card", "component": "Card", "child": "form" },
+          { "id": "form", "component": "Column", "children": ["email", "password", "remember", "login-button"], "align": "stretch" },
+          { "id": "email", "component": "TextField", "label": "邮箱", "value": { "path": "/email" }, "variant": "shortText" },
+          { "id": "password", "component": "TextField", "label": "密码", "value": { "path": "/password" }, "variant": "obscured" },
+          { "id": "remember", "component": "CheckBox", "label": "记住我", "value": { "path": "/remember" } },
+          { "id": "login-button-text", "component": "Text", "text": "登录" },
+          {
+            "id": "login-button",
+            "component": "Button",
+            "child": "login-button-text",
+            "variant": "primary",
+            "action": {
+              "event": {
+                "name": "login",
+                "context": { "email": { "path": "/email" } }
+              }
+            }
+          },
+          { "id": "footer", "component": "Text", "text": "没有账号？联系管理员开通", "variant": "caption" }
+        ]
+      }
+    },
+    {
+      "version": "v0.9",
+      "updateDataModel": {
+        "surfaceId": "login",
+        "value": {
+          "email": "",
+          "password": "",
+          "remember": true
+        }
+      }
+    }
+  ]
+}

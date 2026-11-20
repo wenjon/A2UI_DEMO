@@ -1,0 +1,3082 @@
+{
+  "source": {
+    "file": "D:\\BaiduNetdiskDownload\\HMI概念导航Demo.sketch",
+    "fileName": "HMI概念导航Demo.sketch",
+    "page": "HMI概念导航Demo",
+    "artboards": [
+      {
+        "name": "HMI概念导航Demo_3D",
+        "id": "jKaZ0qqvngU75dIdpKbu9",
+        "width": 1920,
+        "height": 1200
+      },
+      {
+        "name": "HMI概念导航Demo_2D",
+        "id": "UuCw5ydt6FyulGp7mGuoQ",
+        "width": 1920,
+        "height": 1200
+      }
+    ]
+  },
+  "generatedAt": "2026-11-05T15:03:04.786Z",
+  "pngScale": 2,
+  "assetCount": 52,
+  "assets": [
+    {
+      "id": "jKaZ0qqvngU75dIdpKbu9",
+      "name": "HMI概念导航Demo_3D",
+      "key": "hmi-3d-screen",
+      "group": "screens",
+      "kind": "screen",
+      "artboard": "HMI概念导航Demo_3D",
+      "className": "artboard",
+      "frame": {
+        "x": 1391,
+        "y": -601,
+        "width": 1920,
+        "height": 1200
+      },
+      "canvasRect": {
+        "x": 0,
+        "y": 0,
+        "width": 1920,
+        "height": 1200
+      },
+      "svg": "svg/screens/hmi-3d-screen.svg",
+      "png": "png/screens/hmi-3d-screen.png",
+      "pngScale": 2,
+      "pngSize": {
+        "width": 3840,
+        "height": 2400
+      },
+      "style": {
+        "fills": [],
+        "borders": [],
+        "blur": null,
+        "opacity": 1,
+        "text": null,
+        "blurs": [
+          {
+            "layer": "Rectangle 89",
+            "type": 3,
+            "radius": 125
+          },
+          {
+            "layer": "button",
+            "type": 3,
+            "radius": 8
+          },
+          {
+            "layer": "button",
+            "type": 3,
+            "radius": 8
+          },
+          {
+            "layer": "路径",
+            "type": 3,
+            "radius": 8.5
+          },
+          {
+            "layer": "路径",
+            "type": 3,
+            "radius": 8
+          },
+          {
+            "layer": "路径",
+            "type": 3,
+            "radius": 8
+          },
+          {
+            "layer": "路径",
+            "type": 3,
+            "radius": 8
+          },
+          {
+            "layer": "Rectangle 3746",
+            "type": 3,
+            "radius": 8
+          },
+          {
+            "layer": "Rectangle 3749",
+            "type": 3,
+            "radius": 8
+          },
+          {
+            "layer": "路径",
+            "type": 3,
+            "radius": 8
+          },
+          {
+            "layer": "路径",
+            "type": 3,
+            "radius": 6
+          },
+          {
+            "layer": "Group 35372",
+            "type": 0,
+            "radius": 2
+          },
+          {
+            "layer": "路径",
+            "type": 0,
+            "radius": 2
+          },
+          {
+            "layer": "路径",
+            "type": 0,
+            "radius": 2
+          },
+          {
+            "layer": "路径",
+            "type": 0,
+            "radius": 2
+          }
+        ],
+        "subtreeFills": [
+          {
+            "key": "1:rgba(112,112,112,1)",
+            "layer": "Rectangle 89",
+            "fillType": 1,
+            "color": "rgba(112,112,112,1)"
+          },
+          {
+            "key": "0:rgba(112,112,112,1)",
+            "layer": "601640329172_ 1",
+            "fillType": 0,
+            "color": "rgba(112,112,112,1)"
+          },
+          {
+            "key": "0:rgba(0,0,0,1)",
+            "layer": "WechatIMG62 1 蒙版",
+            "fillType": 0,
+            "color": "rgba(0,0,0,1)"
+          },
+          {
+            "key": "4:rgba(255,255,255,1)",
+            "layer": "WechatIMG62 1",
+            "fillType": 4,
+            "color": "rgba(255,255,255,1)"
+          },
+          {
+            "key": "0:rgba(255,255,255,1)",
+            "layer": "路径",
+            "fillType": 0,
+            "color": "rgba(255,255,255,1)"
+          },
+          {
+            "key": "0:rgba(39,49,60,1)",
+            "layer": "Subtract",
+            "fillType": 0,
+            "color": "rgba(39,49,60,1)"
+          },
+          {
+            "key": "0:rgba(196,196,196,1)",
+            "layer": "Rectangle 19",
+            "fillType": 0,
+            "color": "rgba(196,196,196,1)"
+          },
+          {
+            "key": "0:rgba(255,255,255,0.4)",
+            "layer": "路径",
+            "fillType": 0,
+            "color": "rgba(255,255,255,0.4)"
+          }
+        ]
+      },
+      "childCount": 21
+    },
+    {
+      "id": "UuCw5ydt6FyulGp7mGuoQ",
+      "name": "HMI概念导航Demo_2D",
+      "key": "hmi-2d-screen",
+      "group": "screens",
+      "kind": "screen",
+      "artboard": "HMI概念导航Demo_2D",
+      "className": "artboard",
+      "frame": {
+        "x": 1391,
+        "y": 850,
+        "width": 1920,
+        "height": 1200
+      },
+      "canvasRect": {
+        "x": 0,
+        "y": 0,
+        "width": 1920,
+        "height": 1200
+      },
+      "svg": "svg/screens/hmi-2d-screen.svg",
+      "png": "png/screens/hmi-2d-screen.png",
+      "pngScale": 2,
+      "pngSize": {
+        "width": 3840,
+        "height": 2400
+      },
+      "style": {
+        "fills": [],
+        "borders": [],
+        "blur": null,
+        "opacity": 1,
+        "text": null,
+        "blurs": [
+          {
+            "layer": "Rectangle 89",
+            "type": 3,
+            "radius": 125
+          },
+          {
+            "layer": "button",
+            "type": 3,
+            "radius": 8
+          },
+          {
+            "layer": "button",
+            "type": 3,
+            "radius": 8
+          },
+          {
+            "layer": "路径",
+            "type": 3,
+            "radius": 8.5
+          },
+          {
+            "layer": "路径",
+            "type": 3,
+            "radius": 8
+          },
+          {
+            "layer": "路径",
+            "type": 3,
+            "radius": 8
+          },
+          {
+            "layer": "路径",
+            "type": 3,
+            "radius": 8
+          },
+          {
+            "layer": "Rectangle 3746",
+            "type": 3,
+            "radius": 8
+          },
+          {
+            "layer": "Rectangle 3749",
+            "type": 3,
+            "radius": 8
+          },
+          {
+            "layer": "路径",
+            "type": 3,
+            "radius": 8
+          },
+          {
+            "layer": "路径",
+            "type": 3,
+            "radius": 6
+          }
+        ],
+        "subtreeFills": [
+          {
+            "key": "1:rgba(112,112,112,1)",
+            "layer": "Rectangle 89",
+            "fillType": 1,
+            "color": "rgba(112,112,112,1)"
+          },
+          {
+            "key": "4:rgba(112,112,112,1)",
+            "layer": "image 78",
+            "fillType": 4,
+            "color": "rgba(112,112,112,1)"
+          },
+          {
+            "key": "0:rgba(255,255,255,1)",
+            "layer": "路径",
+            "fillType": 0,
+            "color": "rgba(255,255,255,1)"
+          },
+          {
+            "key": "0:rgba(39,49,60,1)",
+            "layer": "Subtract",
+            "fillType": 0,
+            "color": "rgba(39,49,60,1)"
+          },
+          {
+            "key": "0:rgba(196,196,196,1)",
+            "layer": "Rectangle 19",
+            "fillType": 0,
+            "color": "rgba(196,196,196,1)"
+          },
+          {
+            "key": "0:rgba(255,255,255,0.4)",
+            "layer": "路径",
+            "fillType": 0,
+            "color": "rgba(255,255,255,0.4)"
+          },
+          {
+            "key": "0:rgba(0,0,0,1)",
+            "layer": "路径",
+            "fillType": 0,
+            "color": "rgba(0,0,0,1)"
+          },
+          {
+            "key": "0:rgba(77,91,112,1)",
+            "layer": "Union",
+            "fillType": 0,
+            "color": "rgba(77,91,112,1)"
+          }
+        ]
+      },
+      "childCount": 14
+    },
+    {
+      "id": "iz-qLV8VnFahVOPxjBeSo",
+      "name": "WechatIMG62 1",
+      "key": "map-city-3d",
+      "group": "backgrounds",
+      "kind": "background",
+      "artboard": "HMI概念导航Demo_3D",
+      "className": "group",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 1920,
+        "height": 1080
+      },
+      "canvasRect": {
+        "x": 0,
+        "y": 0,
+        "width": 1920,
+        "height": 1080
+      },
+      "svg": "svg/backgrounds/map-city-3d.svg",
+      "png": "png/backgrounds/map-city-3d.png",
+      "pngScale": 2,
+      "pngSize": {
+        "width": 3840,
+        "height": 2160
+      },
+      "style": {
+        "fills": [],
+        "borders": [],
+        "blur": null,
+        "opacity": 1,
+        "text": null,
+        "subtreeFills": [
+          {
+            "key": "0:rgba(0,0,0,1)",
+            "layer": "WechatIMG62 1 蒙版",
+            "fillType": 0,
+            "color": "rgba(0,0,0,1)"
+          },
+          {
+            "key": "4:rgba(255,255,255,1)",
+            "layer": "WechatIMG62 1",
+            "fillType": 4,
+            "color": "rgba(255,255,255,1)"
+          }
+        ]
+      },
+      "childCount": 2
+    },
+    {
+      "id": "Q7h9_dWaDxqqMi4K2VAOF",
+      "name": "image 78",
+      "key": "map-flat-2d",
+      "group": "backgrounds",
+      "kind": "background",
+      "artboard": "HMI概念导航Demo_2D",
+      "className": "rectangle",
+      "frame": {
+        "x": -216,
+        "y": -221,
+        "width": 2302,
+        "height": 1592
+      },
+      "canvasRect": {
+        "x": -216,
+        "y": -221,
+        "width": 2302,
+        "height": 1592
+      },
+      "svg": "svg/backgrounds/map-flat-2d.svg",
+      "png": "png/backgrounds/map-flat-2d.png",
+      "pngScale": 2,
+      "pngSize": {
+        "width": 4604,
+        "height": 3184
+      },
+      "style": {
+        "fills": [
+          {
+            "type": 4,
+            "color": "rgba(112,112,112,1)",
+            "gradient": [
+              "rgba(255,255,255,1)@0",
+              "rgba(0,0,0,1)@1"
+            ]
+          }
+        ],
+        "borders": [],
+        "blur": null,
+        "opacity": 1,
+        "text": null,
+        "subtreeFills": [
+          {
+            "key": "4:rgba(112,112,112,1)",
+            "layer": "image 78",
+            "fillType": 4,
+            "color": "rgba(112,112,112,1)"
+          }
+        ]
+      },
+      "childCount": 0
+    },
+    {
+      "id": "hbB09CsmlWmGEISy9s8NB",
+      "name": "main control bar / light",
+      "key": "control-bar-3d",
+      "group": "components",
+      "kind": "bar",
+      "artboard": "HMI概念导航Demo_3D",
+      "className": "group",
+      "frame": {
+        "x": 0,
+        "y": 1080,
+        "width": 1920,
+        "height": 120
+      },
+      "canvasRect": {
+        "x": 0,
+        "y": 1080,
+        "width": 1920,
+        "height": 120
+      },
+      "svg": "svg/components/control-bar-3d.svg",
+      "png": "png/components/control-bar-3d.png",
+      "pngScale": 2,
+      "pngSize": {
+        "width": 3840,
+        "height": 240
+      },
+      "style": {
+        "fills": [],
+        "borders": [],
+        "blur": null,
+        "opacity": 1,
+        "text": null,
+        "subtreeFills": [
+          {
+            "key": "0:rgba(255,255,255,1)",
+            "layer": "路径",
+            "fillType": 0,
+            "color": "rgba(255,255,255,1)"
+          },
+          {
+            "key": "0:rgba(39,49,60,1)",
+            "layer": "Subtract",
+            "fillType": 0,
+            "color": "rgba(39,49,60,1)"
+          },
+          {
+            "key": "0:rgba(196,196,196,1)",
+            "layer": "Rectangle 19",
+            "fillType": 0,
+            "color": "rgba(196,196,196,1)"
+          },
+          {
+            "key": "0:rgba(255,255,255,0.4)",
+            "layer": "路径",
+            "fillType": 0,
+            "color": "rgba(255,255,255,0.4)"
+          },
+          {
+            "key": "0:rgba(0,0,0,1)",
+            "layer": "路径",
+            "fillType": 0,
+            "color": "rgba(0,0,0,1)"
+          }
+        ]
+      },
+      "childCount": 12
+    },
+    {
+      "id": "7pG35acyjPQUiNo24M14R",
+      "name": "main control bar / light",
+      "key": "control-bar-2d",
+      "group": "components",
+      "kind": "bar",
+      "artboard": "HMI概念导航Demo_2D",
+      "className": "group",
+      "frame": {
+        "x": 0,
+        "y": 1080,
+        "width": 1920,
+        "height": 120
+      },
+      "canvasRect": {
+        "x": 0,
+        "y": 1080,
+        "width": 1920,
+        "height": 120
+      },
+      "svg": "svg/components/control-bar-2d.svg",
+      "png": "png/components/control-bar-2d.png",
+      "pngScale": 2,
+      "pngSize": {
+        "width": 3840,
+        "height": 240
+      },
+      "style": {
+        "fills": [],
+        "borders": [],
+        "blur": null,
+        "opacity": 1,
+        "text": null,
+        "subtreeFills": [
+          {
+            "key": "0:rgba(255,255,255,1)",
+            "layer": "路径",
+            "fillType": 0,
+            "color": "rgba(255,255,255,1)"
+          },
+          {
+            "key": "0:rgba(39,49,60,1)",
+            "layer": "Subtract",
+            "fillType": 0,
+            "color": "rgba(39,49,60,1)"
+          },
+          {
+            "key": "0:rgba(196,196,196,1)",
+            "layer": "Rectangle 19",
+            "fillType": 0,
+            "color": "rgba(196,196,196,1)"
+          },
+          {
+            "key": "0:rgba(255,255,255,0.4)",
+            "layer": "路径",
+            "fillType": 0,
+            "color": "rgba(255,255,255,0.4)"
+          },
+          {
+            "key": "0:rgba(0,0,0,1)",
+            "layer": "路径",
+            "fillType": 0,
+            "color": "rgba(0,0,0,1)"
+          }
+        ]
+      },
+      "childCount": 12
+    },
+    {
+      "id": "0YBdrYfEBGbczLF-mnlMB",
+      "name": "Group 29",
+      "key": "status-bar-3d",
+      "group": "components",
+      "kind": "status-bar",
+      "artboard": "HMI概念导航Demo_3D",
+      "className": "group",
+      "frame": {
+        "x": 120,
+        "y": 30,
+        "width": 425,
+        "height": 49
+      },
+      "canvasRect": {
+        "x": 120,
+        "y": 30,
+        "width": 425,
+        "height": 49
+      },
+      "svg": "svg/components/status-bar-3d.svg",
+      "png": "png/components/status-bar-3d.png",
+      "pngScale": 2,
+      "pngSize": {
+        "width": 850,
+        "height": 98
+      },
+      "style": {
+        "fills": [],
+        "borders": [],
+        "blur": null,
+        "opacity": 1,
+        "text": null,
+        "subtreeFills": [
+          {
+            "key": "0:rgba(255,255,255,1)",
+            "layer": "Union",
+            "fillType": 0,
+            "color": "rgba(255,255,255,1)"
+          },
+          {
+            "key": "0:rgba(196,196,196,1)",
+            "layer": "Rectangle 10",
+            "fillType": 0,
+            "color": "rgba(196,196,196,1)"
+          }
+        ]
+      },
+      "childCount": 2
+    },
+    {
+      "id": "rClNxAfzbwlFwJXNBWzvz",
+      "name": "Group 29",
+      "key": "status-bar-2d",
+      "group": "components",
+      "kind": "status-bar",
+      "artboard": "HMI概念导航Demo_2D",
+      "className": "group",
+      "frame": {
+        "x": 124,
+        "y": 27,
+        "width": 425,
+        "height": 49
+      },
+      "canvasRect": {
+        "x": 124,
+        "y": 27,
+        "width": 425,
+        "height": 49
+      },
+      "svg": "svg/components/status-bar-2d.svg",
+      "png": "png/components/status-bar-2d.png",
+      "pngScale": 2,
+      "pngSize": {
+        "width": 850,
+        "height": 98
+      },
+      "style": {
+        "fills": [],
+        "borders": [],
+        "blur": null,
+        "opacity": 1,
+        "text": null,
+        "subtreeFills": [
+          {
+            "key": "0:rgba(77,91,112,1)",
+            "layer": "Union",
+            "fillType": 0,
+            "color": "rgba(77,91,112,1)"
+          },
+          {
+            "key": "0:rgba(196,196,196,1)",
+            "layer": "Rectangle 10",
+            "fillType": 0,
+            "color": "rgba(196,196,196,1)"
+          }
+        ]
+      },
+      "childCount": 2
+    },
+    {
+      "id": "N0sOgILIhqnJr-Yi-XUBD",
+      "name": "Group 35217",
+      "key": "nav-instruction-card-3d",
+      "group": "components",
+      "kind": "panel",
+      "artboard": "HMI概念导航Demo_3D",
+      "className": "group",
+      "frame": {
+        "x": 120,
+        "y": 120,
+        "width": 442,
+        "height": 192
+      },
+      "canvasRect": {
+        "x": 120,
+        "y": 120,
+        "width": 442,
+        "height": 192
+      },
+      "svg": "svg/components/nav-instruction-card-3d.svg",
+      "png": "png/components/nav-instruction-card-3d.png",
+      "pngScale": 2,
+      "pngSize": {
+        "width": 884,
+        "height": 384
+      },
+      "style": {
+        "fills": [],
+        "borders": [],
+        "blur": null,
+        "opacity": 1,
+        "text": null,
+        "blurs": [
+          {
+            "layer": "button",
+            "type": 3,
+            "radius": 8
+          }
+        ],
+        "subtreeFills": [
+          {
+            "key": "0:rgba(34,44,58,0.4)",
+            "layer": "button",
+            "fillType": 0,
+            "color": "rgba(34,44,58,0.4)"
+          },
+          {
+            "key": "1:rgba(112,112,112,1)",
+            "layer": "Union",
+            "fillType": 1,
+            "color": "rgba(112,112,112,1)"
+          },
+          {
+            "key": "0:rgba(255,255,255,1)",
+            "layer": "路径",
+            "fillType": 0,
+            "color": "rgba(255,255,255,1)"
+          }
+        ]
+      },
+      "childCount": 3
+    },
+    {
+      "id": "ZglkkMjh_D6KNoOGp8o-J",
+      "name": "Group 35217",
+      "key": "nav-instruction-card-2d",
+      "group": "components",
+      "kind": "panel",
+      "artboard": "HMI概念导航Demo_2D",
+      "className": "group",
+      "frame": {
+        "x": 120,
+        "y": 120,
+        "width": 442,
+        "height": 192
+      },
+      "canvasRect": {
+        "x": 120,
+        "y": 120,
+        "width": 442,
+        "height": 192
+      },
+      "svg": "svg/components/nav-instruction-card-2d.svg",
+      "png": "png/components/nav-instruction-card-2d.png",
+      "pngScale": 2,
+      "pngSize": {
+        "width": 884,
+        "height": 384
+      },
+      "style": {
+        "fills": [],
+        "borders": [],
+        "blur": null,
+        "opacity": 1,
+        "text": null,
+        "blurs": [
+          {
+            "layer": "button",
+            "type": 3,
+            "radius": 8
+          }
+        ],
+        "subtreeFills": [
+          {
+            "key": "0:rgba(15,29,49,0.8)",
+            "layer": "button",
+            "fillType": 0,
+            "color": "rgba(15,29,49,0.8)"
+          },
+          {
+            "key": "1:rgba(112,112,112,1)",
+            "layer": "Union",
+            "fillType": 1,
+            "color": "rgba(112,112,112,1)"
+          },
+          {
+            "key": "0:rgba(255,255,255,1)",
+            "layer": "路径",
+            "fillType": 0,
+            "color": "rgba(255,255,255,1)"
+          }
+        ]
+      },
+      "childCount": 3
+    },
+    {
+      "id": "dI-6cEFI2iNEatfpStvtd",
+      "name": "Group 35355",
+      "key": "route-info-bar-3d",
+      "group": "components",
+      "kind": "panel",
+      "artboard": "HMI概念导航Demo_3D",
+      "className": "group",
+      "frame": {
+        "x": 120,
+        "y": 342,
+        "width": 442,
+        "height": 72
+      },
+      "canvasRect": {
+        "x": 120,
+        "y": 342,
+        "width": 442,
+        "height": 72
+      },
+      "svg": "svg/components/route-info-bar-3d.svg",
+      "png": "png/components/route-info-bar-3d.png",
+      "pngScale": 2,
+      "pngSize": {
+        "width": 884,
+        "height": 144
+      },
+      "style": {
+        "fills": [],
+        "borders": [],
+        "blur": null,
+        "opacity": 1,
+        "text": null,
+        "blurs": [
+          {
+            "layer": "button",
+            "type": 3,
+            "radius": 8
+          }
+        ],
+        "subtreeFills": [
+          {
+            "key": "0:rgba(34,44,58,0.4)",
+            "layer": "button",
+            "fillType": 0,
+            "color": "rgba(34,44,58,0.4)"
+          },
+          {
+            "key": "0:rgba(255,255,255,1)",
+            "layer": "Rectangle 3745",
+            "fillType": 0,
+            "color": "rgba(255,255,255,1)"
+          }
+        ]
+      },
+      "childCount": 9
+    },
+    {
+      "id": "jzzFZKstn_5S-e5r5oYQw",
+      "name": "Group 35355",
+      "key": "route-info-bar-2d",
+      "group": "components",
+      "kind": "panel",
+      "artboard": "HMI概念导航Demo_2D",
+      "className": "group",
+      "frame": {
+        "x": 120,
+        "y": 342,
+        "width": 442,
+        "height": 72
+      },
+      "canvasRect": {
+        "x": 120,
+        "y": 342,
+        "width": 442,
+        "height": 72
+      },
+      "svg": "svg/components/route-info-bar-2d.svg",
+      "png": "png/components/route-info-bar-2d.png",
+      "pngScale": 2,
+      "pngSize": {
+        "width": 884,
+        "height": 144
+      },
+      "style": {
+        "fills": [],
+        "borders": [],
+        "blur": null,
+        "opacity": 1,
+        "text": null,
+        "blurs": [
+          {
+            "layer": "button",
+            "type": 3,
+            "radius": 8
+          }
+        ],
+        "subtreeFills": [
+          {
+            "key": "0:rgba(15,29,49,0.8)",
+            "layer": "button",
+            "fillType": 0,
+            "color": "rgba(15,29,49,0.8)"
+          },
+          {
+            "key": "0:rgba(255,255,255,1)",
+            "layer": "Rectangle 3745",
+            "fillType": 0,
+            "color": "rgba(255,255,255,1)"
+          }
+        ]
+      },
+      "childCount": 9
+    },
+    {
+      "id": "O55CBQEyJRIux8iZotDpg",
+      "name": "Group 35356",
+      "key": "speedometer-3d",
+      "group": "components",
+      "kind": "gauge",
+      "artboard": "HMI概念导航Demo_3D",
+      "className": "group",
+      "frame": {
+        "x": 120,
+        "y": 450,
+        "width": 100,
+        "height": 100
+      },
+      "canvasRect": {
+        "x": 120,
+        "y": 450,
+        "width": 100,
+        "height": 100
+      },
+      "svg": "svg/components/speedometer-3d.svg",
+      "png": "png/components/speedometer-3d.png",
+      "pngScale": 2,
+      "pngSize": {
+        "width": 200,
+        "height": 200
+      },
+      "style": {
+        "fills": [],
+        "borders": [],
+        "blur": null,
+        "opacity": 1,
+        "text": null,
+        "blurs": [
+          {
+            "layer": "路径",
+            "type": 3,
+            "radius": 8.5
+          }
+        ],
+        "subtreeFills": [
+          {
+            "key": "0:rgba(255,255,255,0.4)",
+            "layer": "路径",
+            "fillType": 0,
+            "color": "rgba(255,255,255,0.4)"
+          }
+        ]
+      },
+      "childCount": 2
+    },
+    {
+      "id": "vmutIeeERU_emMvPSx_Ip",
+      "name": "Group 35356",
+      "key": "speedometer-2d",
+      "group": "components",
+      "kind": "gauge",
+      "artboard": "HMI概念导航Demo_2D",
+      "className": "group",
+      "frame": {
+        "x": 120,
+        "y": 450,
+        "width": 100,
+        "height": 100
+      },
+      "canvasRect": {
+        "x": 120,
+        "y": 450,
+        "width": 100,
+        "height": 100
+      },
+      "svg": "svg/components/speedometer-2d.svg",
+      "png": "png/components/speedometer-2d.png",
+      "pngScale": 2,
+      "pngSize": {
+        "width": 200,
+        "height": 200
+      },
+      "style": {
+        "fills": [],
+        "borders": [],
+        "blur": null,
+        "opacity": 1,
+        "text": null,
+        "blurs": [
+          {
+            "layer": "路径",
+            "type": 3,
+            "radius": 8.5
+          }
+        ],
+        "subtreeFills": [
+          {
+            "key": "0:rgba(255,255,255,1)",
+            "layer": "路径",
+            "fillType": 0,
+            "color": "rgba(255,255,255,1)"
+          }
+        ]
+      },
+      "childCount": 2
+    },
+    {
+      "id": "N0sOgILIhqnJr-Yi-XUBD",
+      "name": "Group 35217",
+      "key": "nav-instruction-card-3d-plate",
+      "group": "plates",
+      "kind": "panel",
+      "artboard": "HMI概念导航Demo_3D",
+      "className": "group",
+      "frame": {
+        "x": 120,
+        "y": 120,
+        "width": 442,
+        "height": 192
+      },
+      "canvasRect": {
+        "x": 120,
+        "y": 120,
+        "width": 442,
+        "height": 192
+      },
+      "svg": "svg/plates/nav-instruction-card-3d-plate.svg",
+      "png": "png/plates/nav-instruction-card-3d-plate.png",
+      "pngScale": 2,
+      "pngSize": {
+        "width": 884,
+        "height": 384
+      },
+      "style": {
+        "fills": [],
+        "borders": [],
+        "blur": null,
+        "opacity": 1,
+        "text": null,
+        "blurs": [
+          {
+            "layer": "button",
+            "type": 3,
+            "radius": 8
+          }
+        ],
+        "subtreeFills": [
+          {
+            "key": "0:rgba(34,44,58,0.4)",
+            "layer": "button",
+            "fillType": 0,
+            "color": "rgba(34,44,58,0.4)"
+          },
+          {
+            "key": "1:rgba(112,112,112,1)",
+            "layer": "Union",
+            "fillType": 1,
+            "color": "rgba(112,112,112,1)"
+          },
+          {
+            "key": "0:rgba(255,255,255,1)",
+            "layer": "路径",
+            "fillType": 0,
+            "color": "rgba(255,255,255,1)"
+          }
+        ]
+      },
+      "childCount": 3
+    },
+    {
+      "id": "ZglkkMjh_D6KNoOGp8o-J",
+      "name": "Group 35217",
+      "key": "nav-instruction-card-2d-plate",
+      "group": "plates",
+      "kind": "panel",
+      "artboard": "HMI概念导航Demo_2D",
+      "className": "group",
+      "frame": {
+        "x": 120,
+        "y": 120,
+        "width": 442,
+        "height": 192
+      },
+      "canvasRect": {
+        "x": 120,
+        "y": 120,
+        "width": 442,
+        "height": 192
+      },
+      "svg": "svg/plates/nav-instruction-card-2d-plate.svg",
+      "png": "png/plates/nav-instruction-card-2d-plate.png",
+      "pngScale": 2,
+      "pngSize": {
+        "width": 884,
+        "height": 384
+      },
+      "style": {
+        "fills": [],
+        "borders": [],
+        "blur": null,
+        "opacity": 1,
+        "text": null,
+        "blurs": [
+          {
+            "layer": "button",
+            "type": 3,
+            "radius": 8
+          }
+        ],
+        "subtreeFills": [
+          {
+            "key": "0:rgba(15,29,49,0.8)",
+            "layer": "button",
+            "fillType": 0,
+            "color": "rgba(15,29,49,0.8)"
+          },
+          {
+            "key": "1:rgba(112,112,112,1)",
+            "layer": "Union",
+            "fillType": 1,
+            "color": "rgba(112,112,112,1)"
+          },
+          {
+            "key": "0:rgba(255,255,255,1)",
+            "layer": "路径",
+            "fillType": 0,
+            "color": "rgba(255,255,255,1)"
+          }
+        ]
+      },
+      "childCount": 3
+    },
+    {
+      "id": "dI-6cEFI2iNEatfpStvtd",
+      "name": "Group 35355",
+      "key": "route-info-bar-3d-plate",
+      "group": "plates",
+      "kind": "panel",
+      "artboard": "HMI概念导航Demo_3D",
+      "className": "group",
+      "frame": {
+        "x": 120,
+        "y": 342,
+        "width": 442,
+        "height": 72
+      },
+      "canvasRect": {
+        "x": 120,
+        "y": 342,
+        "width": 442,
+        "height": 72
+      },
+      "svg": "svg/plates/route-info-bar-3d-plate.svg",
+      "png": "png/plates/route-info-bar-3d-plate.png",
+      "pngScale": 2,
+      "pngSize": {
+        "width": 884,
+        "height": 144
+      },
+      "style": {
+        "fills": [],
+        "borders": [],
+        "blur": null,
+        "opacity": 1,
+        "text": null,
+        "blurs": [
+          {
+            "layer": "button",
+            "type": 3,
+            "radius": 8
+          }
+        ],
+        "subtreeFills": [
+          {
+            "key": "0:rgba(34,44,58,0.4)",
+            "layer": "button",
+            "fillType": 0,
+            "color": "rgba(34,44,58,0.4)"
+          },
+          {
+            "key": "0:rgba(255,255,255,1)",
+            "layer": "Rectangle 3745",
+            "fillType": 0,
+            "color": "rgba(255,255,255,1)"
+          }
+        ]
+      },
+      "childCount": 9
+    },
+    {
+      "id": "jzzFZKstn_5S-e5r5oYQw",
+      "name": "Group 35355",
+      "key": "route-info-bar-2d-plate",
+      "group": "plates",
+      "kind": "panel",
+      "artboard": "HMI概念导航Demo_2D",
+      "className": "group",
+      "frame": {
+        "x": 120,
+        "y": 342,
+        "width": 442,
+        "height": 72
+      },
+      "canvasRect": {
+        "x": 120,
+        "y": 342,
+        "width": 442,
+        "height": 72
+      },
+      "svg": "svg/plates/route-info-bar-2d-plate.svg",
+      "png": "png/plates/route-info-bar-2d-plate.png",
+      "pngScale": 2,
+      "pngSize": {
+        "width": 884,
+        "height": 144
+      },
+      "style": {
+        "fills": [],
+        "borders": [],
+        "blur": null,
+        "opacity": 1,
+        "text": null,
+        "blurs": [
+          {
+            "layer": "button",
+            "type": 3,
+            "radius": 8
+          }
+        ],
+        "subtreeFills": [
+          {
+            "key": "0:rgba(15,29,49,0.8)",
+            "layer": "button",
+            "fillType": 0,
+            "color": "rgba(15,29,49,0.8)"
+          },
+          {
+            "key": "0:rgba(255,255,255,1)",
+            "layer": "Rectangle 3745",
+            "fillType": 0,
+            "color": "rgba(255,255,255,1)"
+          }
+        ]
+      },
+      "childCount": 9
+    },
+    {
+      "id": "O55CBQEyJRIux8iZotDpg",
+      "name": "Group 35356",
+      "key": "speedometer-3d-plate",
+      "group": "plates",
+      "kind": "gauge",
+      "artboard": "HMI概念导航Demo_3D",
+      "className": "group",
+      "frame": {
+        "x": 120,
+        "y": 450,
+        "width": 100,
+        "height": 100
+      },
+      "canvasRect": {
+        "x": 120,
+        "y": 450,
+        "width": 100,
+        "height": 100
+      },
+      "svg": "svg/plates/speedometer-3d-plate.svg",
+      "png": "png/plates/speedometer-3d-plate.png",
+      "pngScale": 2,
+      "pngSize": {
+        "width": 212,
+        "height": 212
+      },
+      "style": {
+        "fills": [],
+        "borders": [],
+        "blur": null,
+        "opacity": 1,
+        "text": null,
+        "blurs": [
+          {
+            "layer": "路径",
+            "type": 3,
+            "radius": 8.5
+          }
+        ],
+        "subtreeFills": [
+          {
+            "key": "0:rgba(255,255,255,0.4)",
+            "layer": "路径",
+            "fillType": 0,
+            "color": "rgba(255,255,255,0.4)"
+          }
+        ]
+      },
+      "childCount": 2
+    },
+    {
+      "id": "vmutIeeERU_emMvPSx_Ip",
+      "name": "Group 35356",
+      "key": "speedometer-2d-plate",
+      "group": "plates",
+      "kind": "gauge",
+      "artboard": "HMI概念导航Demo_2D",
+      "className": "group",
+      "frame": {
+        "x": 120,
+        "y": 450,
+        "width": 100,
+        "height": 100
+      },
+      "canvasRect": {
+        "x": 120,
+        "y": 450,
+        "width": 100,
+        "height": 100
+      },
+      "svg": "svg/plates/speedometer-2d-plate.svg",
+      "png": "png/plates/speedometer-2d-plate.png",
+      "pngScale": 2,
+      "pngSize": {
+        "width": 212,
+        "height": 212
+      },
+      "style": {
+        "fills": [],
+        "borders": [],
+        "blur": null,
+        "opacity": 1,
+        "text": null,
+        "blurs": [
+          {
+            "layer": "路径",
+            "type": 3,
+            "radius": 8.5
+          }
+        ],
+        "subtreeFills": [
+          {
+            "key": "0:rgba(255,255,255,1)",
+            "layer": "路径",
+            "fillType": 0,
+            "color": "rgba(255,255,255,1)"
+          }
+        ]
+      },
+      "childCount": 2
+    },
+    {
+      "id": "5V2Iuyg-VJKMDGakz7XQW",
+      "name": "Group 35211",
+      "key": "map-buttons-3d",
+      "group": "components",
+      "kind": "button-group",
+      "artboard": "HMI概念导航Demo_3D",
+      "className": "group",
+      "frame": {
+        "x": 120,
+        "y": 585,
+        "width": 60,
+        "height": 220
+      },
+      "canvasRect": {
+        "x": 120,
+        "y": 585,
+        "width": 60,
+        "height": 220
+      },
+      "svg": "svg/components/map-buttons-3d.svg",
+      "png": "png/components/map-buttons-3d.png",
+      "pngScale": 2,
+      "pngSize": {
+        "width": 120,
+        "height": 440
+      },
+      "style": {
+        "fills": [],
+        "borders": [],
+        "blur": null,
+        "opacity": 1,
+        "text": null,
+        "blurs": [
+          {
+            "layer": "路径",
+            "type": 3,
+            "radius": 8
+          },
+          {
+            "layer": "路径",
+            "type": 3,
+            "radius": 8
+          },
+          {
+            "layer": "路径",
+            "type": 3,
+            "radius": 8
+          }
+        ],
+        "subtreeFills": [
+          {
+            "key": "0:rgba(34,44,58,0.4)",
+            "layer": "路径",
+            "fillType": 0,
+            "color": "rgba(34,44,58,0.4)"
+          },
+          {
+            "key": "0:rgba(255,100,78,1)",
+            "layer": "路径",
+            "fillType": 0,
+            "color": "rgba(255,100,78,1)"
+          },
+          {
+            "key": "0:rgba(255,187,46,1)",
+            "layer": "路径",
+            "fillType": 0,
+            "color": "rgba(255,187,46,1)"
+          },
+          {
+            "key": "0:rgba(17,221,172,1)",
+            "layer": "路径",
+            "fillType": 0,
+            "color": "rgba(17,221,172,1)"
+          }
+        ]
+      },
+      "childCount": 3
+    },
+    {
+      "id": "_yg8f_eypaBGpFOvCYF6j",
+      "name": "Group 35211",
+      "key": "map-buttons-2d",
+      "group": "components",
+      "kind": "button-group",
+      "artboard": "HMI概念导航Demo_2D",
+      "className": "group",
+      "frame": {
+        "x": 120,
+        "y": 585,
+        "width": 60,
+        "height": 220
+      },
+      "canvasRect": {
+        "x": 120,
+        "y": 585,
+        "width": 60,
+        "height": 220
+      },
+      "svg": "svg/components/map-buttons-2d.svg",
+      "png": "png/components/map-buttons-2d.png",
+      "pngScale": 2,
+      "pngSize": {
+        "width": 120,
+        "height": 440
+      },
+      "style": {
+        "fills": [],
+        "borders": [],
+        "blur": null,
+        "opacity": 1,
+        "text": null,
+        "blurs": [
+          {
+            "layer": "路径",
+            "type": 3,
+            "radius": 8
+          },
+          {
+            "layer": "路径",
+            "type": 3,
+            "radius": 8
+          },
+          {
+            "layer": "路径",
+            "type": 3,
+            "radius": 8
+          }
+        ],
+        "subtreeFills": [
+          {
+            "key": "0:rgba(15,29,49,0.8)",
+            "layer": "路径",
+            "fillType": 0,
+            "color": "rgba(15,29,49,0.8)"
+          },
+          {
+            "key": "0:rgba(255,100,78,1)",
+            "layer": "路径",
+            "fillType": 0,
+            "color": "rgba(255,100,78,1)"
+          },
+          {
+            "key": "0:rgba(255,187,46,1)",
+            "layer": "路径",
+            "fillType": 0,
+            "color": "rgba(255,187,46,1)"
+          },
+          {
+            "key": "0:rgba(17,221,172,1)",
+            "layer": "路径",
+            "fillType": 0,
+            "color": "rgba(17,221,172,1)"
+          }
+        ]
+      },
+      "childCount": 3
+    },
+    {
+      "id": "sxFoBOk23aFXj5RurC9id",
+      "name": "Group 35361",
+      "key": "zoom-control-3d",
+      "group": "components",
+      "kind": "control",
+      "artboard": "HMI概念导航Demo_3D",
+      "className": "group",
+      "frame": {
+        "x": 120,
+        "y": 840,
+        "width": 60,
+        "height": 120
+      },
+      "canvasRect": {
+        "x": 120,
+        "y": 840,
+        "width": 60,
+        "height": 120
+      },
+      "svg": "svg/components/zoom-control-3d.svg",
+      "png": "png/components/zoom-control-3d.png",
+      "pngScale": 2,
+      "pngSize": {
+        "width": 120,
+        "height": 240
+      },
+      "style": {
+        "fills": [],
+        "borders": [],
+        "blur": null,
+        "opacity": 1,
+        "text": null,
+        "blurs": [
+          {
+            "layer": "Rectangle 3746",
+            "type": 3,
+            "radius": 8
+          }
+        ],
+        "subtreeFills": [
+          {
+            "key": "0:rgba(34,44,58,0.4)",
+            "layer": "Rectangle 3746",
+            "fillType": 0,
+            "color": "rgba(34,44,58,0.4)"
+          },
+          {
+            "key": "0:rgba(255,255,255,1)",
+            "layer": "Rectangle 3747",
+            "fillType": 0,
+            "color": "rgba(255,255,255,1)"
+          }
+        ]
+      },
+      "childCount": 3
+    },
+    {
+      "id": "IFcBoO1HWUaikzmjRo-rP",
+      "name": "Group 35361",
+      "key": "zoom-control-2d",
+      "group": "components",
+      "kind": "control",
+      "artboard": "HMI概念导航Demo_2D",
+      "className": "group",
+      "frame": {
+        "x": 120,
+        "y": 840,
+        "width": 60,
+        "height": 120
+      },
+      "canvasRect": {
+        "x": 120,
+        "y": 840,
+        "width": 60,
+        "height": 120
+      },
+      "svg": "svg/components/zoom-control-2d.svg",
+      "png": "png/components/zoom-control-2d.png",
+      "pngScale": 2,
+      "pngSize": {
+        "width": 120,
+        "height": 240
+      },
+      "style": {
+        "fills": [],
+        "borders": [],
+        "blur": null,
+        "opacity": 1,
+        "text": null,
+        "blurs": [
+          {
+            "layer": "Rectangle 3746",
+            "type": 3,
+            "radius": 8
+          }
+        ],
+        "subtreeFills": [
+          {
+            "key": "0:rgba(15,29,49,0.8)",
+            "layer": "Rectangle 3746",
+            "fillType": 0,
+            "color": "rgba(15,29,49,0.8)"
+          },
+          {
+            "key": "0:rgba(255,255,255,1)",
+            "layer": "Rectangle 3747",
+            "fillType": 0,
+            "color": "rgba(255,255,255,1)"
+          }
+        ]
+      },
+      "childCount": 3
+    },
+    {
+      "id": "AWmJy-NH8f6gZ-RtJGSp9",
+      "name": "Group 35364",
+      "key": "route-progress-3d",
+      "group": "components",
+      "kind": "progress",
+      "artboard": "HMI概念导航Demo_3D",
+      "className": "group",
+      "frame": {
+        "x": 1764,
+        "y": 120,
+        "width": 36,
+        "height": 685
+      },
+      "canvasRect": {
+        "x": 1764,
+        "y": 120,
+        "width": 36,
+        "height": 685
+      },
+      "svg": "svg/components/route-progress-3d.svg",
+      "png": "png/components/route-progress-3d.png",
+      "pngScale": 2,
+      "pngSize": {
+        "width": 72,
+        "height": 1370
+      },
+      "style": {
+        "fills": [],
+        "borders": [],
+        "blur": null,
+        "opacity": 1,
+        "text": null,
+        "blurs": [
+          {
+            "layer": "Rectangle 3749",
+            "type": 3,
+            "radius": 8
+          },
+          {
+            "layer": "路径",
+            "type": 3,
+            "radius": 8
+          },
+          {
+            "layer": "路径",
+            "type": 3,
+            "radius": 6
+          }
+        ],
+        "subtreeFills": [
+          {
+            "key": "0:rgba(255,255,255,0.4)",
+            "layer": "Rectangle 3749",
+            "fillType": 0,
+            "color": "rgba(255,255,255,0.4)"
+          },
+          {
+            "key": "0:rgba(17,221,172,1)",
+            "layer": "路径",
+            "fillType": 0,
+            "color": "rgba(17,221,172,1)"
+          },
+          {
+            "key": "0:rgba(255,187,46,1)",
+            "layer": "Rectangle 3751",
+            "fillType": 0,
+            "color": "rgba(255,187,46,1)"
+          },
+          {
+            "key": "0:rgba(255,100,78,1)",
+            "layer": "Rectangle 3752",
+            "fillType": 0,
+            "color": "rgba(255,100,78,1)"
+          },
+          {
+            "key": "0:rgba(255,255,255,0.6)",
+            "layer": "路径",
+            "fillType": 0,
+            "color": "rgba(255,255,255,0.6)"
+          }
+        ]
+      },
+      "childCount": 2
+    },
+    {
+      "id": "aX-wVIOneZRCyXqaW2DQ9",
+      "name": "Group 35364",
+      "key": "route-progress-2d",
+      "group": "components",
+      "kind": "progress",
+      "artboard": "HMI概念导航Demo_2D",
+      "className": "group",
+      "frame": {
+        "x": 1764,
+        "y": 120,
+        "width": 36,
+        "height": 685
+      },
+      "canvasRect": {
+        "x": 1764,
+        "y": 120,
+        "width": 36,
+        "height": 685
+      },
+      "svg": "svg/components/route-progress-2d.svg",
+      "png": "png/components/route-progress-2d.png",
+      "pngScale": 2,
+      "pngSize": {
+        "width": 72,
+        "height": 1370
+      },
+      "style": {
+        "fills": [],
+        "borders": [],
+        "blur": null,
+        "opacity": 1,
+        "text": null,
+        "blurs": [
+          {
+            "layer": "Rectangle 3749",
+            "type": 3,
+            "radius": 8
+          },
+          {
+            "layer": "路径",
+            "type": 3,
+            "radius": 8
+          },
+          {
+            "layer": "路径",
+            "type": 3,
+            "radius": 6
+          }
+        ],
+        "subtreeFills": [
+          {
+            "key": "0:rgba(15,29,49,0.4)",
+            "layer": "Rectangle 3749",
+            "fillType": 0,
+            "color": "rgba(15,29,49,0.4)"
+          },
+          {
+            "key": "0:rgba(17,221,172,1)",
+            "layer": "路径",
+            "fillType": 0,
+            "color": "rgba(17,221,172,1)"
+          },
+          {
+            "key": "0:rgba(255,187,46,1)",
+            "layer": "Rectangle 3751",
+            "fillType": 0,
+            "color": "rgba(255,187,46,1)"
+          },
+          {
+            "key": "0:rgba(255,100,78,1)",
+            "layer": "Rectangle 3752",
+            "fillType": 0,
+            "color": "rgba(255,100,78,1)"
+          },
+          {
+            "key": "0:rgba(255,255,255,1)",
+            "layer": "路径",
+            "fillType": 0,
+            "color": "rgba(255,255,255,1)"
+          }
+        ]
+      },
+      "childCount": 2
+    },
+    {
+      "id": "7IcHD02w9PNdGR552QTMj",
+      "name": "Group 35369",
+      "key": "route-path-3d",
+      "group": "map",
+      "kind": "route",
+      "artboard": "HMI概念导航Demo_3D",
+      "className": "group",
+      "frame": {
+        "x": 685.04,
+        "y": 223.29,
+        "width": 556.09,
+        "height": 635.93
+      },
+      "canvasRect": {
+        "x": 685.04,
+        "y": 223.29,
+        "width": 556.09,
+        "height": 635.93
+      },
+      "svg": "svg/map/route-path-3d.svg",
+      "png": "png/map/route-path-3d.png",
+      "pngScale": 2,
+      "pngSize": {
+        "width": 1113,
+        "height": 1272
+      },
+      "style": {
+        "fills": [],
+        "borders": [],
+        "blur": null,
+        "opacity": 1,
+        "text": null,
+        "subtreeFills": [
+          {
+            "key": "1:rgba(112,112,112,1)",
+            "layer": "Subtract",
+            "fillType": 1,
+            "color": "rgba(112,112,112,1)"
+          },
+          {
+            "key": "0:rgba(196,196,196,1)",
+            "layer": "Rectangle 3758",
+            "fillType": 0,
+            "color": "rgba(196,196,196,1)"
+          }
+        ]
+      },
+      "childCount": 2
+    },
+    {
+      "id": "IQoisso18r6mE9PbknJ_y",
+      "name": "路径",
+      "key": "route-path-2d",
+      "group": "map",
+      "kind": "route",
+      "artboard": "HMI概念导航Demo_2D",
+      "className": "shapePath",
+      "frame": {
+        "x": 650,
+        "y": 330,
+        "width": 448.5,
+        "height": 454
+      },
+      "canvasRect": {
+        "x": 650,
+        "y": 330,
+        "width": 448.5,
+        "height": 454
+      },
+      "svg": "svg/map/route-path-2d.svg",
+      "png": "png/map/route-path-2d.png",
+      "pngScale": 2,
+      "pngSize": {
+        "width": 926,
+        "height": 936
+      },
+      "style": {
+        "fills": [],
+        "borders": [
+          {
+            "thickness": 14,
+            "color": "rgba(0,0,0,100)"
+          }
+        ],
+        "blur": null,
+        "opacity": 1,
+        "text": null
+      },
+      "childCount": 0
+    },
+    {
+      "id": "t5dQNOwFGsXP6Oz58xjR-",
+      "name": "Group 35366",
+      "key": "poi-parking-3d",
+      "group": "map",
+      "kind": "poi",
+      "artboard": "HMI概念导航Demo_3D",
+      "className": "group",
+      "frame": {
+        "x": 307.9984408664067,
+        "y": 714.9984408664068,
+        "width": 116,
+        "height": 45.28
+      },
+      "canvasRect": {
+        "x": 308,
+        "y": 715,
+        "width": 116,
+        "height": 45.28
+      },
+      "svg": "svg/map/poi-parking-3d.svg",
+      "png": "png/map/poi-parking-3d.png",
+      "pngScale": 2,
+      "pngSize": {
+        "width": 232,
+        "height": 91
+      },
+      "style": {
+        "fills": [],
+        "borders": [],
+        "blur": null,
+        "opacity": 1,
+        "text": null,
+        "subtreeFills": [
+          {
+            "key": "0:rgba(33,128,255,1)",
+            "layer": "Union",
+            "fillType": 0,
+            "color": "rgba(33,128,255,1)"
+          },
+          {
+            "key": "0:rgba(196,196,196,1)",
+            "layer": "路径",
+            "fillType": 0,
+            "color": "rgba(196,196,196,1)"
+          }
+        ]
+      },
+      "childCount": 2
+    },
+    {
+      "id": "4WVCByNaqjSogo7d1wviw",
+      "name": "Group 35367",
+      "key": "poi-mall-3d",
+      "group": "map",
+      "kind": "poi",
+      "artboard": "HMI概念导航Demo_3D",
+      "className": "group",
+      "frame": {
+        "x": 739,
+        "y": 536,
+        "width": 140,
+        "height": 49
+      },
+      "canvasRect": {
+        "x": 739,
+        "y": 536,
+        "width": 140,
+        "height": 49
+      },
+      "svg": "svg/map/poi-mall-3d.svg",
+      "png": "png/map/poi-mall-3d.png",
+      "pngScale": 2,
+      "pngSize": {
+        "width": 280,
+        "height": 98
+      },
+      "style": {
+        "fills": [],
+        "borders": [],
+        "blur": null,
+        "opacity": 1,
+        "text": null,
+        "subtreeFills": [
+          {
+            "key": "0:rgba(132,97,244,1)",
+            "layer": "Union",
+            "fillType": 0,
+            "color": "rgba(132,97,244,1)"
+          },
+          {
+            "key": "0:rgba(196,196,196,1)",
+            "layer": "路径",
+            "fillType": 0,
+            "color": "rgba(196,196,196,1)"
+          },
+          {
+            "key": "0:rgba(255,255,255,1)",
+            "layer": "Subtract",
+            "fillType": 0,
+            "color": "rgba(255,255,255,1)"
+          }
+        ]
+      },
+      "childCount": 3
+    },
+    {
+      "id": "cCjpRBzI80wLeUnucX0J9",
+      "name": "Group 35368",
+      "key": "poi-garden-3d",
+      "group": "map",
+      "kind": "poi",
+      "artboard": "HMI概念导航Demo_3D",
+      "className": "group",
+      "frame": {
+        "x": 1392,
+        "y": 376,
+        "width": 140,
+        "height": 48
+      },
+      "canvasRect": {
+        "x": 1392,
+        "y": 376,
+        "width": 140,
+        "height": 48
+      },
+      "svg": "svg/map/poi-garden-3d.svg",
+      "png": "png/map/poi-garden-3d.png",
+      "pngScale": 2,
+      "pngSize": {
+        "width": 280,
+        "height": 96
+      },
+      "style": {
+        "fills": [],
+        "borders": [],
+        "blur": null,
+        "opacity": 1,
+        "text": null,
+        "subtreeFills": [
+          {
+            "key": "0:rgba(33,128,255,1)",
+            "layer": "Union",
+            "fillType": 0,
+            "color": "rgba(33,128,255,1)"
+          },
+          {
+            "key": "0:rgba(196,196,196,1)",
+            "layer": "路径",
+            "fillType": 0,
+            "color": "rgba(196,196,196,1)"
+          },
+          {
+            "key": "0:rgba(255,255,255,1)",
+            "layer": "Subtract",
+            "fillType": 0,
+            "color": "rgba(255,255,255,1)"
+          }
+        ]
+      },
+      "childCount": 3
+    },
+    {
+      "id": "dXsAF4KbRB2i7DNiC3i--",
+      "name": "Group 35218",
+      "key": "poi-pin-2d",
+      "group": "map",
+      "kind": "poi",
+      "artboard": "HMI概念导航Demo_2D",
+      "className": "group",
+      "frame": {
+        "x": 1058,
+        "y": 295,
+        "width": 74,
+        "height": 74
+      },
+      "canvasRect": {
+        "x": 1058,
+        "y": 295,
+        "width": 74,
+        "height": 74
+      },
+      "svg": "svg/map/poi-pin-2d.svg",
+      "png": "png/map/poi-pin-2d.png",
+      "pngScale": 2,
+      "pngSize": {
+        "width": 148,
+        "height": 148
+      },
+      "style": {
+        "fills": [],
+        "borders": [],
+        "blur": null,
+        "opacity": 1,
+        "text": null,
+        "subtreeFills": [
+          {
+            "key": "0:rgba(255,103,78,1)",
+            "layer": "路径",
+            "fillType": 0,
+            "color": "rgba(255,103,78,1)"
+          },
+          {
+            "key": "0:rgba(33,128,255,1)",
+            "layer": "路径",
+            "fillType": 0,
+            "color": "rgba(33,128,255,1)"
+          }
+        ]
+      },
+      "childCount": 3
+    },
+    {
+      "id": "GLl7zMi5EESTk0wrqzarr",
+      "name": "Group 35212",
+      "key": "location-halo-2d",
+      "group": "map",
+      "kind": "marker",
+      "artboard": "HMI概念导航Demo_2D",
+      "className": "group",
+      "frame": {
+        "x": 542.04,
+        "y": 685.04,
+        "width": 198.96,
+        "height": 198.96
+      },
+      "canvasRect": {
+        "x": 542.04,
+        "y": 685.04,
+        "width": 198.96,
+        "height": 198.96
+      },
+      "svg": "svg/map/location-halo-2d.svg",
+      "png": "png/map/location-halo-2d.png",
+      "pngScale": 2,
+      "pngSize": {
+        "width": 398,
+        "height": 398
+      },
+      "style": {
+        "fills": [],
+        "borders": [],
+        "blur": null,
+        "opacity": 1,
+        "text": null,
+        "subtreeFills": [
+          {
+            "key": "0:rgba(33,128,255,1)",
+            "layer": "路径",
+            "fillType": 0,
+            "color": "rgba(33,128,255,1)"
+          },
+          {
+            "key": "0:rgba(255,255,255,1)",
+            "layer": "路径",
+            "fillType": 0,
+            "color": "rgba(255,255,255,1)"
+          }
+        ]
+      },
+      "childCount": 1
+    },
+    {
+      "id": "FVjjg9FfY-kDpKVf3n3zY",
+      "name": "Group 35212",
+      "key": "location-halo-3d",
+      "group": "map",
+      "kind": "marker",
+      "artboard": "HMI概念导航Demo_3D",
+      "className": "group",
+      "frame": {
+        "x": 627.62,
+        "y": 789.62,
+        "width": 129.04,
+        "height": 129.04
+      },
+      "canvasRect": {
+        "x": 627.62,
+        "y": 789.62,
+        "width": 129.04,
+        "height": 129.04
+      },
+      "svg": "svg/map/location-halo-3d.svg",
+      "png": "png/map/location-halo-3d.png",
+      "pngScale": 2,
+      "pngSize": {
+        "width": 259,
+        "height": 259
+      },
+      "style": {
+        "fills": [],
+        "borders": [],
+        "blur": null,
+        "opacity": 1,
+        "text": null,
+        "subtreeFills": [
+          {
+            "key": "0:rgba(255,255,255,1)",
+            "layer": "路径",
+            "fillType": 0,
+            "color": "rgba(255,255,255,1)"
+          }
+        ]
+      },
+      "childCount": 1
+    },
+    {
+      "id": "wMLFcKZAlYyEkgtKCDsqo",
+      "name": "Group 35372",
+      "key": "location-arrow-3d",
+      "group": "map",
+      "kind": "marker",
+      "artboard": "HMI概念导航Demo_3D",
+      "className": "group",
+      "frame": {
+        "x": 681.19,
+        "y": 841.45,
+        "width": 23.79,
+        "height": 23.41
+      },
+      "canvasRect": {
+        "x": 681.19,
+        "y": 841.45,
+        "width": 23.79,
+        "height": 23.41
+      },
+      "svg": "svg/map/location-arrow-3d.svg",
+      "png": "png/map/location-arrow-3d.png",
+      "pngScale": 2,
+      "pngSize": {
+        "width": 48,
+        "height": 47
+      },
+      "style": {
+        "fills": [],
+        "borders": [],
+        "blur": {
+          "type": 0,
+          "radius": 2,
+          "motionAngle": 0
+        },
+        "opacity": 0.5,
+        "text": null,
+        "blurs": [
+          {
+            "layer": "Group 35372",
+            "type": 0,
+            "radius": 2
+          },
+          {
+            "layer": "路径",
+            "type": 0,
+            "radius": 2
+          },
+          {
+            "layer": "路径",
+            "type": 0,
+            "radius": 2
+          },
+          {
+            "layer": "路径",
+            "type": 0,
+            "radius": 2
+          }
+        ],
+        "subtreeFills": [
+          {
+            "key": "0:rgba(26,100,198,1)",
+            "layer": "路径",
+            "fillType": 0,
+            "color": "rgba(26,100,198,1)"
+          },
+          {
+            "key": "1:rgba(112,112,112,1)",
+            "layer": "路径",
+            "fillType": 1,
+            "color": "rgba(112,112,112,1)"
+          },
+          {
+            "key": "0:rgba(33,128,255,1)",
+            "layer": "路径",
+            "fillType": 0,
+            "color": "rgba(33,128,255,1)"
+          }
+        ]
+      },
+      "childCount": 3
+    },
+    {
+      "id": "fr5t7M3dBWHyQmgg9vGz3",
+      "name": "Group 35371",
+      "key": "location-arrow-outline-3d",
+      "group": "map",
+      "kind": "marker",
+      "artboard": "HMI概念导航Demo_3D",
+      "className": "group",
+      "frame": {
+        "x": 681.68,
+        "y": 832.02,
+        "width": 32.21,
+        "height": 31.71
+      },
+      "canvasRect": {
+        "x": 681.68,
+        "y": 832.02,
+        "width": 32.21,
+        "height": 31.71
+      },
+      "svg": "svg/map/location-arrow-outline-3d.svg",
+      "png": "png/map/location-arrow-outline-3d.png",
+      "pngScale": 2,
+      "pngSize": {
+        "width": 65,
+        "height": 64
+      },
+      "style": {
+        "fills": [],
+        "borders": [],
+        "blur": null,
+        "opacity": 1,
+        "text": null,
+        "subtreeFills": [
+          {
+            "key": "0:rgba(26,100,198,1)",
+            "layer": "路径",
+            "fillType": 0,
+            "color": "rgba(26,100,198,1)"
+          },
+          {
+            "key": "1:rgba(112,112,112,1)",
+            "layer": "路径",
+            "fillType": 1,
+            "color": "rgba(112,112,112,1)"
+          },
+          {
+            "key": "0:rgba(33,128,255,1)",
+            "layer": "路径",
+            "fillType": 0,
+            "color": "rgba(33,128,255,1)"
+          }
+        ]
+      },
+      "childCount": 3
+    },
+    {
+      "id": "StPQsz4ESf07IaVw57uuH",
+      "name": "phone",
+      "key": "phone",
+      "group": "controls",
+      "kind": "icon-button",
+      "artboard": "HMI概念导航Demo_3D",
+      "className": "group",
+      "frame": {
+        "x": 1560,
+        "y": 35,
+        "width": 48,
+        "height": 48
+      },
+      "canvasRect": {
+        "x": 1560,
+        "y": 1115,
+        "width": 48,
+        "height": 48
+      },
+      "svg": "svg/controls/phone.svg",
+      "png": "png/controls/phone.png",
+      "pngScale": 2,
+      "pngSize": {
+        "width": 96,
+        "height": 96
+      },
+      "style": {
+        "fills": [],
+        "borders": [],
+        "blur": null,
+        "opacity": 1,
+        "text": null,
+        "subtreeFills": [
+          {
+            "key": "0:rgba(39,49,60,1)",
+            "layer": "Subtract",
+            "fillType": 0,
+            "color": "rgba(39,49,60,1)"
+          },
+          {
+            "key": "0:rgba(196,196,196,1)",
+            "layer": "Rectangle 19",
+            "fillType": 0,
+            "color": "rgba(196,196,196,1)"
+          }
+        ]
+      },
+      "childCount": 2
+    },
+    {
+      "id": "Eg6lhrsLmb0oik_tFuXLQ",
+      "name": "Volume",
+      "key": "volume",
+      "group": "controls",
+      "kind": "icon-button",
+      "artboard": "HMI概念导航Demo_3D",
+      "className": "group",
+      "frame": {
+        "x": 1710,
+        "y": 4,
+        "width": 50,
+        "height": 112
+      },
+      "canvasRect": {
+        "x": 1710,
+        "y": 1084,
+        "width": 50,
+        "height": 112
+      },
+      "svg": "svg/controls/volume.svg",
+      "png": "png/controls/volume.png",
+      "pngScale": 2,
+      "pngSize": {
+        "width": 100,
+        "height": 224
+      },
+      "style": {
+        "fills": [],
+        "borders": [],
+        "blur": null,
+        "opacity": 1,
+        "text": null,
+        "subtreeFills": [
+          {
+            "key": "0:rgba(39,49,60,1)",
+            "layer": "Union",
+            "fillType": 0,
+            "color": "rgba(39,49,60,1)"
+          },
+          {
+            "key": "0:rgba(196,196,196,1)",
+            "layer": "路径",
+            "fillType": 0,
+            "color": "rgba(196,196,196,1)"
+          },
+          {
+            "key": "0:rgba(255,255,255,0.4)",
+            "layer": "路径",
+            "fillType": 0,
+            "color": "rgba(255,255,255,0.4)"
+          }
+        ]
+      },
+      "childCount": 3
+    },
+    {
+      "id": "6HdD1-_0sQSUE-Xo3Te5T",
+      "name": "music",
+      "key": "music",
+      "group": "controls",
+      "kind": "icon-button",
+      "artboard": "HMI概念导航Demo_3D",
+      "className": "group",
+      "frame": {
+        "x": 1410,
+        "y": 35,
+        "width": 48,
+        "height": 48
+      },
+      "canvasRect": {
+        "x": 1410,
+        "y": 1115,
+        "width": 48,
+        "height": 48
+      },
+      "svg": "svg/controls/music.svg",
+      "png": "png/controls/music.png",
+      "pngScale": 2,
+      "pngSize": {
+        "width": 96,
+        "height": 96
+      },
+      "style": {
+        "fills": [],
+        "borders": [],
+        "blur": null,
+        "opacity": 1,
+        "text": null,
+        "subtreeFills": [
+          {
+            "key": "0:rgba(39,49,60,1)",
+            "layer": "Union",
+            "fillType": 0,
+            "color": "rgba(39,49,60,1)"
+          },
+          {
+            "key": "0:rgba(196,196,196,1)",
+            "layer": "路径",
+            "fillType": 0,
+            "color": "rgba(196,196,196,1)"
+          }
+        ]
+      },
+      "childCount": 2
+    },
+    {
+      "id": "sRr8X9yJ07RCu3ztb7wpL",
+      "name": "seat",
+      "key": "seat-passenger",
+      "group": "controls",
+      "kind": "icon-button",
+      "artboard": "HMI概念导航Demo_3D",
+      "className": "group",
+      "frame": {
+        "x": 1262,
+        "y": 35,
+        "width": 48,
+        "height": 48
+      },
+      "canvasRect": {
+        "x": 1262,
+        "y": 1115,
+        "width": 48,
+        "height": 48
+      },
+      "svg": "svg/controls/seat-passenger.svg",
+      "png": "png/controls/seat-passenger.png",
+      "pngScale": 2,
+      "pngSize": {
+        "width": 96,
+        "height": 96
+      },
+      "style": {
+        "fills": [],
+        "borders": [],
+        "blur": null,
+        "opacity": 1,
+        "text": null,
+        "subtreeFills": [
+          {
+            "key": "0:rgba(39,49,60,1)",
+            "layer": "Vector 36",
+            "fillType": 0,
+            "color": "rgba(39,49,60,1)"
+          }
+        ]
+      },
+      "childCount": 2
+    },
+    {
+      "id": "884TtW5o6FOCPJVE9wV-G",
+      "name": "seat",
+      "key": "seat-driver",
+      "group": "controls",
+      "kind": "icon-button",
+      "artboard": "HMI概念导航Demo_3D",
+      "className": "group",
+      "frame": {
+        "x": 610,
+        "y": 35,
+        "width": 48,
+        "height": 48
+      },
+      "canvasRect": {
+        "x": 610,
+        "y": 1115,
+        "width": 48,
+        "height": 48
+      },
+      "svg": "svg/controls/seat-driver.svg",
+      "png": "png/controls/seat-driver.png",
+      "pngScale": 2,
+      "pngSize": {
+        "width": 96,
+        "height": 96
+      },
+      "style": {
+        "fills": [],
+        "borders": [],
+        "blur": null,
+        "opacity": 1,
+        "text": null,
+        "subtreeFills": [
+          {
+            "key": "0:rgba(39,49,60,1)",
+            "layer": "Vector 36",
+            "fillType": 0,
+            "color": "rgba(39,49,60,1)"
+          }
+        ]
+      },
+      "childCount": 2
+    },
+    {
+      "id": "npjOma22CqAugiqUldQni",
+      "name": "Passenger Temp",
+      "key": "temp-passenger",
+      "group": "controls",
+      "kind": "value",
+      "artboard": "HMI概念导航Demo_3D",
+      "className": "group",
+      "frame": {
+        "x": 1035,
+        "y": 30,
+        "width": 150,
+        "height": 56
+      },
+      "canvasRect": {
+        "x": 1035,
+        "y": 1110,
+        "width": 150,
+        "height": 56
+      },
+      "svg": "svg/controls/temp-passenger.svg",
+      "png": "png/controls/temp-passenger.png",
+      "pngScale": 2,
+      "pngSize": {
+        "width": 300,
+        "height": 112
+      },
+      "style": {
+        "fills": [],
+        "borders": [],
+        "blur": null,
+        "opacity": 1,
+        "text": null
+      },
+      "childCount": 1
+    },
+    {
+      "id": "9TLbCkYWBEgGkYH-eucbE",
+      "name": "Fan Level",
+      "key": "fan-level",
+      "group": "controls",
+      "kind": "icon-value",
+      "artboard": "HMI概念导航Demo_3D",
+      "className": "group",
+      "frame": {
+        "x": 910,
+        "y": 23,
+        "width": 100,
+        "height": 75
+      },
+      "canvasRect": {
+        "x": 910,
+        "y": 1103,
+        "width": 100,
+        "height": 75
+      },
+      "svg": "svg/controls/fan-level.svg",
+      "png": "png/controls/fan-level.png",
+      "pngScale": 2,
+      "pngSize": {
+        "width": 200,
+        "height": 150
+      },
+      "style": {
+        "fills": [],
+        "borders": [],
+        "blur": null,
+        "opacity": 1,
+        "text": null,
+        "subtreeFills": [
+          {
+            "key": "0:rgba(39,49,60,1)",
+            "layer": "路径",
+            "fillType": 0,
+            "color": "rgba(39,49,60,1)"
+          }
+        ]
+      },
+      "childCount": 2
+    },
+    {
+      "id": "VwsmhsnIZKSkqV5P9w5bg",
+      "name": "Driver Temp",
+      "key": "temp-driver",
+      "group": "controls",
+      "kind": "value",
+      "artboard": "HMI概念导航Demo_3D",
+      "className": "group",
+      "frame": {
+        "x": 735,
+        "y": 30,
+        "width": 150,
+        "height": 56
+      },
+      "canvasRect": {
+        "x": 735,
+        "y": 1110,
+        "width": 150,
+        "height": 56
+      },
+      "svg": "svg/controls/temp-driver.svg",
+      "png": "png/controls/temp-driver.png",
+      "pngScale": 2,
+      "pngSize": {
+        "width": 300,
+        "height": 112
+      },
+      "style": {
+        "fills": [],
+        "borders": [],
+        "blur": null,
+        "opacity": 1,
+        "text": null
+      },
+      "childCount": 1
+    },
+    {
+      "id": "q8NqxyoVp3zjFS9bJX7Hj",
+      "name": "heater",
+      "key": "heater",
+      "group": "controls",
+      "kind": "icon-button",
+      "artboard": "HMI概念导航Demo_3D",
+      "className": "group",
+      "frame": {
+        "x": 460,
+        "y": 35,
+        "width": 48,
+        "height": 48
+      },
+      "canvasRect": {
+        "x": 460,
+        "y": 1115,
+        "width": 48,
+        "height": 48
+      },
+      "svg": "svg/controls/heater.svg",
+      "png": "png/controls/heater.png",
+      "pngScale": 2,
+      "pngSize": {
+        "width": 96,
+        "height": 96
+      },
+      "style": {
+        "fills": [],
+        "borders": [],
+        "blur": null,
+        "opacity": 1,
+        "text": null,
+        "subtreeFills": [
+          {
+            "key": "0:rgba(39,49,60,1)",
+            "layer": "Union",
+            "fillType": 0,
+            "color": "rgba(39,49,60,1)"
+          },
+          {
+            "key": "0:rgba(0,0,0,1)",
+            "layer": "路径",
+            "fillType": 0,
+            "color": "rgba(0,0,0,1)"
+          }
+        ]
+      },
+      "childCount": 2
+    },
+    {
+      "id": "4w3UMWq_WpbhWhEnTAYTh",
+      "name": "defrost",
+      "key": "defrost",
+      "group": "controls",
+      "kind": "icon-button",
+      "artboard": "HMI概念导航Demo_3D",
+      "className": "group",
+      "frame": {
+        "x": 310,
+        "y": 35,
+        "width": 50,
+        "height": 50
+      },
+      "canvasRect": {
+        "x": 310,
+        "y": 1115,
+        "width": 50,
+        "height": 50
+      },
+      "svg": "svg/controls/defrost.svg",
+      "png": "png/controls/defrost.png",
+      "pngScale": 2,
+      "pngSize": {
+        "width": 100,
+        "height": 100
+      },
+      "style": {
+        "fills": [],
+        "borders": [],
+        "blur": null,
+        "opacity": 1,
+        "text": null,
+        "subtreeFills": [
+          {
+            "key": "0:rgba(39,49,60,1)",
+            "layer": "Union",
+            "fillType": 0,
+            "color": "rgba(39,49,60,1)"
+          },
+          {
+            "key": "0:rgba(0,0,0,1)",
+            "layer": "Vector 36 (Stroke)",
+            "fillType": 0,
+            "color": "rgba(0,0,0,1)"
+          }
+        ]
+      },
+      "childCount": 2
+    },
+    {
+      "id": "Ryo30cKxS4ZV_L2ME8Q4b",
+      "name": "model3-icon",
+      "key": "vehicle-model3",
+      "group": "controls",
+      "kind": "icon-button",
+      "artboard": "HMI概念导航Demo_3D",
+      "className": "group",
+      "frame": {
+        "x": 160,
+        "y": 35,
+        "width": 48,
+        "height": 48
+      },
+      "canvasRect": {
+        "x": 160,
+        "y": 1115,
+        "width": 48,
+        "height": 48
+      },
+      "svg": "svg/controls/vehicle-model3.svg",
+      "png": "png/controls/vehicle-model3.png",
+      "pngScale": 2,
+      "pngSize": {
+        "width": 96,
+        "height": 96
+      },
+      "style": {
+        "fills": [],
+        "borders": [],
+        "blur": null,
+        "opacity": 1,
+        "text": null,
+        "subtreeFills": [
+          {
+            "key": "0:rgba(39,49,60,1)",
+            "layer": "tesla",
+            "fillType": 0,
+            "color": "rgba(39,49,60,1)"
+          },
+          {
+            "key": "0:rgba(196,196,196,1)",
+            "layer": "路径",
+            "fillType": 0,
+            "color": "rgba(196,196,196,1)"
+          }
+        ]
+      },
+      "childCount": 2
+    },
+    {
+      "id": "Uxjk3nBSlHRFsdvkN1QfI",
+      "name": "lock",
+      "key": "lock",
+      "group": "status-icons",
+      "kind": "icon",
+      "artboard": "HMI概念导航Demo_3D",
+      "className": "group",
+      "frame": {
+        "x": 57,
+        "y": 1,
+        "width": 48,
+        "height": 48
+      },
+      "canvasRect": {
+        "x": 177,
+        "y": 31,
+        "width": 48,
+        "height": 48
+      },
+      "svg": "svg/status-icons/lock.svg",
+      "png": "png/status-icons/lock.png",
+      "pngScale": 2,
+      "pngSize": {
+        "width": 96,
+        "height": 96
+      },
+      "style": {
+        "fills": [],
+        "borders": [],
+        "blur": null,
+        "opacity": 1,
+        "text": null,
+        "subtreeFills": [
+          {
+            "key": "0:rgba(255,255,255,1)",
+            "layer": "Union",
+            "fillType": 0,
+            "color": "rgba(255,255,255,1)"
+          },
+          {
+            "key": "0:rgba(196,196,196,1)",
+            "layer": "Rectangle 10",
+            "fillType": 0,
+            "color": "rgba(196,196,196,1)"
+          }
+        ]
+      },
+      "childCount": 2
+    },
+    {
+      "id": "V9_Hk8Yxc4SSjuAf0PUS5",
+      "name": "bluetooth",
+      "key": "bluetooth",
+      "group": "status-icons",
+      "kind": "icon",
+      "artboard": "HMI概念导航Demo_3D",
+      "className": "group",
+      "frame": {
+        "x": 117,
+        "y": 1,
+        "width": 48,
+        "height": 48
+      },
+      "canvasRect": {
+        "x": 237,
+        "y": 31,
+        "width": 48,
+        "height": 48
+      },
+      "svg": "svg/status-icons/bluetooth.svg",
+      "png": "png/status-icons/bluetooth.png",
+      "pngScale": 2,
+      "pngSize": {
+        "width": 96,
+        "height": 96
+      },
+      "style": {
+        "fills": [],
+        "borders": [],
+        "blur": null,
+        "opacity": 1,
+        "text": null,
+        "subtreeFills": [
+          {
+            "key": "0:rgba(255,255,255,1)",
+            "layer": "Subtract",
+            "fillType": 0,
+            "color": "rgba(255,255,255,1)"
+          },
+          {
+            "key": "0:rgba(196,196,196,1)",
+            "layer": "Rectangle 10",
+            "fillType": 0,
+            "color": "rgba(196,196,196,1)"
+          }
+        ]
+      },
+      "childCount": 2
+    },
+    {
+      "id": "XWJBy3uHno8d0eZWO9NeC",
+      "name": "cell signal",
+      "key": "cell-signal",
+      "group": "status-icons",
+      "kind": "icon",
+      "artboard": "HMI概念导航Demo_3D",
+      "className": "group",
+      "frame": {
+        "x": 177,
+        "y": 1,
+        "width": 48,
+        "height": 48
+      },
+      "canvasRect": {
+        "x": 297,
+        "y": 31,
+        "width": 48,
+        "height": 48
+      },
+      "svg": "svg/status-icons/cell-signal.svg",
+      "png": "png/status-icons/cell-signal.png",
+      "pngScale": 2,
+      "pngSize": {
+        "width": 96,
+        "height": 96
+      },
+      "style": {
+        "fills": [],
+        "borders": [],
+        "blur": null,
+        "opacity": 1,
+        "text": null,
+        "subtreeFills": [
+          {
+            "key": "0:rgba(255,255,255,1)",
+            "layer": "Union",
+            "fillType": 0,
+            "color": "rgba(255,255,255,1)"
+          },
+          {
+            "key": "0:rgba(196,196,196,1)",
+            "layer": "Union",
+            "fillType": 0,
+            "color": "rgba(196,196,196,1)"
+          }
+        ]
+      },
+      "childCount": 2
+    },
+    {
+      "id": "S-LOIJTSOxZ6DZnoW61eV",
+      "name": "图层 1",
+      "key": "wechat",
+      "group": "status-icons",
+      "kind": "icon",
+      "artboard": "HMI概念导航Demo_3D",
+      "className": "group",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 48,
+        "height": 48
+      },
+      "canvasRect": {
+        "x": 120,
+        "y": 30,
+        "width": 48,
+        "height": 48
+      },
+      "svg": "svg/status-icons/wechat.svg",
+      "png": "png/status-icons/wechat.png",
+      "pngScale": 2,
+      "pngSize": {
+        "width": 96,
+        "height": 96
+      },
+      "style": {
+        "fills": [],
+        "borders": [],
+        "blur": null,
+        "opacity": 1,
+        "text": null,
+        "subtreeFills": [
+          {
+            "key": "0:rgba(255,255,255,1)",
+            "layer": "路径",
+            "fillType": 0,
+            "color": "rgba(255,255,255,1)"
+          }
+        ]
+      },
+      "childCount": 1
+    },
+    {
+      "id": "fJ6ncUTXfsJtKONj5laXa",
+      "name": "Clock",
+      "key": "clock",
+      "group": "status-icons",
+      "kind": "text",
+      "artboard": "HMI概念导航Demo_3D",
+      "className": "text",
+      "frame": {
+        "x": 283,
+        "y": 13,
+        "width": 142,
+        "height": 25
+      },
+      "canvasRect": {
+        "x": 403,
+        "y": 43,
+        "width": 142,
+        "height": 25
+      },
+      "svg": "svg/status-icons/clock.svg",
+      "png": "png/status-icons/clock.png",
+      "pngScale": 2,
+      "pngSize": {
+        "width": 284,
+        "height": 50
+      },
+      "style": {
+        "fills": [],
+        "borders": [],
+        "blur": null,
+        "opacity": 1,
+        "text": {
+          "string": "10:21 AM",
+          "runs": [
+            {
+              "text": "10:21 AM",
+              "font": "DIN Alternate Bold",
+              "size": 34,
+              "color": "rgba(255,255,255,1)"
+            }
+          ]
+        }
+      },
+      "childCount": 0
+    }
+  ]
+}

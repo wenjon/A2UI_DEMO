@@ -1,0 +1,73 @@
+{
+  "name": "设置页",
+  "messages": [
+    {
+      "version": "v0.9",
+      "createSurface": {
+        "surfaceId": "settings",
+        "catalogId": "https://a2ui.org/specification/v0_9/catalogs/basic/catalog.json"
+      }
+    },
+    {
+      "version": "v0.9",
+      "updateComponents": {
+        "surfaceId": "settings",
+        "components": [
+          { "id": "root", "component": "Column", "children": ["header", "subtitle", "card", "footer"] },
+          { "id": "header", "component": "Text", "text": "偏好设置", "variant": "h2" },
+          { "id": "subtitle", "component": "Text", "text": "修改会立即写入当前 Surface 的 data model", "variant": "caption" },
+          { "id": "card", "component": "Card", "child": "form" },
+          { "id": "form", "component": "Column", "children": ["dark", "notifications", "divider", "language", "actions"] },
+          { "id": "dark", "component": "CheckBox", "label": "深色模式", "value": { "path": "/dark" } },
+          {
+            "id": "notifications",
+            "component": "Slider",
+            "label": "通知强度",
+            "min": 0,
+            "max": 10,
+            "value": { "path": "/notifications" }
+          },
+          { "id": "divider", "component": "Divider" },
+          { "id": "language", "component": "TextField", "label": "界面语言", "value": { "path": "/language" } },
+          { "id": "actions", "component": "Row", "children": ["reset-button", "save-button"], "justify": "end", "align": "center" },
+          { "id": "reset-text", "component": "Text", "text": "重置" },
+          {
+            "id": "reset-button",
+            "component": "Button",
+            "child": "reset-text",
+            "variant": "borderless",
+            "action": { "event": { "name": "reset", "context": {} } }
+          },
+          { "id": "save-text", "component": "Text", "text": "保存" },
+          {
+            "id": "save-button",
+            "component": "Button",
+            "child": "save-text",
+            "variant": "primary",
+            "action": {
+              "event": {
+                "name": "saveSettings",
+                "context": {
+                  "dark": { "path": "/dark" },
+                  "notifications": { "path": "/notifications" }
+                }
+              }
+            }
+          },
+          { "id": "footer", "component": "Text", "text": "数据只保存在当前 Surface 内，退出即重置", "variant": "caption" }
+        ]
+      }
+    },
+    {
+      "version": "v0.9",
+      "updateDataModel": {
+        "surfaceId": "settings",
+        "value": {
+          "dark": false,
+          "notifications": 5,
+          "language": "简体中文"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,662 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: Roboto, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  color: #1f1f1f;
+  background: #f6f7f9;
+}
+
+.app {
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr);
+  height: 100%;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  background: #111318;
+  color: #e8eaed;
+  border-right: 1px solid #2a2d34;
+}
+
+.brand {
+  padding: 20px 18px 14px;
+  border-bottom: 1px solid #2a2d34;
+}
+
+.brand-title {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.brand-sub {
+  margin-top: 4px;
+  font-size: 12px;
+  color: #9aa0a6;
+}
+
+.list {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  padding: 8px;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: 100%;
+  padding: 9px 10px;
+  margin-bottom: 2px;
+  text-align: left;
+  color: #d7dae0;
+  background: transparent;
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.item:hover {
+  background: #1d2026;
+}
+
+.item.active {
+  background: #2c3a5a;
+  color: #fff;
+}
+
+.item-name {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.item-file {
+  font-size: 11px;
+  color: #8b9199;
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+}
+
+.sidebar-foot {
+  padding: 12px 18px;
+  font-size: 12px;
+  color: #8b9199;
+  border-top: 1px solid #2a2d34;
+}
+
+.sidebar-foot a {
+  color: #9fc2ff;
+  text-decoration: none;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  padding: 20px 24px 8px;
+  overflow: auto;
+}
+
+.topbar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.heading {
+  min-width: 0;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.subtitle {
+  margin-top: 4px;
+  font-size: 13px;
+  color: #5f6368;
+  overflow-wrap: anywhere;
+}
+
+.topbar-right {
+  display: flex;
+  flex: none;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.badge {
+  flex: none;
+  padding: 6px 10px;
+  font-size: 12px;
+  color: #174ea6;
+  background: #e8f0fe;
+  border-radius: 999px;
+}
+
+.health {
+  display: inline-flex;
+  flex: none;
+  gap: 6px;
+  align-items: center;
+  padding: 6px 10px;
+  font: inherit;
+  font-size: 12px;
+  color: #5f6368;
+  background: #f1f3f4;
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.health:hover {
+  background: #e8eaed;
+}
+
+.health-dot {
+  width: 7px;
+  height: 7px;
+  background: #9aa0a6;
+  border-radius: 50%;
+}
+
+.health.ok {
+  color: #137333;
+  background: #e6f4ea;
+}
+
+.health.ok .health-dot {
+  background: #1e8e3e;
+}
+
+.health.bad {
+  color: #b3261e;
+  background: #fce8e6;
+}
+
+.health.bad .health-dot {
+  background: #d93025;
+}
+
+.composer {
+  flex: none;
+  padding: 16px;
+  margin-bottom: 14px;
+  background: #fff;
+  border: 1px solid #d9e2f2;
+  border-radius: 14px;
+  box-shadow: 0 1px 2px rgba(23, 78, 166, 0.06);
+}
+
+.composer-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.composer-title {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.composer-hint {
+  margin-top: 3px;
+  font-size: 12px;
+  color: #5f6368;
+}
+
+.modes {
+  display: flex;
+  flex: none;
+  gap: 2px;
+  padding: 3px;
+  background: #f1f3f4;
+  border-radius: 10px;
+}
+
+.mode-btn {
+  padding: 6px 9px;
+  font: inherit;
+  font-size: 12px;
+  color: #5f6368;
+  background: transparent;
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.mode-btn small {
+  margin-left: 2px;
+  font-size: 10px;
+  color: #80868b;
+}
+
+.mode-btn.active {
+  color: #174ea6;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+}
+
+.mode-btn.active small {
+  color: #1a73e8;
+}
+
+.composer textarea {
+  display: block;
+  width: 100%;
+  min-height: 84px;
+  max-height: 220px;
+  padding: 12px 14px;
+  margin-top: 12px;
+  font: inherit;
+  font-size: 14px;
+  line-height: 1.55;
+  color: #1f1f1f;
+  resize: vertical;
+  background: #fbfcfe;
+  border: 1px solid #dadce0;
+  border-radius: 10px;
+}
+
+.composer textarea:focus {
+  background: #fff;
+  border-color: #1a73e8;
+  outline: 2px solid rgba(26, 115, 232, 0.16);
+}
+
+.composer textarea:disabled {
+  color: #80868b;
+  background: #f8f9fa;
+}
+
+.composer-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.quick {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  gap: 6px;
+  min-width: 0;
+}
+
+.quick-chip {
+  max-width: 150px;
+  padding: 5px 9px;
+  overflow: hidden;
+  font: inherit;
+  font-size: 11px;
+  color: #3c4043;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  background: #fff;
+  border: 1px solid #dadce0;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.quick-chip:hover {
+  color: #174ea6;
+  background: #f4f8ff;
+  border-color: #aecbfa;
+}
+
+.quick-chip:disabled {
+  color: #9aa0a6;
+  cursor: default;
+}
+
+.generate {
+  flex: none;
+  padding: 9px 16px;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  color: #fff;
+  background: #1a73e8;
+  border: 0;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.generate:hover:not(:disabled) {
+  background: #1765cc;
+}
+
+.generate:disabled {
+  color: #e8eaed;
+  background: #9aa0a6;
+  cursor: default;
+}
+
+.progress {
+  display: flex;
+  flex: none;
+  gap: 9px;
+  align-items: center;
+  padding: 10px 14px;
+  margin-bottom: 12px;
+  font-size: 12px;
+  color: #174ea6;
+  background: #e8f0fe;
+  border-radius: 10px;
+}
+
+.spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid #c6dafc;
+  border-top-color: #1a73e8;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.run-summary {
+  display: flex;
+  flex: none;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.pill {
+  padding: 4px 9px;
+  font-size: 11px;
+  color: #5f6368;
+  background: #f1f3f4;
+  border-radius: 999px;
+}
+
+.pill.pass {
+  color: #137333;
+  background: #e6f4ea;
+}
+
+.pill.fail,
+.pill.warn {
+  color: #a50e0e;
+  background: #fce8e6;
+}
+
+.preview {
+  position: relative;
+  flex: none;
+  min-height: 320px;
+  padding: 24px;
+  background: #fff;
+  border: 1px solid #e3e5e8;
+  border-radius: 14px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+/* 车机宽屏预览：画面铺满整行，去掉白卡片内边距，按 16:10 显示 */
+.preview.wide {
+  padding: 0;
+  background: #0b0f14;
+  border-color: #1b1f26;
+}
+
+/* ?fit=1：车机全屏（模拟器 / 车机屏用），只留画面，画面按宽高同时等比缩放 */
+.app.kiosk {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.app.kiosk .sidebar,
+.app.kiosk .topbar,
+.app.kiosk .composer,
+.app.kiosk .panels,
+.app.kiosk .progress {
+  display: none;
+}
+
+.app.kiosk .main {
+  padding: 0;
+  overflow: hidden;
+}
+
+.app.kiosk .preview {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background: #000;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.app.kiosk .error {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+}
+
+.ref-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.main.wide .composer {
+  padding: 12px 14px;
+  margin-bottom: 10px;
+}
+
+.main.wide .composer textarea {
+  min-height: 74px;
+}
+
+.main.wide .panels {
+  margin-top: 12px;
+}
+
+.ghost {
+  flex: none;
+  padding: 6px 10px;
+  font: inherit;
+  font-size: 12px;
+  color: #5f6368;
+  background: #f1f3f4;
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.ghost:hover {
+  background: #e8eaed;
+}
+
+.ghost.active {
+  color: #174ea6;
+  background: #e8f0fe;
+}
+
+.empty {
+  padding: 60px 0;
+  text-align: center;
+  color: #9aa0a6;
+}
+
+.error {
+  padding: 12px 14px;
+  margin-bottom: 12px;
+  color: #b3261e;
+  background: #fce8e6;
+  border-radius: 10px;
+  white-space: pre-wrap;
+}
+
+.panels {
+  margin-top: 16px;
+  padding-bottom: 24px;
+}
+
+details {
+  margin-bottom: 8px;
+  background: #fff;
+  border: 1px solid #e3e5e8;
+  border-radius: 10px;
+}
+
+summary {
+  padding: 10px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+pre {
+  margin: 0;
+  padding: 0 14px 14px;
+  max-height: 320px;
+  overflow: auto;
+  font-size: 12px;
+  line-height: 1.5;
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  color: #3c4043;
+}
+
+/* --- 热区开关状态（bind 为真值时的高亮） -------------------------------- */
+/* 车机上没有诊断面板，开关开没开只能靠这层高亮看出来。 */
+
+.hmi-hotspot--on {
+  border: 2px solid #11ddac;
+  background: rgba(17, 221, 172, 0.22);
+  box-shadow: 0 0 16px rgba(17, 221, 172, 0.35);
+}
+
+/* 左上角小圆点：远看也能分辨哪个控件是开的。 */
+.hmi-hotspot--on::before {
+  content: '';
+  position: absolute;
+  left: -5px;
+  top: -5px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #11ddac;
+  box-shadow: 0 0 8px rgba(17, 221, 172, 0.8);
+  pointer-events: none;
+}
+
+/* 部件级组装的纯几何热区（没有素材，只有点击范围）。 */
+.hmi-hotspot--zone {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+/* --- 实时流状态角标（?live=1）：kiosk 模式下顶栏被隐藏，所以固定右上角 --- */
+
+.live-chip {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  z-index: 30;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  font-size: 12px;
+  color: #e8eaed;
+  background: rgba(17, 19, 24, 0.78);
+  border-radius: 999px;
+  pointer-events: none;
+}
+
+.live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #d93025;
+}
+
+.live-chip.open {
+  color: #d7f9e4;
+}
+
+.live-chip.open .live-dot {
+  background: #11ddac;
+  box-shadow: 0 0 8px rgba(17, 221, 172, 0.8);
+}
+
+@media (max-width: 760px) {
+  .app {
+    grid-template-columns: 1fr;
+    grid-template-rows: 150px minmax(0, 1fr);
+  }
+
+  .sidebar {
+    border-right: 0;
+    border-bottom: 1px solid #2a2d34;
+  }
+
+  .main {
+    padding: 14px 14px 8px;
+  }
+
+  .topbar {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .topbar-right {
+    justify-content: flex-start;
+  }
+
+  .composer-head {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .modes {
+    width: 100%;
+  }
+
+  .mode-btn {
+    flex: 1;
+  }
+
+  .quick {
+    flex-basis: 100%;
+  }
+
+  .generate {
+    width: 100%;
+  }
+}

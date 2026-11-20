@@ -1,0 +1,257 @@
+[
+  {
+    "file": "00_complex-layout.json",
+    "name": "Complex Layout",
+    "description": "Simple example demonstrating basic catalog components."
+  },
+  {
+    "file": "00_formatted-text.json",
+    "name": "Formatted Text",
+    "description": "Simple example demonstrating basic catalog components."
+  },
+  {
+    "file": "00_incremental.json",
+    "name": "Incremental",
+    "description": "Simple example demonstrating basic catalog components."
+  },
+  {
+    "file": "00_interactive-button.json",
+    "name": "Interactive Button",
+    "description": "Simple example demonstrating basic catalog components."
+  },
+  {
+    "file": "00_row-layout.json",
+    "name": "Row Layout",
+    "description": "Simple example demonstrating basic catalog components."
+  },
+  {
+    "file": "00_simple-login-form.json",
+    "name": "Simple Login Form",
+    "description": "Simple example demonstrating basic catalog components."
+  },
+  {
+    "file": "00_simple-text.json",
+    "name": "Simple Text",
+    "description": "Simple example demonstrating basic catalog components."
+  },
+  {
+    "file": "01_flight-status.json",
+    "name": "Flight Status",
+    "description": "Example of flight status demonstrating date formatting."
+  },
+  {
+    "file": "02_email-compose.json",
+    "name": "Email Compose",
+    "description": "Example of email compose"
+  },
+  {
+    "file": "03_calendar-day.json",
+    "name": "Calendar Day",
+    "description": "Example of calendar day demonstrating dynamic templating, relative paths, and date formatting."
+  },
+  {
+    "file": "04_weather-current.json",
+    "name": "Weather Current",
+    "description": "Example of weather current demonstrating templating and string formatting."
+  },
+  {
+    "file": "05_product-card.json",
+    "name": "Product Card",
+    "description": "Example of product card demonstrating currency formatting and pluralization."
+  },
+  {
+    "file": "06_music-player.json",
+    "name": "Music Player",
+    "description": "Example of music player"
+  },
+  {
+    "file": "07_task-card.json",
+    "name": "Task Card",
+    "description": "Example of task card demonstrating CheckBox and DateTimeInput."
+  },
+  {
+    "file": "08_user-profile.json",
+    "name": "User Profile",
+    "description": "Example of user profile demonstrating number formatting."
+  },
+  {
+    "file": "09_login-form.json",
+    "name": "Login Form with Validation",
+    "description": "Example of login form demonstrating validation checks and logic."
+  },
+  {
+    "file": "10_notification-permission.json",
+    "name": "Notification Permission",
+    "description": "Example of notification permission"
+  },
+  {
+    "file": "11_purchase-complete.json",
+    "name": "Purchase Complete",
+    "description": "Example of purchase complete demonstrating currency formatting."
+  },
+  {
+    "file": "12_chat-message.json",
+    "name": "Chat Message",
+    "description": "Example of chat message demonstrating templating and relative paths."
+  },
+  {
+    "file": "13_coffee-order.json",
+    "name": "Coffee Order",
+    "description": "Example of coffee order demonstrating templating and currency formatting."
+  },
+  {
+    "file": "14_sports-player.json",
+    "name": "Sports Player",
+    "description": "Example of sports player"
+  },
+  {
+    "file": "15_account-balance.json",
+    "name": "Account Balance",
+    "description": "Example of account balance demonstrating currency formatting."
+  },
+  {
+    "file": "16_workout-summary.json",
+    "name": "Workout Summary",
+    "description": "Example of workout summary demonstrating number and date formatting."
+  },
+  {
+    "file": "17_event-detail.json",
+    "name": "Event Detail",
+    "description": "Example of event detail demonstrating date and string formatting."
+  },
+  {
+    "file": "18_track-list.json",
+    "name": "Track List",
+    "description": "Example of track list demonstrating templating, relative paths, and number formatting."
+  },
+  {
+    "file": "19_software-purchase.json",
+    "name": "Software Purchase",
+    "description": "Example of software purchase demonstrating currency formatting and ChoicePicker."
+  },
+  {
+    "file": "20_restaurant-card.json",
+    "name": "Restaurant Card",
+    "description": "Example of restaurant card"
+  },
+  {
+    "file": "21_shipping-status.json",
+    "name": "Shipping Status",
+    "description": "Example of shipping status demonstrating templating and relative paths."
+  },
+  {
+    "file": "22_credit-card.json",
+    "name": "Credit Card",
+    "description": "Example of credit card"
+  },
+  {
+    "file": "23_step-counter.json",
+    "name": "Step Counter",
+    "description": "Example of step counter demonstrating number formatting."
+  },
+  {
+    "file": "24_recipe-card.json",
+    "name": "Recipe Card",
+    "description": "Example of recipe card demonstrating Tabs and pluralization."
+  },
+  {
+    "file": "25_contact-card.json",
+    "name": "Contact Card",
+    "description": "Example of contact card"
+  },
+  {
+    "file": "26_podcast-episode.json",
+    "name": "Podcast Episode",
+    "description": "Example of podcast episode demonstrating AudioPlayer and date formatting."
+  },
+  {
+    "file": "27_stats-card.json",
+    "name": "Stats Card",
+    "description": "Example of stats card demonstrating currency and number formatting."
+  },
+  {
+    "file": "28_countdown-timer.json",
+    "name": "Countdown Timer",
+    "description": "Example of countdown timer demonstrating date formatting."
+  },
+  {
+    "file": "29_movie-card.json",
+    "name": "Movie Card",
+    "description": "Example of movie card demonstrating Modal and Video components."
+  },
+  {
+    "file": "30_live-invitation-builder.json",
+    "name": "Live Invitation Builder",
+    "description": "Demonstrates reactive two-way binding where editor inputs update a live preview in real-time."
+  },
+  {
+    "file": "31_incremental-dashboard.json",
+    "name": "Incremental Dashboard",
+    "description": "Demonstrates structural evolution of a UI where loading placeholders are incrementally replaced by actual components."
+  },
+  {
+    "file": "32_advanced-form-validator.json",
+    "name": "Advanced Form Validator",
+    "description": "Demonstrates complex validation logic and deeply nested formatting functions."
+  },
+  {
+    "file": "33_financial-data-grid.json",
+    "name": "Financial Data Grid",
+    "description": "Demonstrates complex layout weighting and alignment using Rows and Columns with templates."
+  },
+  {
+    "file": "34_child-list-template.json",
+    "name": "ChildList Template Expansion",
+    "description": "Demonstrates dynamic list generation using ChildList object templates."
+  },
+  {
+    "file": "35_markdown-text.json",
+    "name": "Markdown Text Support",
+    "description": "Demonstrates Markdown rendering in Text component."
+  },
+  {
+    "file": "36_modal.json",
+    "name": "Modal Sample",
+    "description": "Example of Modal component showing a trigger and content."
+  },
+  {
+    "file": "37_native-grid.json",
+    "name": "Native Grid",
+    "description": "A custom component container example."
+  },
+  {
+    "file": "40_hmi-navigation.json",
+    "name": "HMI 导航（3D）",
+    "description": "Sketch 素材组成的 A2UI 车载导航界面，3D 地图。"
+  },
+  {
+    "file": "41_hmi-navigation-2d.json",
+    "name": "HMI 导航（2D）",
+    "description": "同一套组件的 2D 地图变体。"
+  },
+  {
+    "file": "42_hmi-cockpit-assets.json",
+    "name": "HMI 导航中（部件组装）",
+    "description": "默认组装版：导航卡/路线条/时速表/车控栏由拆解部件 + 活文字 + 热区拼出，地图只画点名的 POI。"
+  },
+  {
+    "file": "43_hmi-parking.json",
+    "name": "HMI 找车位（部件组装）",
+    "description": "parking 原型：没有导航卡/路线条，HUD 区用 CARD 出卡片，SHOW 缩放把槽位加回来，地图只画停车场覆盖物。"
+  },
+  {
+    "file": "44_hmi-media.json",
+    "name": "HMI 媒体（部件组装）",
+    "description": "media 原型：去掉路线条/按钮组/进度条，只留状态栏 + HUD 卡片 + 时速表 + 车控栏，ICON 用中文别名放素材。"
+  },
+  {
+    "file": "45_hmi-climate.json",
+    "name": "HMI 空调（部件组装）",
+    "description": "climate 原型：HIDE 时速表摘掉 gauge 槽位，HUD 卡片写温度，车控栏除霜/加热是带绑定的热区（状态写回 dataModel）。"
+  },
+  {
+    "file": "46_hmi-navigation-panel.json",
+    "name": "HMI 导航（MODE 整块对照）",
+    "description": "MODE 整块对照版：同一套需求回退到原稿的 8 个整块挂件（assembly:\"panel\"），STATUS 用活字盖掉烘死的时钟。"
+  }
+]

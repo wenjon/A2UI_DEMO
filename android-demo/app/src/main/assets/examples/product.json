@@ -1,0 +1,81 @@
+{
+  "name": "商品卡片",
+  "messages": [
+    {
+      "version": "v0.9",
+      "createSurface": {
+        "surfaceId": "product",
+        "catalogId": "https://a2ui.org/specification/v0_9/catalogs/basic/catalog.json"
+      }
+    },
+    {
+      "version": "v0.9",
+      "updateComponents": {
+        "surfaceId": "product",
+        "components": [
+          { "id": "root", "component": "Card", "child": "main" },
+          { "id": "main", "component": "Column", "children": ["image", "content"] },
+          {
+            "id": "image",
+            "component": "Image",
+            "url": { "path": "/imageUrl" },
+            "description": "无线降噪耳机",
+            "fit": "cover"
+          },
+          { "id": "content", "component": "Column", "children": ["title", "rating", "price-row", "actions"] },
+          { "id": "title", "component": "Text", "text": { "path": "/name" }, "variant": "h3" },
+          { "id": "rating", "component": "Text", "text": { "path": "/rating" }, "variant": "caption" },
+          { "id": "price-row", "component": "Row", "children": ["price", "original-price"], "align": "center" },
+          {
+            "id": "price",
+            "component": "Text",
+            "text": {
+              "call": "formatCurrency",
+              "args": { "value": { "path": "/price" }, "currency": "CNY" },
+              "returnType": "string"
+            },
+            "variant": "h2"
+          },
+          {
+            "id": "original-price",
+            "component": "Text",
+            "text": {
+              "call": "formatCurrency",
+              "args": { "value": { "path": "/originalPrice" }, "currency": "CNY" },
+              "returnType": "string"
+            },
+            "variant": "caption"
+          },
+          { "id": "actions", "component": "Row", "children": ["add-cart-btn"] },
+          { "id": "add-cart-btn-text", "component": "Text", "text": "加入购物车" },
+          {
+            "id": "add-cart-btn",
+            "component": "Button",
+            "child": "add-cart-btn-text",
+            "variant": "primary",
+            "action": {
+              "event": {
+                "name": "addToCart",
+                "context": { "productId": { "path": "/id" } }
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "version": "v0.9",
+      "updateDataModel": {
+        "surfaceId": "product",
+        "value": {
+          "imageUrl": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&h=300&fit=crop",
+          "name": "无线降噪耳机 Pro",
+          "rating": "★★★★★ 4.9 / 5.0 · 2847 条评价",
+          "price": 899,
+          "originalPrice": 1099,
+          "id": "sku-1001"
+        }
+      }
+    }
+  ]
+}

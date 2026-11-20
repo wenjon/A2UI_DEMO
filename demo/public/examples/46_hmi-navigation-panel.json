@@ -1,0 +1,200 @@
+{
+  "name": "HMI 导航（MODE 整块对照）",
+  "description": "MODE 整块对照版：同一套需求回退到原稿的 8 个整块挂件（assembly:\"panel\"），STATUS 用活字盖掉烘死的时钟。",
+  "request": "导航中：时速 45，268 米后进入世纪大道西辅路，状态栏时钟换成 10:21，音量和地图上的兴趣点要能点",
+  "script": "MODE 整块\nSPEED 45\nNAV 268米后 进入 世纪大道西辅路\nROUTE 20 36\nSTATUS 10:21\nCONTROL 音量 cycle_volume 音量\nPOI 停车场 poi-parking-3d\nPOI 山河花园 poi-garden-3d",
+  "archetype": "navigation",
+  "archetypeName": "导航中",
+  "assembly": "panel",
+  "slots": [
+    "status",
+    "nav",
+    "route",
+    "gauge",
+    "buttons",
+    "zoom",
+    "progress",
+    "dash"
+  ],
+  "componentCount": 13,
+  "messages": [
+    {
+      "version": "v0.9",
+      "createSurface": {
+        "surfaceId": "hmi-navigation-panel",
+        "catalogId": "https://luckplusone.cfifa.com/a2ui/hmi/catalog.json",
+        "sendDataModel": true
+      }
+    },
+    {
+      "version": "v0.9",
+      "updateComponents": {
+        "surfaceId": "hmi-navigation-panel",
+        "components": [
+          {
+            "id": "root",
+            "component": "HmiScreen",
+            "variant": "3d",
+            "children": [
+              "status",
+              "nav",
+              "routeInfo",
+              "speed",
+              "buttons",
+              "zoom",
+              "progress",
+              "controlBar",
+              "statusText4",
+              "ctl1",
+              "poi2",
+              "poi3"
+            ],
+            "slots": [
+              "status",
+              "nav",
+              "route",
+              "gauge",
+              "buttons",
+              "zoom",
+              "progress",
+              "dash"
+            ],
+            "assembly": "panel",
+            "mapAssets": [
+              "poi-parking-3d",
+              "poi-garden-3d"
+            ]
+          },
+          {
+            "id": "status",
+            "component": "HmiStatusBar",
+            "variant": "3d"
+          },
+          {
+            "id": "nav",
+            "component": "HmiNavInstruction",
+            "variant": "3d",
+            "distance": {
+              "path": "/nav/distance"
+            },
+            "label": {
+              "path": "/nav/label"
+            },
+            "road": {
+              "path": "/nav/road"
+            }
+          },
+          {
+            "id": "routeInfo",
+            "component": "HmiRouteInfo",
+            "variant": "3d",
+            "remainingDistance": {
+              "path": "/route/distance"
+            },
+            "remainingTime": {
+              "path": "/route/time"
+            }
+          },
+          {
+            "id": "speed",
+            "component": "HmiSpeedometer",
+            "variant": "3d",
+            "speed": {
+              "path": "/speed"
+            }
+          },
+          {
+            "id": "buttons",
+            "component": "HmiMapButtons",
+            "variant": "3d"
+          },
+          {
+            "id": "zoom",
+            "component": "HmiZoomControl",
+            "variant": "3d"
+          },
+          {
+            "id": "progress",
+            "component": "HmiRouteProgress",
+            "variant": "3d"
+          },
+          {
+            "id": "controlBar",
+            "component": "HmiControlBar",
+            "variant": "3d"
+          },
+          {
+            "id": "statusText4",
+            "component": "HmiText",
+            "text": "10:21",
+            "x": 403,
+            "y": 43,
+            "width": 142,
+            "size": 26,
+            "align": "center",
+            "font": "num",
+            "variant": "3d"
+          },
+          {
+            "id": "ctl1",
+            "component": "HmiHotspot",
+            "asset": "volume",
+            "action": {
+              "event": {
+                "name": "cycle_volume",
+                "context": {}
+              }
+            },
+            "variant": "3d",
+            "label": "音量",
+            "x": 1710,
+            "y": 1084,
+            "width": 50,
+            "height": 112
+          },
+          {
+            "id": "poi2",
+            "component": "HmiAsset",
+            "asset": "poi-parking-3d",
+            "variant": "3d",
+            "x": 308,
+            "y": 715,
+            "width": 116,
+            "height": 45
+          },
+          {
+            "id": "poi3",
+            "component": "HmiAsset",
+            "asset": "poi-garden-3d",
+            "variant": "3d",
+            "x": 1392,
+            "y": 376,
+            "width": 140,
+            "height": 48
+          }
+        ]
+      }
+    },
+    {
+      "version": "v0.9",
+      "updateDataModel": {
+        "surfaceId": "hmi-navigation-panel",
+        "value": {
+          "nav": {
+            "distance": "268米后",
+            "label": "进入",
+            "road": "世纪大道西辅路"
+          },
+          "route": {
+            "distance": "20",
+            "time": "36"
+          },
+          "speed": 45,
+          "status": {
+            "text": "10:21"
+          }
+        }
+      }
+    }
+  ]
+}

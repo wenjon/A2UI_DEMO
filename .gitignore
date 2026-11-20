@@ -1,0 +1,25 @@
+# dependencies
+node_modules/
+.venv/
+__pycache__/
+*.pyc
+
+# build output
+dist/
+build/
+.gradle/
+.kotlin/
+*.tsbuildinfo
+*.iml
+.idea/
+local.properties
+
+# local captures / throwaway artifacts
+*.log
+.shots/
+.edge-profile*/
+.edge-cdp/
+.edge-shot/
+
+# keep the curated demo screenshots
+!docs/screenshots/*.png

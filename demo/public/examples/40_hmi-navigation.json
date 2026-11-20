@@ -1,0 +1,50 @@
+{
+  "name": "HMI 导航（3D）",
+  "description": "用 Sketch 导出的 HMI 素材组成的 A2UI surface：地图、路线、导航卡、路线信息、时速表与车控栏。",
+  "messages": [
+    {
+      "version": "v0.9",
+      "createSurface": {
+        "surfaceId": "hmi-navigation-3d",
+        "catalogId": "https://luckplusone.cfifa.com/a2ui/hmi/catalog.json"
+      }
+    },
+    {
+      "version": "v0.9",
+      "updateComponents": {
+        "surfaceId": "hmi-navigation-3d",
+        "components": [
+          {
+            "id": "root",
+            "component": "HmiScreen",
+            "variant": "3d",
+            "children": ["nav", "routeInfo", "speed", "status", "buttons", "zoom", "progress", "controlBar"]
+          },
+          {
+            "id": "nav",
+            "component": "HmiNavInstruction",
+            "distance": "268 米后",
+            "label": "进入",
+            "road": "世纪大道西辅路"
+          },
+          {
+            "id": "routeInfo",
+            "component": "HmiRouteInfo",
+            "remainingDistance": "20",
+            "remainingTime": "36"
+          },
+          {
+            "id": "speed",
+            "component": "HmiSpeedometer",
+            "speed": 63
+          },
+          {"id": "status", "component": "HmiStatusBar"},
+          {"id": "buttons", "component": "HmiMapButtons"},
+          {"id": "zoom", "component": "HmiZoomControl"},
+          {"id": "progress", "component": "HmiRouteProgress"},
+          {"id": "controlBar", "component": "HmiControlBar"}
+        ]
+      }
+    }
+  ]
+}

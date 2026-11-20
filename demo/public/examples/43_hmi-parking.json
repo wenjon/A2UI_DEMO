@@ -1,0 +1,839 @@
+{
+  "name": "HMI 找车位（部件组装）",
+  "description": "parking 原型：没有导航卡/路线条，HUD 区用 CARD 出卡片，SHOW 缩放把槽位加回来，地图只画停车场覆盖物。",
+  "request": "找附近停车场：中央商场 180 米、老码头地下库 420 米，车速很慢，把地图缩放控件调出来方便选",
+  "script": "SCREEN parking\nSPEED 12\nSTATUS 18:42\nCARD 附近停车场 中央商场 · 180 米 · 有空位\nCARD 地下车位 老码头地下库 B2 · 420 米\nSHOW 缩放\nPOI 停车场 poi-parking-3d",
+  "archetype": "parking",
+  "archetypeName": "找车位",
+  "assembly": "composed",
+  "slots": [
+    "status",
+    "hud",
+    "gauge",
+    "buttons",
+    "dash",
+    "zoom"
+  ],
+  "componentCount": 48,
+  "messages": [
+    {
+      "version": "v0.9",
+      "createSurface": {
+        "surfaceId": "hmi-parking",
+        "catalogId": "https://luckplusone.cfifa.com/a2ui/hmi/catalog.json",
+        "sendDataModel": true
+      }
+    },
+    {
+      "version": "v0.9",
+      "updateComponents": {
+        "surfaceId": "hmi-parking",
+        "components": [
+          {
+            "id": "root",
+            "component": "HmiScreen",
+            "variant": "3d",
+            "children": [
+              "panel2",
+              "cardText3",
+              "cardText4",
+              "hot5",
+              "panel6",
+              "cardText7",
+              "cardText8",
+              "hot9",
+              "plate10",
+              "text11",
+              "text12",
+              "asset13",
+              "hot14",
+              "hot15",
+              "hot16",
+              "asset17",
+              "hot18",
+              "hot19",
+              "panel20",
+              "ctl21",
+              "hot22",
+              "ctl23",
+              "hot24",
+              "ctl25",
+              "hot26",
+              "ctl27",
+              "hot28",
+              "dashText29",
+              "hot30",
+              "dashText31",
+              "hot32",
+              "dashText33",
+              "hot34",
+              "ctl35",
+              "hot36",
+              "ctl37",
+              "hot38",
+              "ctl39",
+              "hot40",
+              "ctl41",
+              "hot42",
+              "icon43",
+              "icon44",
+              "icon45",
+              "icon46",
+              "text47",
+              "poi1"
+            ],
+            "hiddenAssets": [
+              "speedometer-3d-plate",
+              "map-buttons-3d",
+              "zoom-control-3d",
+              "vehicle-model3",
+              "defrost",
+              "heater",
+              "seat-driver",
+              "seat-passenger",
+              "music",
+              "phone",
+              "volume",
+              "wechat",
+              "lock",
+              "bluetooth",
+              "cell-signal"
+            ],
+            "slots": [
+              "status",
+              "hud",
+              "gauge",
+              "buttons",
+              "dash",
+              "zoom"
+            ],
+            "assembly": "composed",
+            "mapAssets": [
+              "poi-parking-3d"
+            ]
+          },
+          {
+            "id": "panel2",
+            "component": "HmiPanel",
+            "variant": "3d",
+            "x": 600,
+            "y": 140,
+            "width": 520,
+            "height": 150,
+            "fill": "rgba(10,18,30,0.78)",
+            "radius": 22,
+            "border": "rgba(120,180,255,0.28)"
+          },
+          {
+            "id": "cardText3",
+            "component": "HmiText",
+            "text": "附近停车场",
+            "x": 628,
+            "y": 162,
+            "size": 34,
+            "font": "cn",
+            "variant": "3d",
+            "align": "left"
+          },
+          {
+            "id": "cardText4",
+            "component": "HmiText",
+            "text": "中央商场 · 180 米 · 有空位",
+            "x": 628,
+            "y": 208,
+            "size": 24,
+            "font": "cn",
+            "variant": "3d",
+            "align": "left"
+          },
+          {
+            "id": "hot5",
+            "component": "HmiHotspot",
+            "x": 600,
+            "y": 140,
+            "width": 520,
+            "height": 150,
+            "action": {
+              "event": {
+                "name": "select_card",
+                "context": {
+                  "card": 0,
+                  "group": "hud"
+                }
+              }
+            },
+            "variant": "3d",
+            "label": "附近停车场"
+          },
+          {
+            "id": "panel6",
+            "component": "HmiPanel",
+            "variant": "3d",
+            "x": 600,
+            "y": 306,
+            "width": 520,
+            "height": 150,
+            "fill": "rgba(10,18,30,0.78)",
+            "radius": 22,
+            "border": "rgba(120,180,255,0.28)"
+          },
+          {
+            "id": "cardText7",
+            "component": "HmiText",
+            "text": "地下车位",
+            "x": 628,
+            "y": 328,
+            "size": 34,
+            "font": "cn",
+            "variant": "3d",
+            "align": "left"
+          },
+          {
+            "id": "cardText8",
+            "component": "HmiText",
+            "text": "老码头地下库 B2 · 420 米",
+            "x": 628,
+            "y": 374,
+            "size": 24,
+            "font": "cn",
+            "variant": "3d",
+            "align": "left"
+          },
+          {
+            "id": "hot9",
+            "component": "HmiHotspot",
+            "x": 600,
+            "y": 306,
+            "width": 520,
+            "height": 150,
+            "action": {
+              "event": {
+                "name": "select_card",
+                "context": {
+                  "card": 1,
+                  "group": "hud"
+                }
+              }
+            },
+            "variant": "3d",
+            "label": "地下车位"
+          },
+          {
+            "id": "plate10",
+            "component": "HmiAsset",
+            "asset": "speedometer-3d-plate",
+            "variant": "3d",
+            "x": 117,
+            "y": 447,
+            "width": 106,
+            "height": 106
+          },
+          {
+            "id": "text11",
+            "component": "HmiText",
+            "text": {
+              "path": "/speed"
+            },
+            "x": 120,
+            "y": 458,
+            "size": 46,
+            "font": "num",
+            "variant": "3d",
+            "align": "left"
+          },
+          {
+            "id": "text12",
+            "component": "HmiText",
+            "text": "KM/H",
+            "x": 120,
+            "y": 512,
+            "size": 22,
+            "font": "num",
+            "variant": "3d",
+            "align": "left"
+          },
+          {
+            "id": "asset13",
+            "component": "HmiAsset",
+            "asset": "map-buttons-3d",
+            "variant": "3d",
+            "x": 120,
+            "y": 585,
+            "width": 60,
+            "height": 220
+          },
+          {
+            "id": "hot14",
+            "component": "HmiHotspot",
+            "x": 120,
+            "y": 585,
+            "width": 60,
+            "height": 60,
+            "action": {
+              "event": {
+                "name": "toggle_compass",
+                "context": {
+                  "button": 1
+                }
+              }
+            },
+            "variant": "3d",
+            "bind": {
+              "path": "/state/toggle_compass"
+            },
+            "label": "指北针"
+          },
+          {
+            "id": "hot15",
+            "component": "HmiHotspot",
+            "x": 120,
+            "y": 665,
+            "width": 60,
+            "height": 60,
+            "action": {
+              "event": {
+                "name": "toggle_layers",
+                "context": {
+                  "button": 2
+                }
+              }
+            },
+            "variant": "3d",
+            "bind": {
+              "path": "/state/toggle_layers"
+            },
+            "label": "图层"
+          },
+          {
+            "id": "hot16",
+            "component": "HmiHotspot",
+            "x": 120,
+            "y": 745,
+            "width": 60,
+            "height": 60,
+            "action": {
+              "event": {
+                "name": "recenter_map",
+                "context": {
+                  "button": 3
+                }
+              }
+            },
+            "variant": "3d",
+            "bind": {
+              "path": "/state/recenter_map"
+            },
+            "label": "回车位置"
+          },
+          {
+            "id": "asset17",
+            "component": "HmiAsset",
+            "asset": "zoom-control-3d",
+            "variant": "3d",
+            "x": 120,
+            "y": 840,
+            "width": 60,
+            "height": 120
+          },
+          {
+            "id": "hot18",
+            "component": "HmiHotspot",
+            "x": 120,
+            "y": 840,
+            "width": 60,
+            "height": 60,
+            "action": {
+              "event": {
+                "name": "zoom_in",
+                "context": {
+                  "delta": 1
+                }
+              }
+            },
+            "variant": "3d",
+            "label": "放大"
+          },
+          {
+            "id": "hot19",
+            "component": "HmiHotspot",
+            "x": 120,
+            "y": 900,
+            "width": 60,
+            "height": 60,
+            "action": {
+              "event": {
+                "name": "zoom_out",
+                "context": {
+                  "delta": -1
+                }
+              }
+            },
+            "variant": "3d",
+            "label": "缩小"
+          },
+          {
+            "id": "panel20",
+            "component": "HmiPanel",
+            "variant": "3d",
+            "x": 0,
+            "y": 1080,
+            "width": 1920,
+            "height": 120,
+            "fill": "rgba(8,14,24,0.86)",
+            "radius": 0
+          },
+          {
+            "id": "ctl21",
+            "component": "HmiAsset",
+            "asset": "vehicle-model3",
+            "variant": "3d",
+            "x": 160,
+            "y": 1115,
+            "width": 48,
+            "height": 48
+          },
+          {
+            "id": "hot22",
+            "component": "HmiHotspot",
+            "x": 152,
+            "y": 1107,
+            "width": 64,
+            "height": 64,
+            "action": {
+              "event": {
+                "name": "open_vehicle_menu",
+                "context": {}
+              }
+            },
+            "variant": "3d",
+            "label": "车辆"
+          },
+          {
+            "id": "ctl23",
+            "component": "HmiAsset",
+            "asset": "defrost",
+            "variant": "3d",
+            "x": 310,
+            "y": 1115,
+            "width": 50,
+            "height": 50
+          },
+          {
+            "id": "hot24",
+            "component": "HmiHotspot",
+            "x": 302,
+            "y": 1107,
+            "width": 66,
+            "height": 66,
+            "action": {
+              "event": {
+                "name": "toggle_defrost",
+                "context": {}
+              }
+            },
+            "variant": "3d",
+            "bind": {
+              "path": "/state/defrost"
+            },
+            "label": "除霜"
+          },
+          {
+            "id": "ctl25",
+            "component": "HmiAsset",
+            "asset": "heater",
+            "variant": "3d",
+            "x": 460,
+            "y": 1115,
+            "width": 48,
+            "height": 48
+          },
+          {
+            "id": "hot26",
+            "component": "HmiHotspot",
+            "x": 452,
+            "y": 1107,
+            "width": 64,
+            "height": 64,
+            "action": {
+              "event": {
+                "name": "toggle_heater",
+                "context": {}
+              }
+            },
+            "variant": "3d",
+            "bind": {
+              "path": "/state/heater"
+            },
+            "label": "加热"
+          },
+          {
+            "id": "ctl27",
+            "component": "HmiAsset",
+            "asset": "seat-driver",
+            "variant": "3d",
+            "x": 610,
+            "y": 1115,
+            "width": 48,
+            "height": 48
+          },
+          {
+            "id": "hot28",
+            "component": "HmiHotspot",
+            "x": 602,
+            "y": 1107,
+            "width": 64,
+            "height": 64,
+            "action": {
+              "event": {
+                "name": "toggle_seat_heat",
+                "context": {}
+              }
+            },
+            "variant": "3d",
+            "bind": {
+              "path": "/state/seatDriver"
+            },
+            "label": "主驾座椅"
+          },
+          {
+            "id": "dashText29",
+            "component": "HmiText",
+            "text": {
+              "path": "/climate/driver"
+            },
+            "x": 777,
+            "y": 1119,
+            "size": 30,
+            "font": "num",
+            "variant": "3d",
+            "align": "left"
+          },
+          {
+            "id": "hot30",
+            "component": "HmiHotspot",
+            "x": 727,
+            "y": 1102,
+            "width": 166,
+            "height": 72,
+            "action": {
+              "event": {
+                "name": "raise_temp",
+                "context": {
+                  "side": "driver",
+                  "delta": 1
+                }
+              }
+            },
+            "variant": "3d",
+            "bind": {
+              "path": "/state/tempDriver"
+            },
+            "label": "主驾温度"
+          },
+          {
+            "id": "dashText31",
+            "component": "HmiText",
+            "text": {
+              "path": "/climate/fan"
+            },
+            "x": 931,
+            "y": 1106,
+            "size": 26,
+            "font": "cn",
+            "variant": "3d",
+            "align": "left"
+          },
+          {
+            "id": "hot32",
+            "component": "HmiHotspot",
+            "x": 902,
+            "y": 1095,
+            "width": 116,
+            "height": 91,
+            "action": {
+              "event": {
+                "name": "cycle_fan_level",
+                "context": {
+                  "max": 4
+                }
+              }
+            },
+            "variant": "3d",
+            "bind": {
+              "path": "/state/fan"
+            },
+            "label": "风量"
+          },
+          {
+            "id": "dashText33",
+            "component": "HmiText",
+            "text": {
+              "path": "/climate/passenger"
+            },
+            "x": 1075,
+            "y": 1119,
+            "size": 30,
+            "font": "num",
+            "variant": "3d",
+            "align": "left"
+          },
+          {
+            "id": "hot34",
+            "component": "HmiHotspot",
+            "x": 1027,
+            "y": 1102,
+            "width": 166,
+            "height": 72,
+            "action": {
+              "event": {
+                "name": "raise_temp",
+                "context": {
+                  "side": "passenger",
+                  "delta": 1
+                }
+              }
+            },
+            "variant": "3d",
+            "bind": {
+              "path": "/state/tempPassenger"
+            },
+            "label": "副驾温度"
+          },
+          {
+            "id": "ctl35",
+            "component": "HmiAsset",
+            "asset": "seat-passenger",
+            "variant": "3d",
+            "x": 1262,
+            "y": 1115,
+            "width": 48,
+            "height": 48
+          },
+          {
+            "id": "hot36",
+            "component": "HmiHotspot",
+            "x": 1254,
+            "y": 1107,
+            "width": 64,
+            "height": 64,
+            "action": {
+              "event": {
+                "name": "toggle_seat_heat",
+                "context": {
+                  "side": "passenger"
+                }
+              }
+            },
+            "variant": "3d",
+            "bind": {
+              "path": "/state/seatPassenger"
+            },
+            "label": "副驾座椅"
+          },
+          {
+            "id": "ctl37",
+            "component": "HmiAsset",
+            "asset": "music",
+            "variant": "3d",
+            "x": 1410,
+            "y": 1115,
+            "width": 48,
+            "height": 48
+          },
+          {
+            "id": "hot38",
+            "component": "HmiHotspot",
+            "x": 1402,
+            "y": 1107,
+            "width": 64,
+            "height": 64,
+            "action": {
+              "event": {
+                "name": "open_media",
+                "context": {}
+              }
+            },
+            "variant": "3d",
+            "bind": {
+              "path": "/state/media"
+            },
+            "label": "媒体"
+          },
+          {
+            "id": "ctl39",
+            "component": "HmiAsset",
+            "asset": "phone",
+            "variant": "3d",
+            "x": 1560,
+            "y": 1115,
+            "width": 48,
+            "height": 48
+          },
+          {
+            "id": "hot40",
+            "component": "HmiHotspot",
+            "x": 1552,
+            "y": 1107,
+            "width": 64,
+            "height": 64,
+            "action": {
+              "event": {
+                "name": "open_phone",
+                "context": {}
+              }
+            },
+            "variant": "3d",
+            "label": "电话"
+          },
+          {
+            "id": "ctl41",
+            "component": "HmiAsset",
+            "asset": "volume",
+            "variant": "3d",
+            "x": 1710,
+            "y": 1084,
+            "width": 50,
+            "height": 112
+          },
+          {
+            "id": "hot42",
+            "component": "HmiHotspot",
+            "x": 1702,
+            "y": 1076,
+            "width": 66,
+            "height": 128,
+            "action": {
+              "event": {
+                "name": "cycle_volume",
+                "context": {
+                  "max": 100
+                }
+              }
+            },
+            "variant": "3d",
+            "bind": {
+              "path": "/state/volume"
+            },
+            "label": "音量"
+          },
+          {
+            "id": "icon43",
+            "component": "HmiAsset",
+            "asset": "wechat",
+            "variant": "3d",
+            "x": 120,
+            "y": 30,
+            "width": 48,
+            "height": 48
+          },
+          {
+            "id": "icon44",
+            "component": "HmiAsset",
+            "asset": "lock",
+            "variant": "3d",
+            "x": 177,
+            "y": 31,
+            "width": 48,
+            "height": 48
+          },
+          {
+            "id": "icon45",
+            "component": "HmiAsset",
+            "asset": "bluetooth",
+            "variant": "3d",
+            "x": 237,
+            "y": 31,
+            "width": 48,
+            "height": 48
+          },
+          {
+            "id": "icon46",
+            "component": "HmiAsset",
+            "asset": "cell-signal",
+            "variant": "3d",
+            "x": 297,
+            "y": 31,
+            "width": 48,
+            "height": 48
+          },
+          {
+            "id": "text47",
+            "component": "HmiText",
+            "text": {
+              "path": "/status/text"
+            },
+            "x": 403,
+            "y": 43,
+            "size": 26,
+            "align": "center",
+            "font": "num",
+            "variant": "3d"
+          },
+          {
+            "id": "poi1",
+            "component": "HmiAsset",
+            "asset": "poi-parking-3d",
+            "variant": "3d",
+            "x": 308,
+            "y": 715,
+            "width": 116,
+            "height": 45
+          }
+        ]
+      }
+    },
+    {
+      "version": "v0.9",
+      "updateDataModel": {
+        "surfaceId": "hmi-parking",
+        "value": {
+          "nav": {
+            "distance": "268 米后",
+            "label": "进入",
+            "road": "世纪大道西辅路"
+          },
+          "route": {
+            "distance": "20",
+            "time": "36"
+          },
+          "speed": 12,
+          "status": {
+            "text": "18:42"
+          },
+          "search": {
+            "title": "附近停车场",
+            "count": "3 处",
+            "nearest": "180 米",
+            "lots": "中央商场 · 180 米|老码头地下库 · 420 米|外滩观景停车库 · 760 米"
+          },
+          "cards": [
+            {
+              "title": "附近停车场",
+              "body": "中央商场 · 180 米 · 有空位",
+              "group": "hud"
+            },
+            {
+              "title": "地下车位",
+              "body": "老码头地下库 B2 · 420 米",
+              "group": "hud"
+            }
+          ],
+          "state": {
+            "toggle_compass": false,
+            "toggle_layers": false,
+            "recenter_map": false,
+            "defrost": false,
+            "heater": false,
+            "seatDriver": false,
+            "tempDriver": false,
+            "fan": 0,
+            "tempPassenger": false,
+            "seatPassenger": false,
+            "media": false,
+            "volume": 0
+          }
+        }
+      }
+    }
+  ]
+}

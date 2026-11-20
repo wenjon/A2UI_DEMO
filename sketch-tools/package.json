@@ -1,0 +1,14 @@
+{
+  "name": "a2ui-sketch-tools",
+  "private": true,
+  "version": "0.1.0",
+  "type": "commonjs",
+  "dependencies": {
+    "canvas": "^3.2.0",
+    "jszip": "^3.10.2",
+    "sketch-to-svg": "1.2.0"
+  },
+  "overrides": {
+    "canvas": "^3.2.0"
+  }
+}
