@@ -160,10 +160,16 @@ NAV 1.2公里后 右转 中山北路
 POI 停车场
 CONTROL volume volume_up 音量
 
-示例 3（2D 平面地图）：
+示例 3（2D 平面地图 + 摘掉时速表）：
 SCREEN 2d
 SPEED 42
-NAV 800米后 左转 人民路`;
+NAV 800米后 左转 人民路
+HIDE 时速表
+
+示例 4（座舱 / 媒体状态 + 加卡片）：
+CLIMATE 主驾 26 副驾 24 风量 1 档 内循环
+MEDIA 夜航 港口电台 音量 60
+CARD 附近停车场 3 处 · 最近 180 米`;
 
 export function buildHmiSystemPrompt(variant: '3d' | '2d' = '3d'): string {
   return `你是 A2UI 车机界面生成器。把用户需求写成车机界面块，画面是 1920×1200 的横屏车机。
@@ -171,7 +177,8 @@ export function buildHmiSystemPrompt(variant: '3d' | '2d' = '3d'): string {
 输出格式：每行一个块，不要编号、markdown、解释、空行，最多 8 行。
 
 可用块：
-SCREEN [3d|2d]                    地图视角，不写就用 ${variant}
+SCREEN [3d|2d] [原型名]             地图视角（不写就用 ${variant}）+ 界面原型：导航中 / 找车位 / 媒体 / 空调 / 即将到达
+MODE 组装|整块                      部件级组装（默认）或回退成整块挂件
 SPEED 数字                        时速表
 NAV 距离 动作 路名                 左上导航卡，例：NAV 268米后 进入 世纪大道西辅路
 ROUTE 公里 分钟                    路线剩余信息，例：ROUTE 20 36
@@ -180,6 +187,12 @@ POI 名称 [素材名] [x y]              地图兴趣点标记，名称对应�
 MAP 素材名 [x y 宽 高]             放任意素材（底板、路线、图标），x/y 是 1920×1200 画布坐标
 CONTROL 素材名 [动作名] [文案]      让某个车控图标变成可点击热区
 LABEL 文案 x y [字号]              自己在画面上写一行字
+HIDE 挂件名                        摘掉默认挂件，可用：状态栏 / 导航卡 / 路线条 / 时速表 / 按钮组 / 缩放 / 进度条 / 车控栏 / 卡片
+SHOW 挂件名                        把当前原型里没有的挂件加回来
+CARD 标题 正文                      在 HUD 区加一张卡
+ICON 素材名                        按素材表里的坐标放一个素材
+CLIMATE 主驾 26 副驾 24 风量 1 档 内循环   座舱温度 / 风量 / 循环模式（写进界面数据，卡片和底部车控栏都会跟着变）
+MEDIA 歌名 艺人 音量 60             媒体状态
 
 素材名只能用：
 ${promptAssetText(variant)}
@@ -189,7 +202,9 @@ ${promptAssetText(variant)}
 2. 只写需要改的部分；不需要改就不要写那一行。
 3. NAV 的距离写成“268米后”或“1.2公里后”；动作词用“进入/右转/左转/直行”。
 4. CONTROL 的动作名用英文小写，如 volume_up、seat_heat、defrost_on。
-5. 文案用简体中文。只使用上面的块，不要输出 JSON。
+5. 改座舱温度、风量、循环模式用 CLIMATE；改正在放什么、音量用 MEDIA。CONTROL 只负责“让图标可点击”，不能用它代替 CLIMATE / MEDIA。
+6. 用户要“不要时速表 / 去掉缩放 / 隐藏车控栏”时写 HIDE 挂件名，不是省略那一行。
+7. 文案用简体中文。只使用上面的块，不要输出 JSON。
 
 ${HMI_EXAMPLES}
 

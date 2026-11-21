@@ -29,7 +29,7 @@ import subprocess
 import sys
 import urllib.request
 
-DEFAULT_ADB = r"D:\Program Files\NetEase\MuMu\nx_main\adb.exe"
+DEFAULT_ADB = os.environ.get("ADB") or shutil.which("adb") or "adb"
 DEFAULT_DEVICE = "127.0.0.1:7555"
 DEFAULT_CONSOLE = "http://127.0.0.1:8787"
 DEFAULT_VIEWER = "http://127.0.0.1:5173"

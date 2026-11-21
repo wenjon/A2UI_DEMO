@@ -68,6 +68,11 @@ POST /api/generate   {prompt, preferLlm, surfaceKind, script} -> {title, provide
 GET  /api/hmi/scene  ?prompt=...&script=...   等价于 generate(surfaceKind=hmi)
 POST /api/validate   {messages}                 -> {errors, warnings, stats}
 POST /api/push       {messages, title, delayMs} -> {queued, clients, messageCount, componentCount}
+
+# 「交给 Agent 推理」收件箱（详见下面同名小节；后台只收单，不推理）
+POST /api/agent/request {text, note}  GET /api/agent/pending   GET /api/agent/all?limit=20
+POST /api/agent/claim {id}            POST /api/agent/done {id, …}   POST /api/agent/fail {id, error}
+POST /api/agent/clear
 ```
 
 请求 / 响应均为 UTF-8 JSON；`messages` 是 A2UI v0.9 消息数组。
@@ -98,7 +103,16 @@ POST /api/push       {messages, title, delayMs} -> {queued, clients, messageCoun
 - `POST /api/push` 逻辑不变（还是 `hub.push`）；只是校验按消息类型分流：Basic 走原 `validate_messages`，
   HMI 走 HMI 规则（HMI 组件白名单 + 结构检查），否则车机消息会被 Basic 规则误判成「不支持的组件」。
 - `node` 不在 PATH 时不会崩：响应 `502 {"error":"未找到 node…","surfaceKind":"hmi"}`，通用模式照常可用。
-- 启动横幅会打印 HMI 入口是否就绪（`HMI: <node 路径> -> demo/server/hmi-cli.ts (车机场景可用)`）。
+- 启动横幅会打印 HMI 入口是否就绪（`HMI: <node 路径> -> demo/server/hmi-cli.ts (车机场景可用)`），
+  另起一行报告模型写块是否就绪（启动时探一次 `<llm-base>/v1/models`，3 秒超时，探不到也不影响启动）。
+- **模型写块**（可选，只有车机模式有）：请求带 `useModel:true`（或 `GET /api/hmi/scene?...&model=1`）时，
+  后台改用 `node demo/server/hmi-cli.ts --model`，让本地模型写块、服务端编译纠偏；
+  响应 `provider` 变成 `model:<模型名>` 或 `model→fallback`，并带 `model` / `modelScript` / `attempts` / `totalMs`。
+  超时放宽到 240s。不传 `useModel` 时命令与超时跟以前一字不差。
+  后台默认 `--llm-base http://127.0.0.1:8090`（本机 Strata 的 qwen3.8-flash-next）、`--llm-model qwen3.8-flash-next`，
+  也可用环境变量 `A2UI_LLM_BASE` / `A2UI_LLM_MODEL`（ollama 是 `http://127.0.0.1:11434`）。
+- 前端在车机模式下多一个「模型写块（本地小模型）」勾选：勾上时预览区显示 provider、模型名、模型写了哪几行、用时；
+  不勾时界面与请求行为跟以前完全一样。通用（Basic）流程一字未改。
 
 命令行用法：
 
@@ -106,12 +120,13 @@ POST /api/push       {messages, title, delayMs} -> {queued, clients, messageCoun
 # 车机场景：生成 + 推送（走的还是同一条 SSE）
 python -u android-demo/tools/console_push.py --hmi --prompt "找附近的停车场，时速 60"
 python -u android-demo/tools/console_push.py --hmi --prompt "车控面板" --script "CARD 座舱温度 主驾 22"
+python -u android-demo/tools/console_push.py --hmi-model --prompt "找附近的停车场，时速 60"   # 让本地模型写块，后台纠偏
 
 # 一键把车机预览推到 MuMu：reverse tcp:8787 / tcp:5173 + 横屏 + 打开 HmiViewerActivity
 python -u android-demo/tools/hmi_live_viewer.py
 python -u android-demo/tools/hmi_live_viewer.py --prompt "导航去万达广场，剩余 3 公里 12 分钟"   # 顺便生成并推送
 python -u android-demo/tools/hmi_live_viewer.py --print-only      # 只打印将要执行的 adb 命令
-python -u android-demo/tools/hmi_live_viewer.py --device emulator-5554 --adb "$env:LOCALAPPDATA\Android\Sdk\platform-tools\adb.exe"
+python -u android-demo/tools/hmi_live_viewer.py --device emulator-5554 --adb "D:\platform-tools\adb.exe"
 ```
 
 控制台 UI 在 HMI 模式下的变化（通用模式一切照旧）：
@@ -121,6 +136,84 @@ python -u android-demo/tools/hmi_live_viewer.py --device emulator-5554 --adb "$e
 - 中间「实时预览」的手机框换成 **16:10 横屏框**（纯 CSS，不真渲染 HMI 素材，只标出画面比例与槽位）。
 - 右栏「JSON 工作台」上方出现原型条：原型名（如 找车位 / parking）+ 槽位（status / hud / gauge / buttons / dash）+ 地图素材。
 - 「推送到 App」按钮、间隔、SSE 地址都不变；推送后提示「车机画面在 HmiViewerActivity（WebView）里」。
+
+## 交给 Agent 推理（收件箱）
+
+**后台在这个分支里不推理，也不生成。** 网页上点「⇢ 交给 Agent（这个会话来推理）」只是把 Prompt 里的场景描述
+收进收件箱（`status:"pending"`）；真正写块的是 DeepSeek Harness 会话里的 Agent：它捞单、推理出块脚本，
+再自己调生成和推送。没勾「模型写块」时这条分支后台连 `/api/generate` 都不会碰，一条消息也不生成、不推送。
+
+```
+网页输入 ─► POST /api/agent/request            进收件箱（待捞 pending）
+Harness 会话里的 Agent ─► GET /api/agent/pending ─► POST /api/agent/claim（置 working，防两边同时捞）
+                        ─► 推理出场景描述 + 块脚本（SCREEN / MODE / POI / CARD …）
+                        ─► POST /api/generate {"prompt":…,"surfaceKind":"hmi","script":"…"}
+                        ─► POST /api/push     {"messages":[…],"title":"…"}
+                        ─► POST /api/agent/done（provider / 原型名 / 组件数 / 块原文 记进 result）
+```
+
+接口（同一个 Handler、同样的 JSON 风格，错误一律 `{"error": "..."}`，CORS 头照旧由 `end_headers()` 注入）：
+
+| 接口 | 一行说明 |
+| --- | --- |
+| `POST /api/agent/request` | `{text:"场景描述", note?:字符串}` -> 新记录 `{id, text, note, status:"pending", createdAt, updatedAt, result:null}`；`text` 去掉首尾空白后为空 -> 400 |
+| `GET /api/agent/pending` | `{"items":[…]}`，只含 `status=="pending"`，按 `createdAt` 升序 |
+| `GET /api/agent/all?limit=20` | 最近记录（各种 status 都有），新的在前：`{"items":[…], "count":N, "limit":N}`（`limit` 1–200） |
+| `POST /api/agent/claim` | `{id}` -> `status:"working"` + `claimedAt`；找不到 id -> 404；已经被捞走 -> 409 |
+| `POST /api/agent/done` | `{id, provider, archetypeName, componentCount, title, blocks, notes?}` -> `status:"done"`，摘要存进 `result`（`blocks` 是 Agent / 模型写的块原文） |
+| `POST /api/agent/fail` | `{id, error}` -> `status:"failed"`、`result.error` |
+| `POST /api/agent/clear` | 只删 `done` / `failed`（`pending` / `working` 保留），返回 `{"ok":true,"removed":N,"agent":{…}}` |
+| `GET /api/status` | 多一个 `agent` 字段：`{pending, working, latest, items, done, failed, total, file}`（`items` 是最近 8 条摘要，`text` 截到 220 字、不带 `blocks`）；**原有字段一个没动、没改名**，Basic 流程照旧 |
+
+`id` 形如 `ag-<毫秒时间戳 hex>-<4 位随机 hex>`（例：`ag-1969c8e0a1f-4b7c`），短、可打印、撞上了会重取。
+
+会话里的 Agent 侧有现成搬运工具 `android-demo/tools/console_agent_loop.py`（只做搬运，推理仍是 Agent 干的）：
+
+```powershell
+python -u android-demo/tools/console_agent_loop.py --list                       # 看待捞的场景描述
+python -u android-demo/tools/console_agent_loop.py --request "市区堵车，快没电了，就近找停车场充电"   # 命令行模拟网页输入
+python -u android-demo/tools/console_agent_loop.py --claim-next                 # 捞最早一条，置 working
+python -u android-demo/tools/console_agent_loop.py --submit ag-… --blocks-file blocks.txt   # 生成 + 推送 + 标 done
+python -u android-demo/tools/console_agent_loop.py --fail ag-… --error "素材名不认识"
+python -u android-demo/tools/console_agent_loop.py --clear                      # 清掉已处理/失败的
+```
+
+`--submit` 内部就是上面那三步：读这条请求的原文 → `POST /api/generate`（`surfaceKind:"hmi"` + `script`）→ `POST /api/push` → `POST /api/agent/done`；加 `--no-push` 只生成不推。
+
+持久化：`console/agent-inbox.jsonl`，一行一条 JSON（UTF-8）。所有读写都过 `threading.Lock`
+（服务是 `ThreadingHTTPServer`）；正常路径**只追加写**、不整文件重写，同一个 id 后写的那行覆盖先写的那行，
+所以中途崩了也不会把状态退回旧值。启动时读回来：文件不存在不报错，坏行（非法 JSON / 没有 id）跳过不崩。
+只有 `/api/agent/clear` 会把留下的记录 compact 回文件（写临时文件 + `os.replace`，失败就不动内存）。
+
+前端（**只在车机 HMI 模式出现，通用（Basic）模式的界面和行为一字未改**）：
+
+- 「模型写块（本地小模型）」勾选下面多一行：**「⇢ 交给 Agent（这个会话来推理）」** 和小按钮 **「清空已处理」**。
+- 点它只 `POST /api/agent/request`（用的就是 HMI Prompt 输入框里的文本），**不会**自动调 `/api/generate`；
+  弹提示「已进收件箱 · 没有生成、没有推送 —— 去 Harness 会话里说一句『看下后台』我就去捞 · ag-…」。
+- 收件箱状态区数据来自 `/api/status` 的 `agent` 字段，复用现有 3 秒轮询（没加新定时器）：
+  `待捞 N`（· 处理中 M）、`Agent 处理中`、`已生成：<原型名> · <N> 件 · <provider>`、`失败：<原因>`。
+- 「清空已处理」调 `POST /api/agent/clear`，只清 `done` / `failed`。
+
+命令行收单（跟 `--prompt` / `--last` / `--hmi` / `--script` / `--no-push` 互斥，带了就只收单、不生成不推送）：
+
+```powershell
+python -u android-demo/tools/console_push.py --agent-request "现在市区堵车，快没电了，就近找停车场充电"
+# 已进收件箱：ag-… · status=pending · 11:31:02
+#   · 后台没有生成、没有推理、也没有推送。下一步：在 Harness 会话里说「看下后台」…
+```
+
+会话里的 Agent 侧（python `urllib` 或 curl 都行）完整一轮：
+
+```powershell
+$b = "http://127.0.0.1:8787"
+# 1. 捞单：GET $b/api/agent/pending  ->  POST $b/api/agent/claim  {"id":"ag-…"}
+# 2. 推理出块后生成：POST $b/api/generate {"prompt":"…","surfaceKind":"hmi","script":"SCREEN 主屏\nMODE 3D\nPOI 停车场 …"}
+# 3. 推送：      POST $b/api/push   {"messages":[…],"title":"低电找桩"}
+# 4. 标已处理：  POST $b/api/agent/done {"id":"ag-…","provider":"hmi-composer","archetypeName":"找车位",
+#                                        "componentCount":38,"title":"低电找桩","blocks":"SCREEN 主屏\n…","notes":["…"]}
+#    （生成或推送失败就 POST $b/api/agent/fail {"id":"ag-…","error":"…"}）
+# 5. 可选清场：  POST $b/api/agent/clear
+```
 
 ## AI 模式与回退
 
@@ -195,13 +288,13 @@ $adb = "$env:LOCALAPPDATA\Android\Sdk\platform-tools\adb.exe"   # 换成你自�
 
 ```
 android-demo/
-├─ console/              网页控制台（index.html + app.js）
+├─ console/              网页控制台（index.html + app.js）+ agent-inbox.jsonl（Agent 收件箱，运行时生成）
 ├─ server/
 │  ├─ a2ui_console_server.py   控制台 HTTP + SSE 服务（含车机 HMI 入口 surfaceKind=hmi）
 │  ├─ a2ui_generator.py        AI / 本地规则生成 + 校验
 │  └─ a2ui_stream_server.py    纯演示用逐条下发服务
 ├─ tools/
-│  ├─ console_push.py          命令行生成 / 推送（--hmi 走车机 HMI 模式）
+│  ├─ console_push.py          命令行生成 / 推送（--hmi 走车机 HMI 模式；--agent-request 只进 Agent 收件箱）
 │  └─ hmi_live_viewer.py       一键车机预览（adb reverse + 横屏 + HmiViewerActivity）
 └─ app/src/main/.../       Compose 渲染器（A2uiCore / A2uiCompose / StreamClient）+ HmiViewerActivity
 ```

@@ -4,7 +4,7 @@
 
 ```text
 自然语言
-  -> qwen3.5:4b（flm / OpenAI 兼容接口）
+  -> 本地模型（默认 qwen3.8-flash-next @ 127.0.0.1:8090，也可 ollama / flm 的 qwen3.5:4b）
   -> 扁平语义块（TITLE / FIELD / BUTTON …，车机模式是 SPEED / NAV / POI / CARD …）
   -> 服务端确定性编译（车机模式：原型 → 槽位 → 部件级组装）
   -> A2UI v0.9 消息
@@ -12,9 +12,9 @@
   -> A2uiSurface 渲染
 ```
 
-## 为什么不让 4B 直接输出 A2UI JSON
+## 为什么不让小模型直接输出 A2UI JSON
 
-实测 4B 直接生成完整组件树时，容易出现单引号、漏括号、属性丢失、引用不存在的
+实测小模型直接生成完整组件树时，容易出现单引号、漏括号、属性丢失、引用不存在的
 组件等问题。即使开启 `response_format: json_object`，也只能保证“是 JSON”，不能保证
 符合 A2UI 的组件和引用约束。
 
@@ -25,10 +25,12 @@
 
 ## 启动
 
-先启动本地模型：
+先启动本地模型（本机默认用 Strata 起的 qwen3.8-flash-next，已经在 `127.0.0.1:8090`）：
 
 ```powershell
+# 备用：flm 的 NPU 模型（qwen3.5:4b 已装）
 flm serve qwen3.5:4b --port 8000 --host 127.0.0.1 --ctx-len 32768
+# 或 ollama：http://127.0.0.1:11434
 ```
 
 再启动前端：
@@ -46,9 +48,11 @@ npm run dev
 
 | 变量 | 默认值 | 说明 |
 | --- | --- | --- |
-| `A2UI_LLM_BASE` | `http://127.0.0.1:8000` | OpenAI 兼容接口地址 |
-| `A2UI_LLM_MODEL` | `qwen3.5:4b` | 模型名 |
+| `A2UI_LLM_BASE` | `http://127.0.0.1:8090` | OpenAI 兼容接口地址（Strata；ollama 用 `http://127.0.0.1:11434`） |
+| `A2UI_LLM_MODEL` | `qwen3.8-flash-next` | 模型名 |
 | `A2UI_LLM_TIMEOUT_MS` | `180000` | 单次请求超时 |
+| `A2UI_LLM_MAX_TOKENS` | `1200` | 单次最大输出 token |
+| `A2UI_LLM_THINKING` | 关闭 | 设 `1` 时不再向本地 Qwen 服务传 `enable_thinking=false`（保留思考链） |
 
 ## 语义块语法
 
@@ -84,7 +88,7 @@ BUTTON 登录 login
 
 ## 车机 HMI 模式（拆解 → 槽位 → 组装）
 
-`mode: "hmi"`。4B 只写车机上要变的那几行，画面由服务端按素材注册表**组装**出来：
+`mode: "hmi"`。小模型只写车机上要变的那几行，画面由服务端按素材注册表**组装**出来：
 
 ```text
 拆解   52 个原稿素材 + 74 个细粒度部件（group:"parts"）→ 注册表 demo/shared/hmi-registry.json（126 条目 + 10 个带 capacity 的槽位）
@@ -94,6 +98,7 @@ BUTTON 登录 login
 
 界面默认由部件拼出来，不再是 8 个烧死文字的整块挂件；`MODE 整块` 可以整条回退到原稿挂件（`root.assembly = "panel"`）。
 状态栏、导航卡、路线条、时速表、地图按钮组、缩放控件、路线进度条、底部车控栏，以及地图覆盖物（路线 / POI / 定位标）默认就组装好，模型不用写，只有要改动时才用 `HIDE` / `SHOW` / `CARD` / `ICON` 点名。
+某个原型没有的挂件、但块里写了它的数据（例如在「找车位」原型里写 `NAV`），服务端会自动把那个挂件加回并告警；被 `HIDE` 显式摘掉的不加回，只告警说「数据画不出来」。
 
 ### 车机语义块
 
@@ -112,9 +117,11 @@ HIDE 挂件名                                摘掉一个槽位（例：HIDE �
 SHOW 挂件名                                把原型里没有的槽位加回来（例：SHOW 进度条）
 CARD 标题 正文                              在 HUD 区新加一张卡（面板 + 标题 + 正文 + 热区）
 ICON 素材名                                 按注册表坐标放一个素材（中文名走别名）
+CLIMATE 主驾 24 副驾 26 风量 3 档 内循环      座舱状态写进 /climate（也认「24 度」「3 档」，温度取 14–32）
+MEDIA 歌名 艺人 音量 60                      媒体状态写进 /media（音量 0–100）
 ```
 
-- 别名照旧有效：`VIEW/CANVAS/屏幕→SCREEN`、`时速→SPEED`、`导航→NAV`、`剩余→ROUTE`、`按钮/BUTTON→CONTROL`、`文字/TEXT→LABEL`、`隐藏→HIDE`、`显示→SHOW`、`卡片→CARD`、`图标→ICON`、`组装/LAYOUT→MODE`；
+- 别名照旧有效：`VIEW/CANVAS/屏幕→SCREEN`、`时速→SPEED`、`导航→NAV`、`剩余→ROUTE`、`按钮/BUTTON→CONTROL`、`文字/TEXT→LABEL`、`隐藏→HIDE`、`显示→SHOW`、`卡片→CARD`、`图标→ICON`、`组装/LAYOUT→MODE`、`空调/温度/座舱/HVAC→CLIMATE`、`音乐/媒体/电台→MEDIA`；
 - 中文控件名有别名：`音量→volume`、`电话→phone`、`音乐→music`、`座椅/主驾→seat-driver`、`副驾→seat-passenger`、`温度→temp-driver`、`风扇→fan-level`、`加热→heater`、`除霜→defrost`、`车型→vehicle-model3`；POI 同理（`停车场→poi-parking-3d`、`商场→poi-mall-3d`、`公园→poi-garden-3d`）；
 - 素材名不在注册表里会被换成同类素材并给出 warning，不会渲染出空图；`POI`/`MAP` 给了坐标时，`HmiScreen.hiddenAssets` 会撤掉原位置那份，避免重复绘制；
 - `NAV` / `ROUTE` / `SPEED` / `STATUS` 编译成数据绑定（`/nav/road`、`/route/distance`、`/speed`、`/status/text`）加一条 `updateDataModel`，不是把文案硬写进组件；带 `bind` 的热区在 `dataModel.state` 里有初值，点击后端上把状态写回 `surface.dataModel`；
@@ -166,6 +173,36 @@ node demo/server/hmi-cli.ts --prompt "2D 平面地图找车位" --pretty
 控制台后台 `android-demo/server/a2ui_console_server.py`（`127.0.0.1:8787`）就是靠这个入口支持 `surfaceKind:"hmi"`，
 经同一个 SSE `/stream` 推给 App；`android-demo/tools/console_push.py --hmi`、`android-demo/tools/hmi_live_viewer.py` 已就绪。
 浏览器端订阅：`http://127.0.0.1:5173/?fit=1&live=1&console=http://127.0.0.1:8787`。
+
+### 让本地模型写块（`--model`）
+
+加 `--model` 就是完整的「模型写小块 → 服务端编译纠偏」路径：模型只写「这次要变什么」，
+`compileHmiBlocks` 负责把块编译成完整 1920×1200 车机画面，模型写坏两次就回退到默认车机画面。
+
+```powershell
+node demo/server/hmi-cli.ts --model --prompt "空调调到 26 度，风量 1 档，隐藏时速表"
+```
+
+默认就用本机 Strata 起的服务：**`http://127.0.0.1:8090` + `qwen3.8-flash-next`**（OpenAI 兼容 `/v1/chat/completions`，不校验 key）。
+可换：`A2UI_LLM_BASE`、`A2UI_LLM_MODEL`、`A2UI_LLM_TIMEOUT_MS`（默认 180000）、`A2UI_LLM_MAX_TOKENS`（默认 1200）、
+`A2UI_LLM_THINKING=1`（打开思考链）。ollama（`127.0.0.1:11434`）和 `flm serve qwen3.5:4b`（默认端口 52625）也都接得上。
+`--model` 的输出比不带时多了 `provider`（`model:<模型名>` 或 `model→fallback`）、`modelScript`
+（模型写了哪几行）、`attempts`（每次尝试耗时与是否通过）、`usage`、`totalMs`。
+
+本机实测（2026-11-21）：
+
+| 模型 | 结果 | 一次耗时 |
+| --- | --- | --- |
+| `qwen3.8-flash-next`（Strata 8090，思考关闭） | `CLIMATE 主驾 26 副驾 24 风量 1 档 内循环 / HIDE 时速表`、`SCREEN 3d 找车位 / POI 停车场 / CARD 附近停车场 3 处`：语义和块都对 | 0.9–3.4 s |
+| `qwen3.8-flash-next`（默认带思考） | 600 token 全花在 `reasoning_content` 上、`content` 空、`finish_reason=length` | 15–21 s |
+| `qwen2.5:0.5b`（ollama） | 结构合法但语义会抓错数字（把「剩余 12 公里」写成 `SPEED 12`），刁钻输入会复读刷满 token | 0.4–5 s |
+| `qwen3.8:27b`（ollama） | 语义准（`SPEED 88 / ROUTE 12 25`）但慢，且偶尔只写一行 | 43–82 s |
+| 模型服务不可用 | 两次尝试各 15ms 失败 → `provider=model→fallback`，仍是完整车机画面（41 件，`HmiScreen`） | 30 ms |
+
+带思考的 Qwen 一定要传 `chat_template_kwargs.enable_thinking=false`，实测同一句从 21 s / 空正文变成 2.2 s / 直接出块；
+`llm.ts` 对 `127.0.0.1` 上的服务默认这样传，远端服务不传（怕被拒）。
+
+结论：编译器这半边才是保证；模型只要能把块写出来（哪怕写歪），端上画面就还是车机画面。
 
 ## 示例（demo/public/examples）
 

@@ -1,16 +1,22 @@
 /**
- * 车机场景命令行入口：场景描述 → A2UI v0.9 消息（无需模型，确定性编译）。
+ * 车机场景命令行入口：场景描述 → A2UI v0.9 消息。
  *
  * 用法：
- *   node demo/server/hmi-cli.ts --prompt "找附近的停车场，时速 60"
+ *   node demo/server/hmi-cli.ts --prompt "找附近的停车场，时速 60"            # 确定性组装（不依赖模型）
+ *   node demo/server/hmi-cli.ts --model --prompt "导航中，剩余 12 公里"       # 让本地模型写块，服务端编译纠偏
  *   node demo/server/hmi-cli.ts --prompt "空调调到 22 度" --script "CARD 座舱温度 主驾 22 副驾 24"
  *   node demo/server/hmi-cli.ts --prompt "2D 平面地图找车位" --pretty
+ *
+ * 模型地址：A2UI_LLM_BASE（默认 http://127.0.0.1:8000）/ A2UI_LLM_MODEL（默认 qwen3.5:4b）。
+ * ollama 用 http://127.0.0.1:11434 即可。
  *
  * 输出 stdout：{"ok":true,"archetype":"parking","variant":"3d","componentCount":31,"messages":[...]}
  * 控制台后台（android-demo/server/a2ui_console_server.py）就是靠这个入口把车机场景推给 App。
  */
-import {compileHmiBlocks, fallbackHmiComponents, parseHmiBlocks} from './hmi-blocks.ts';
+import {compileHmiBlocks, fallbackHmiComponents, parseHmiBlocks, variantFromRequest} from './hmi-blocks.ts';
 import {archetypeFromRequest, ARCHETYPES} from './hmi-archetypes.ts';
+import {generateUi} from './generate.ts';
+import {llmConfig} from './llm.ts';
 import {normalizeComponents, toMessages} from './validate.ts';
 
 const BLOCK_WORDS = [
@@ -90,6 +96,48 @@ function blocksFromPrompt(prompt: string): string[] {
   return lines;
 }
 
+/** 模型路径生成的消息里 surfaceId 是每次随机的（hmi-gen-xxx），统一成调用方要的那个，避免每推一次就多一个画面。 */
+function pinSurfaceId(value: unknown, surfaceId: string): unknown {
+  if (Array.isArray(value)) return value.map(item => pinSurfaceId(item, surfaceId));
+  if (value && typeof value === 'object') {
+    const out: Record<string, unknown> = {};
+    for (const [key, item] of Object.entries(value as Record<string, unknown>)) {
+      out[key] = key === 'surfaceId' ? surfaceId : pinSurfaceId(item, surfaceId);
+    }
+    return out;
+  }
+  return value;
+}
+
+/** 让模型写块：模型只写「这次要变什么」，服务端 compileHmiBlocks 负责纠偏成完整车机画面。 */
+async function runWithModel(prompt: string, pretty: boolean, surfaceId: string) {
+  const generated = await generateUi(prompt, 'hmi');
+  const resultMessages = pinSurfaceId(generated.messages, surfaceId);
+  const first = generated.components[0] ?? {};
+  const archetypeKey = archetypeFromRequest(prompt);
+  const payload = {
+    ok: generated.ok,
+    provider: generated.ok ? `model:${generated.model}` : 'model→fallback',
+    model: generated.model,
+    llmBase: llmConfig.baseUrl,
+    surfaceId,
+    archetype: archetypeKey,
+    archetypeName: ARCHETYPES[archetypeKey]?.name ?? archetypeKey,
+    variant: variantFromRequest(prompt),
+    componentCount: generated.components.length,
+    slots: (first.slots as string[] | undefined) ?? [],
+    mapAssets: (first.mapAssets as string[] | undefined) ?? null,
+    modelScript: generated.script,
+    attempts: generated.attempts,
+    usage: generated.usage,
+    totalMs: generated.totalMs,
+    warnings: generated.warnings,
+    errors: generated.errors,
+    messages: resultMessages,
+  };
+  process.stdout.write(JSON.stringify(payload, null, pretty ? 2 : 0) + '\n');
+}
+
 function main() {
   const argv = process.argv.slice(2);
   const readFlag = (name: string): string | undefined => {
@@ -99,11 +147,16 @@ function main() {
   const pretty = argv.includes('--pretty');
   const prompt = readFlag('prompt') ?? '';
   const script = readFlag('script') ?? '';
+  const surfaceId = readFlag('surface') ?? 'hmi';
+
+  if (argv.includes('--model')) {
+    void runWithModel(prompt, pretty, surfaceId);
+    return;
+  }
 
   const lines = [...blocksFromPrompt(prompt)];
   if (script) lines.push(...script.split(/\r?\n/).map(line => line.trim()).filter(Boolean));
 
-  const surfaceId = readFlag('surface') ?? 'hmi';
   const withDataModel = (messages: unknown[], data: unknown) => [
     ...messages,
     {version: 'v0.9', updateDataModel: {surfaceId, value: data}},

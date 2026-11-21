@@ -295,7 +295,7 @@ async function generateFromHmi(
     try {
       const result = await chatCompletion(messages, {
         temperature: 0,
-        maxTokens: 600,
+        maxTokens: 900,
         jsonMode: false,
       });
       content = result.content;

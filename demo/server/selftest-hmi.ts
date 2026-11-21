@@ -183,6 +183,49 @@ console.log('\n4b. CLIMATE / MEDIA：座舱与媒体状态真的进数据模型'
   check('读不出来时保留原型默认座舱数据', junkData.driver === '22°' && junkData.fan === '2 档', junkData);
 }
 
+console.log('\n4c. 模型只写 CONTROL 数字时的服务端纠偏');
+{
+  const result = compile('CONTROL temp-driver set_temp_driver 26度\nCONTROL fan-level set_fan_level 1档', '空调界面');
+  check('校验通过', result.normalized.ok, result.normalized.errors);
+  const climate = result.compiled.data.climate as Record<string, unknown>;
+  check('CONTROL temp-driver 26度 也写进 /climate', climate.driver === '26°', climate);
+  check('CONTROL fan-level 1档 也写进 /climate', climate.fan === '1 档', climate);
+  const texts = of(result, 'HmiText').map(component => String(component.text ?? ''));
+  check('座舱卡显示纠偏后的 26°', texts.some(text => text.includes('主驾 26°')), texts);
+
+  const volume = compile('CONTROL volume turn_volume 音量 70', '只听歌');
+  const media = volume.compiled.data.media as Record<string, unknown>;
+  check('CONTROL volume 音量 70 写进 /media', media.volume === 70, media);
+
+  const clamped = compile('CONTROL temp-passenger set_temp 45度', '空调界面');
+  const clampedClimate = clamped.compiled.data.climate as Record<string, unknown>;
+  check('越界温度被收进 14–32 并告警', clampedClimate.passenger === '32°' && clamped.compiled.warnings.some(w => w.includes('超出')), clamped.compiled.warnings);
+
+  const noNumber = compile('CONTROL volume volume_up 音量', '只听歌');
+  const noNumberMedia = noNumber.compiled.data.media as Record<string, unknown>;
+  check('CONTROL 没带数字就不改媒体数据', noNumberMedia.volume !== 0, noNumberMedia);
+}
+
+console.log('\n4d. 原型没有的挂件但数据写了 → 自动加回');
+{
+  const result = compile('NAV 300米后 右转 停车场入口\nROUTE 3 12', '找附近的停车场，时速 60');
+  check('校验通过', result.normalized.ok, result.normalized.errors);
+  const root = rootOf(result);
+  const slots = (root.slots as string[]) ?? [];
+  check('parking 原型被自动补上导航卡与路线条槽位', slots.includes('nav') && slots.includes('route'), slots);
+  check('补槽位有告警说明', result.compiled.warnings.some(w => w.includes('已自动加回')), result.compiled.warnings);
+  const boundTexts = of(result, 'HmiText').map(component => component.text);
+  const boundPaths = boundTexts.map(text => (text && typeof text === 'object' ? String((text as Record<string, unknown>).path) : String(text)));
+  check('导航卡文字是 /nav/* 的数据绑定', boundPaths.includes('/nav/road') && boundPaths.includes('/nav/distance'), boundPaths);
+  const data = (result.compiled.data ?? {}) as Record<string, Record<string, unknown>>;
+  check('NAV 的数据真的进了数据模型', data.nav?.road === '停车场入口' && String(data.nav?.distance).startsWith('300'), data.nav);
+
+  const hidden = compile('NAV 300米后 右转 停车场入口\nHIDE 导航卡', '找附近的停车场');
+  const hiddenSlots = (rootOf(hidden).slots as string[]) ?? [];
+  check('显式 HIDE 不被自动加回覆盖', !hiddenSlots.includes('nav'), hiddenSlots);
+  check('但会告警说数据画不出来', hidden.compiled.warnings.some(w => w.includes('被 HIDE 摘掉')), hidden.compiled.warnings);
+}
+
 console.log('\n5. POI 换位置（HmiScreen 要撤掉原来那份素材）');
 {
   const result = compile('POI 山河花园 poi-garden-3d 1200 300', '车机界面');
@@ -314,6 +357,25 @@ console.log('\n13. 回退路径（模型完全失败时）');
   const root = normalized.components.find(component => component.id === 'root');
   check('说明文字挂在 root 上', ((root?.children as string[]) ?? []).includes('fallbackNote'), root?.children);
   check('回退界面仍是车机组装（部件 > 20）', normalized.components.length > 20, normalized.components.length);
+}
+
+console.log('\n14. 模型复读 / 超长输出防护（小模型真实会这样）');
+{
+  const lines = ['SPEED 63', 'POI 停车场 poi-parking-3d'];
+  lines.push(...Array.from({length: 30}, () => 'POI 万达广场 poi-mall-3d'));
+  const spam = compile(lines.join('\n'), '车机界面');
+  check('校验通过', spam.normalized.ok, spam.normalized.errors);
+  check('重复块被去掉并如实告警', spam.parsed.warnings.some(w => w.includes('复读')), spam.parsed.warnings);
+  const malls = of(spam, 'HmiAsset').filter(component => String(component.asset ?? '').includes('poi-mall'));
+  check('复读没有把画面淹掉', malls.length <= 2, malls.map(component => component.asset));
+
+  const many = compile(Array.from({length: 100}, (_, index) => `LABEL 标注${index} 200 ${200 + index}`).join('\n'), '车机界面');
+  check('超长输出被截断', many.parsed.warnings.some(w => w.includes('截断')), many.parsed.warnings.filter(w => w.includes('截断')));
+  check('截断后仍是完整车机画面', many.normalized.ok && of(many, 'HmiAsset').length >= 10 && of(many, 'HmiText').length >= 60, {
+    组件: many.normalized.components.length,
+    素材: of(many, 'HmiAsset').length,
+    文字: of(many, 'HmiText').length,
+  });
 }
 
 console.log(failures ? `\n${failures} 项失败` : '\n全部通过');

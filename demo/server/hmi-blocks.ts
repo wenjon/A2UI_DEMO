@@ -185,6 +185,10 @@ export function parseHmiBlocks(text: string): {blocks: ParsedHmiBlock[]; warning
   if (fenced) body = fenced[1].trim();
 
   const blocks: ParsedHmiBlock[] = [];
+  const seen = new Set<string>();
+  const MAX_BLOCKS = 60;
+  let droppedDuplicates = 0;
+  let droppedOverCap = 0;
   body.split(/\r?\n/).forEach((rawLine, index) => {
     const line = stripNumbering(rawLine.replace(/^`|`$/g, '').trim());
     if (!line || line.startsWith('#')) return;
@@ -207,6 +211,18 @@ export function parseHmiBlocks(text: string): {blocks: ParsedHmiBlock[]; warning
       return;
     }
 
+    // 小模型常陷入复读（POI 3 / POI 4 / POI 5 …），这里去重 + 限量，别让它把画面淹掉。
+    if (blocks.length >= MAX_BLOCKS) {
+      droppedOverCap += 1;
+      return;
+    }
+    const signature = `${kind} ${rest}`;
+    if (seen.has(signature)) {
+      droppedDuplicates += 1;
+      return;
+    }
+    seen.add(signature);
+
     blocks.push({
       kind,
       raw: rawLine.trim(),
@@ -214,10 +230,14 @@ export function parseHmiBlocks(text: string): {blocks: ParsedHmiBlock[]; warning
     });
   });
 
+  if (droppedDuplicates) warnings.push(`检测到模型复读：去掉 ${droppedDuplicates} 行完全重复的块`);
+  if (droppedOverCap) warnings.push(`块数量超过 ${MAX_BLOCKS} 条，已截断 ${droppedOverCap} 行`);
+
   return {blocks, warnings};
 }
 
-function numberFrom(value: string | undefined, fallback: number): number {  const text = (value ?? '').trim();
+function numberFrom(value: string | undefined, fallback: number): number {
+  const text = (value ?? '').trim();
   if (!text) return fallback;
   const parsed = Number(text);
   return Number.isFinite(parsed) ? parsed : fallback;
@@ -284,6 +304,8 @@ export function compileHmiBlocks(
 
   const nav = {...DEFAULTS};
   const route = {distance: DEFAULTS.remainingDistance, time: DEFAULTS.remainingTime};
+  let navWritten = false;
+  let routeWritten = false;
   let speed = DEFAULTS.speed;
   let statusText = '';
   const climate: Record<string, string> = {};
@@ -370,6 +392,7 @@ export function compileHmiBlocks(
     }
 
     if (kind === 'NAV') {
+      navWritten = true;
       const raw = args.join(' ').trim();
       const {amount, unit} = splitAmount(raw);
       if (amount) {
@@ -388,6 +411,7 @@ export function compileHmiBlocks(
     }
 
     if (kind === 'ROUTE') {
+      routeWritten = true;
       if (args[0]) route.distance = args[0];
       if (args[1]) route.time = args[1];
       continue;
@@ -540,6 +564,23 @@ export function compileHmiBlocks(
         variant,
       };
       if (args[2]) component.label = args[2];
+
+      // 小模型常把「空调调到 26 度」写成 CONTROL temp-driver …… 26度，不写 CLIMATE。
+      // 这里顺手把数字并进 /climate、/media，座舱与媒体数据就不会还停在原型默认值。
+      const stateNumber = args.slice(1).join(' ').match(/(\d{1,3})/)?.[1];
+      if (stateNumber) {
+        const value = Number(stateNumber);
+        if (key === 'temp-driver' || key === 'temp-passenger') {
+          const clamped = Math.min(32, Math.max(14, value));
+          climate[key === 'temp-driver' ? 'driver' : 'passenger'] = `${clamped}°`;
+          if (clamped !== value) warnings.push(`${key} 的温度 ${value} 超出 14–32，已收到 ${clamped}°`);
+        } else if (key === 'fan-level') {
+          climate.fan = `${Math.min(9, Math.max(0, value))} 档`;
+        } else if (key === 'volume') {
+          media.volume = Math.min(100, Math.max(0, value));
+        }
+      }
+
       extras.push(component);
       extraIds.push(id);
       continue;
@@ -587,6 +628,21 @@ export function compileHmiBlocks(
   const slotsForScreen = archetypeSlots(archetypeKey);
   for (const slot of shownSlots) if (!slotsForScreen.includes(slot)) slotsForScreen.push(slot);
   const activeSlots = slotsForScreen.filter(slot => !hiddenSlots.has(slot));
+
+  // 模型把某个挂件的数据写了进去，但这个原型没有那个挂件：把挂件加回来，
+  // 别让数据写进一个没人画的地方（实测 parking 原型没有导航卡，NAV 就白写了）。
+  const needSlot = (slot: SlotName, needed: boolean, label: string) => {
+    if (!needed || activeSlots.includes(slot)) return;
+    if (hiddenSlots.has(slot)) {
+      warnings.push(`${label}有数据，但被 HIDE 摘掉了，画面上看不到它`);
+      return;
+    }
+    activeSlots.push(slot);
+    warnings.push(`${label}有数据，但「${label}」不在原型「${archetype.name}」里，已自动加回`);
+  };
+  needSlot('nav', navWritten, '导航卡');
+  needSlot('route', routeWritten, '路线条');
+  needSlot('hud', cards.length > 0, '卡片');
 
   const composeContext: ComposeContext = {
     variant,

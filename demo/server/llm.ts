@@ -1,10 +1,27 @@
 export type ChatMessage = {role: 'system' | 'user' | 'assistant'; content: string};
 
 export const llmConfig = {
-  baseUrl: (process.env.A2UI_LLM_BASE ?? 'http://127.0.0.1:8000').replace(/\/+$/, ''),
-  model: process.env.A2UI_LLM_MODEL ?? 'qwen3.5:4b',
+  baseUrl: (process.env.A2UI_LLM_BASE ?? 'http://127.0.0.1:8090').replace(/\/+$/, ''),
+  model: process.env.A2UI_LLM_MODEL ?? 'qwen3.8-flash-next',
   timeoutMs: Number(process.env.A2UI_LLM_TIMEOUT_MS ?? 180_000),
+  maxTokens: Number(process.env.A2UI_LLM_MAX_TOKENS ?? 1200),
+  /**
+   * 本地 Qwen 服务（Strata 的 qwen3.8-flash-next）默认带思考链：
+   * 不加控制时它能把 max_tokens 全花在 reasoning 上，正文为空、finish_reason=length。
+   * 传 chat_template_kwargs.enable_thinking=false 后实测从 ~21s 降到 ~2.2s 且直接出块。
+   * 关掉这个行为：设环境变量 A2UI_LLM_THINKING=1。远端服务不传该字段，避免被拒。
+   */
+  noThinking: (process.env.A2UI_LLM_THINKING ?? '0') !== '1',
 };
+
+function isLocalBase(baseUrl: string): boolean {
+  try {
+    const host = new URL(baseUrl).hostname;
+    return host === 'localhost' || host === '127.0.0.1' || host === '::1';
+  } catch {
+    return false;
+  }
+}
 
 export type ChatResult = {
   content: string;
@@ -36,6 +53,9 @@ export async function chatCompletion(
       response_format:
         options.jsonMode === false ? undefined : {type: 'json_object'},
       stream: false,
+      ...(llmConfig.noThinking && isLocalBase(llmConfig.baseUrl)
+        ? {chat_template_kwargs: {enable_thinking: false}}
+        : {}),
     }),
     signal: AbortSignal.any(signals),
   });
@@ -46,11 +66,19 @@ export async function chatCompletion(
   }
 
   const data = (await response.json()) as {
-    choices?: {message?: {content?: string; reasoning_content?: string}}[];
+    choices?: {message?: {content?: string; reasoning_content?: string}; finish_reason?: string}[];
     usage?: Record<string, number>;
   };
   const content = data.choices?.[0]?.message?.content ?? '';
-  if (!content.trim()) throw new Error('模型返回了空内容');
+  if (!content.trim()) {
+    const reasoning = data.choices?.[0]?.message?.reasoning_content ?? '';
+    const finish = data.choices?.[0]?.finish_reason ?? '';
+    throw new Error(
+      reasoning
+        ? `模型只输出了 ${reasoning.length} 字思考、没有正文（finish_reason=${finish}）；本地 Qwen 服务可用 A2UI_LLM_THINKING=1 打开思考，或加大 A2UI_LLM_MAX_TOKENS`
+        : '模型返回了空内容',
+    );
+  }
 
   return {content, usage: data.usage, ms: Date.now() - started};
 }

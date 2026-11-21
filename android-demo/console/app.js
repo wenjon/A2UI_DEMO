@@ -29,7 +29,13 @@ var ui = {
   prompt: $('prompt'), promptCount: $('promptCount'), modeAi: $('modeAi'), modeLocal: $('modeLocal'),
   surfaceBasic: $('surfaceBasic'), surfaceHmi: $('surfaceHmi'), surfaceHint: $('surfaceHint'),
   chips: $('chips'), chipsHmi: $('chipsHmi'),
+  hmiModelRow: $('hmiModelRow'), hmiUseModel: $('hmiUseModel'),
+  simRow: $('simRow'), simPreset: $('simPreset'),
   hmiBar: $('hmiBar'), hmiArch: $('hmiArch'), hmiSlots: $('hmiSlots'), hmiNote: $('hmiNote'),
+  hmiModelInfo: $('hmiModelInfo'), hmiModelHead: $('hmiModelHead'), hmiModelLines: $('hmiModelLines'),
+  hmiModelMore: $('hmiModelMore'),
+  agentBox: $('agentBox'), agentRequest: $('agentRequest'), agentClear: $('agentClear'),
+  agentCount: $('agentCount'), agentList: $('agentList'),
   editorKind: $('editorKind'), pushNote: $('pushNote'), hmiViewerRow: $('hmiViewerRow'),
   stageTitle: $('stageTitle'), stageNote: $('stageNote'), hmiBadge: $('hmiBadge'),
   phoneFrame: $('phoneFrame'), phoneTitle: $('phoneTitle'), phoneSub: $('phoneSub'),
@@ -58,6 +64,9 @@ var state = {
   clients: 0,
   mode: 'ai',
   surfaceKind: 'basic',
+  useModel: false,
+  simPreset: '',
+  simPresetsLoaded: false,
   hmi: null,
   generating: false,
   history: [],
@@ -68,7 +77,11 @@ var state = {
   parseTimer: null,
   validateTimer: null,
   demoLoaded: false,
-  lastPushLocal: null
+  lastPushLocal: null,
+  agentItems: [],
+  agentPending: 0,
+  agentWorking: 0,
+  agentBusy: false
 };
 
 function isObj(value) {
@@ -911,8 +924,78 @@ function hmiInfo() {
     variant: stored.variant || (root && root.variant) || '',
     slots: slots,
     mapAssets: assets,
-    components: Number(stored.componentCount) || (state.scene ? Object.keys(state.scene.components).length : 0)
+    components: Number(stored.componentCount) || (state.scene ? Object.keys(state.scene.components).length : 0),
+    provider: stored.provider || '',
+    model: stored.model || '',
+    modelScript: typeof stored.modelScript === 'string' ? stored.modelScript : '',
+    attempts: Array.isArray(stored.attempts) ? stored.attempts : null,
+    totalMs: Number(stored.totalMs) || 0,
+    sim: isObj(stored.sim) ? stored.sim : null,
+    simRequested: String(stored.simRequested || '')
   };
+}
+
+function isModelProvider(provider) {
+  var text = String(provider || '');
+  return text.indexOf('model:') === 0 || text.indexOf('model→') === 0;
+}
+
+function modelScriptLines(script) {
+  var lines = String(script || '').split(/\r?\n/).map(function (line) {
+    return line.trim();
+  }).filter(Boolean);
+  return lines;
+}
+
+function renderHmiModel(info) {
+  if (!ui.hmiModelInfo) return;
+  if (!isModelProvider(info.provider)) {
+    ui.hmiModelInfo.hidden = true;
+    if (ui.hmiModelLines) clearNode(ui.hmiModelLines);
+    if (ui.hmiModelMore) ui.hmiModelMore.textContent = '';
+    return;
+  }
+  var attempts = info.attempts ? ' · 尝试 ' + info.attempts.length + ' 次' : '';
+  if (ui.hmiModelHead) {
+    ui.hmiModelHead.textContent = (info.provider === 'model→fallback' ? '模型写块失败 · 服务端已纠偏 · ' : '模型写块 · ')
+      + (info.model || '未知模型') + ' · ' + (info.totalMs || 0) + ' ms' + attempts;
+  }
+  var lines = modelScriptLines(info.modelScript);
+  if (ui.hmiModelLines) {
+    clearNode(ui.hmiModelLines);
+    if (!lines.length) {
+      ui.hmiModelLines.appendChild(document.createTextNode('（模型没有回传块脚本）'));
+    } else {
+      lines.slice(0, 6).forEach(function (line) {
+        ui.hmiModelLines.appendChild(make('div', null, line));
+      });
+    }
+  }
+  if (ui.hmiModelMore) {
+    ui.hmiModelMore.textContent = lines.length > 6 ? '还有 ' + (lines.length - 6) + ' 行模型写的块未显示' : '';
+  }
+  ui.hmiModelInfo.hidden = false;
+}
+
+function simNumber(value, unit) {
+  if (value === undefined || value === null || value === '') return '—';
+  return String(value) + (unit || '');
+}
+
+function simSummaryText(info) {
+  /* 预览区那一行模拟摘要：时钟 · 车速 · 电量 · 卡片 +N（来自 hmi-cli.ts 的 sim 摘要） */
+  var sim = info.sim;
+  var requested = info.simRequested || '';
+  if (!sim && !requested) return '';
+  var preset = (sim && sim.preset) || requested;
+  if (!sim) {
+    return '模拟车况 ' + preset + '：模拟器未就绪（后台只把 --sim 拼进 CLI 参数，没有 sim 摘要）';
+  }
+  var ran = (sim.simSec === undefined || sim.simSec === null) ? '' : ' · 已跑 ' + sim.simSec + ' 秒';
+  return '模拟车况 ' + preset + ran + '：时钟 ' + simNumber(sim.clock, '')
+    + ' · 车速 ' + simNumber(sim.speed, ' km/h')
+    + ' · 电量 ' + simNumber(sim.soc, '%')
+    + ' · 卡片 +' + simNumber(sim.cardsAdded, '');
 }
 
 function renderHmiBar() {
@@ -921,6 +1004,7 @@ function renderHmiBar() {
   ui.hmiBar.hidden = !isHmi;
   if (!isHmi) {
     state.hmi = null;
+    if (ui.hmiModelInfo) ui.hmiModelInfo.hidden = true;
     return;
   }
   var info = hmiInfo();
@@ -941,10 +1025,16 @@ function renderHmiBar() {
     }
   }
   if (ui.hmiNote) {
+    var source = isModelProvider(info.provider)
+      ? (info.provider === 'model→fallback' ? '模型写块失败 · 服务端纠偏 ' : '模型写块 ')
+        + (info.model || '未知模型') + ' · ' + (info.totalMs || 0) + ' ms'
+      : '服务端直接组装（hmi-composer）';
     ui.hmiNote.textContent = '原型 ' + (info.archetype || '—') + ' · 变体 ' + (info.variant || '—')
       + ' · ' + info.components + ' 个组件 · ' + state.messages.length + ' 条消息'
+      + ' · ' + source
       + ' · App 端由 HmiViewerActivity（WebView）承接画面';
   }
+  renderHmiModel(info);
 }
 
 function renderHmiPreview() {
@@ -954,6 +1044,9 @@ function renderHmiPreview() {
   var top = make('div', 'hmi-canvas-top');
   top.appendChild(make('div', 'hmi-name', info.name));
   top.appendChild(make('span', 'hmi-tag', '1920×1200 · ' + (info.variant === '2d' ? '2D 平面' : '3D 实景')));
+  if (isModelProvider(info.provider)) {
+    top.appendChild(make('span', 'hmi-tag', '模型写块 · ' + (info.model || '?') + ' · ' + (info.totalMs || 0) + 'ms'));
+  }
   wrap.appendChild(top);
 
   var grid = make('div', 'hmi-grid');
@@ -965,6 +1058,14 @@ function renderHmiPreview() {
     grid.appendChild(cell);
   });
   wrap.appendChild(grid);
+
+  var simLine = simSummaryText(info);
+  if (simLine) {
+    var simNode = make('div', 'hmi-sim' + (info.sim ? '' : ' pending'));
+    simNode.appendChild(make('b', null, 'SIM'));
+    simNode.appendChild(document.createTextNode(' ' + simLine));
+    wrap.appendChild(simNode);
+  }
 
   var foot = make('div', 'hmi-foot');
   foot.appendChild(document.createTextNode(
@@ -1465,6 +1566,12 @@ function providerInfo(provider) {
   if (full === 'hmi-composer') {
     return { cls: 'local', label: '车机组装 · hmi-cli', full: full };
   }
+  if (full.indexOf('model:') === 0) {
+    return { cls: '', label: '模型写块 · ' + shortText(full.slice(6), 24), full: full };
+  }
+  if (full.indexOf('model→') === 0) {
+    return { cls: 'fallback', label: '模型写块 · 已纠偏', full: full };
+  }
   if (!full) return { cls: 'local', label: '本地规则', full: 'local-rules' };
   return { cls: '', label: shortText(full, 26), full: full };
 }
@@ -1487,6 +1594,46 @@ function setMode(mode, quiet) {
   }
 }
 
+function readSimPreset() {
+  return ui.simPreset ? String(ui.simPreset.value || '').trim() : '';
+}
+
+async function loadSimPresets() {
+  /* 预设清单以 demo/server/hmi-sim.ts --list --json 为准；没就绪就用 index.html 里 docs 第 3 节的那 8 个。 */
+  if (state.simPresetsLoaded || !ui.simPreset) return;
+  state.simPresetsLoaded = true;
+  try {
+    var payload = await requestJson('/api/sim/presets');
+    var list = [];
+    if (Array.isArray(payload)) list = payload;
+    else if (payload && Array.isArray(payload.presets)) list = payload.presets;
+    else if (payload && Array.isArray(payload.presets) === false && Array.isArray(payload.items)) list = payload.items;
+    var known = {};
+    Array.prototype.forEach.call(ui.simPreset.options, function (option) { known[option.value] = true; });
+    var added = 0;
+    list.forEach(function (item) {
+      var name = '';
+      var label = '';
+      if (typeof item === 'string') {
+        name = item;
+        label = item;
+      } else if (isObj(item)) {
+        name = String(item.name || item.preset || item.id || item.key || '').trim();
+        label = String(item.label || item.title || item.scene || item.description || name).trim();
+      }
+      if (!name || known[name]) return;
+      known[name] = true;
+      var option = make('option', null, label === name ? name : (name + ' · ' + label));
+      option.value = name;
+      ui.simPreset.appendChild(option);
+      added += 1;
+    });
+    if (added) toast('info', '模拟车况多了 ' + added + ' 个预设', '清单来自 /api/sim/presets（demo/server/hmi-sim.ts）');
+  } catch (error) {
+    /* 模拟器还没实现：下拉沿用 docs 第 3 节写明的 8 个预设，不额外写第二份表 */
+  }
+}
+
 function setSurfaceMode(kind, quiet) {
   var hmi = kind === 'hmi';
   state.surfaceKind = hmi ? 'hmi' : 'basic';
@@ -1501,6 +1648,10 @@ function setSurfaceMode(kind, quiet) {
   if (ui.surfaceHint) ui.surfaceHint.textContent = hmi ? 'HMI catalog' : 'Basic Catalog';
   if (ui.chips) ui.chips.hidden = hmi;
   if (ui.chipsHmi) ui.chipsHmi.hidden = !hmi;
+  if (ui.hmiModelRow) ui.hmiModelRow.hidden = !hmi;
+  if (ui.simRow) ui.simRow.hidden = !hmi;            // 「模拟车况」下拉只在车机模式出现
+  if (ui.simPreset) ui.simPreset.disabled = !hmi;
+  if (hmi) loadSimPresets();                         // 预设清单以模拟器为准（失败就用 docs 里那 8 个）
   if (ui.phoneFrame) ui.phoneFrame.classList.toggle('hmi', hmi);
   if (ui.stageTitle) ui.stageTitle.textContent = hmi ? '车机预览' : '实时预览';
   if (ui.stageNote) ui.stageNote.textContent = hmi ? '16:10 横屏框（真实画面在 App 的 WebView 里）' : 'Compose 渲染模拟';
@@ -1510,6 +1661,7 @@ function setSurfaceMode(kind, quiet) {
   if (ui.editorKind) ui.editorKind.textContent = hmi ? 'A2UI v0.9 · HMI catalog' : 'A2UI v0.9 · Basic Catalog';
   if (ui.pushNote) ui.pushNote.hidden = !hmi;
   if (ui.hmiViewerRow) ui.hmiViewerRow.hidden = !hmi;
+  if (ui.agentBox) ui.agentBox.hidden = !hmi;      // 收件箱只在车机模式出现，通用模式界面照旧
   if (ui.generateLabel && !state.generating) {
     ui.generateLabel.textContent = hmi ? '组装车机场景' : (state.mode === 'ai' ? 'AI 生成界面' : '本地规则生成');
   }
@@ -1576,7 +1728,15 @@ function applyGenerated(payload, prompt) {
       variant: payload.variant || '',
       slots: Array.isArray(payload.slots) ? payload.slots : [],
       mapAssets: Array.isArray(payload.mapAssets) ? payload.mapAssets : [],
-      componentCount: Number(payload.componentCount) || 0
+      componentCount: Number(payload.componentCount) || 0,
+      provider: payload.provider || '',
+      model: payload.model || '',
+      modelScript: typeof payload.modelScript === 'string' ? payload.modelScript : '',
+      attempts: Array.isArray(payload.attempts) ? payload.attempts : null,
+      totalMs: Number(payload.totalMs) || 0,
+      sim: isObj(payload.sim) ? clone(payload.sim) : null,
+      simRequested: (isObj(payload.simRequest) && String(payload.simRequest.preset || ''))
+        || (isObj(payload.sim) ? String(payload.sim.preset || '') : '') || state.simPreset || ''
     };
     if (payload.surfaceKind !== 'hmi' && state.surfaceKind !== 'hmi') setSurfaceMode('hmi', true);
   } else {
@@ -1641,7 +1801,7 @@ function renderHistory() {
 }
 
 function genLabelText() {
-  if (state.surfaceKind === 'hmi') return '组装车机场景';
+  if (state.surfaceKind === 'hmi') return state.useModel ? '让模型写车机场景' : '组装车机场景';
   return state.mode === 'ai' ? 'AI 生成界面' : '本地规则生成';
 }
 
@@ -1653,7 +1813,7 @@ function setGenerating(active) {
   if (active) {
     if (ui.genText) {
       ui.genText.textContent = state.surfaceKind === 'hmi'
-        ? '正在组装车机 1920×1200 场景…'
+        ? (state.useModel ? '本地模型正在写车机块，服务端纠偏编译…（可能要几十秒）' : '正在组装车机 1920×1200 场景…')
         : (state.mode === 'ai' ? '正在调用模型并校验…' : '正在套用本地规则…');
     }
     if (ui.genTimer) ui.genTimer.textContent = '0.0s';
@@ -1675,9 +1835,14 @@ async function generateScene() {
     return;
   }
   var hmi = state.surfaceKind === 'hmi';
+  var useModel = hmi && !!state.useModel;
   var body = hmi
     ? { prompt: prompt, surfaceKind: 'hmi' }
     : { prompt: prompt, preferLlm: state.mode === 'ai' };
+  if (useModel) body.useModel = true;
+  var simPreset = hmi ? readSimPreset() : '';        // 只有车机模式会多这个字段，Basic 的请求体一字不变
+  state.simPreset = simPreset;
+  if (simPreset) body.sim = { preset: simPreset };
   var startedAt = Date.now();
   var timer = null;
   setGenerating(true);
@@ -1693,14 +1858,30 @@ async function generateScene() {
     applyGenerated(payload, prompt);
     var provider = providerInfo(payload.provider);
     if (hmi) {
-      if (payload.provider !== 'hmi-composer') {
+      var viaModel = isModelProvider(payload.provider);
+      var modelLines = modelScriptLines(payload.modelScript).length;
+      var attempts = Array.isArray(payload.attempts) ? payload.attempts.length : 0;
+      if (payload.provider !== 'hmi-composer' && !viaModel) {
         toast('warn', '后台还是旧进程，没走车机模式',
           '返回的是 ' + (payload.provider || '未知') + '：重启控制台才会启用 surfaceKind=hmi'
           + '（python -u android-demo/server/a2ui_console_server.py --port 8787）');
+      } else if (payload.provider === 'model→fallback') {
+        toast('warn', '模型写的块没通过校验，服务端已纠偏',
+          (payload.model || '本地模型') + ' · ' + (payload.componentCount || 0) + ' 个组件 · 模型 '
+          + (payload.totalMs || 0) + ' ms' + (attempts ? ' · 尝试 ' + attempts + ' 次' : ''));
+      } else if (viaModel) {
+        toast('success', '模型写块完成「' + shortText(payload.archetypeName || payload.title || '车机', 22) + '」',
+          (payload.model || '本地模型') + ' · ' + (payload.componentCount || 0) + ' 个组件 · 模型写了 ' + modelLines
+          + ' 行 · ' + (payload.totalMs || 0) + ' ms' + (attempts ? ' · 尝试 ' + attempts + ' 次' : ''));
       } else {
         toast('success', '已组装车机场景「' + shortText(payload.archetypeName || payload.title || '车机', 22) + '」',
           (payload.variant === '2d' ? '2D 平面' : '3D 实景') + ' · ' + (payload.componentCount || 0)
           + ' 个组件 · 槽位 ' + ((payload.slots || []).join('/') || '无'));
+      }
+      var simSummary = isObj(payload.sim) ? payload.sim : null;
+      if (simSummary || simPreset) {
+        var simText = simSummaryText({ sim: simSummary, simRequested: simPreset });
+        toast(simSummary ? 'info' : 'warn', '模拟车况 ' + ((simSummary && simSummary.preset) || simPreset), simText);
       }
     } else if (String(payload.provider || '').indexOf('local-fallback') === 0) {
       toast('warn', '模型不可用，已回退本地规则', provider.label + ' · ' + (payload.messageCount || 0) + ' 条消息');
@@ -1825,6 +2006,7 @@ async function pollStatus() {
       var base = String(ui.sseUrl.value || '').split('/stream')[0] || 'http://127.0.0.1:8787';
       ui.sseUrl.value = base + '/stream';
     }
+    applyAgentStatus(payload.agent);      // 收件箱状态走同一个轮询，不另开定时器
     state.statusWarned = false;
   } catch (error) {
     setPill(ui.pillService, 'bad', '离线');
@@ -1837,6 +2019,112 @@ async function pollStatus() {
     }
   } finally {
     state.statusBusy = false;
+  }
+}
+
+/* ---------------------- 交给 Agent 推理（收件箱：后台只收单，不推理） -------------------- */
+
+function agentStatusLabel(item) {
+  var result = isObj(item && item.result) ? item.result : null;
+  if (item && item.status === 'done') {
+    var name = shortText((result && result.archetypeName) || '车机场景', 24);
+    var count = Number(result && result.componentCount);
+    if (!isFinite(count)) count = 0;
+    return '已生成：' + name + ' · ' + count + ' 件 · ' + ((result && result.provider) || '—');
+  }
+  if (item && item.status === 'failed') {
+    return '失败：' + shortText((result && result.error) || '没给原因', 64);
+  }
+  return (item && item.status === 'working') ? 'Agent 处理中' : '待捞';
+}
+
+function agentItemClass(status) {
+  if (status === 'done') return 'done';
+  if (status === 'failed') return 'failed';
+  if (status === 'working') return 'working';
+  return 'pending';
+}
+
+function renderAgentInbox() {
+  if (ui.agentCount) {
+    var text = '待捞 ' + (Number(state.agentPending) || 0);
+    if (Number(state.agentWorking) > 0) text += ' · 处理中 ' + state.agentWorking;
+    ui.agentCount.textContent = text;
+  }
+  if (!ui.agentList) return;
+  clearNode(ui.agentList);
+  var items = Array.isArray(state.agentItems) ? state.agentItems : [];
+  if (!items.length) {
+    ui.agentList.appendChild(make('div', 'empty-line', '还没有交给 Agent 的场景'));
+    return;
+  }
+  items.forEach(function (item) {
+    var row = make('div', 'agent-item ' + agentItemClass(item.status));
+    row.appendChild(make('b', null, shortText(item.text || '（空描述）', 54)));
+    row.appendChild(make('span', 'st', agentStatusLabel(item)));
+    var meta = (item.id || '—') + ' · ' + clockText(item.createdAt);
+    if (item.note) meta += ' · ' + shortText(item.note, 40);
+    row.appendChild(make('span', 'meta', meta));
+    ui.agentList.appendChild(row);
+  });
+}
+
+function applyAgentStatus(agent) {
+  var data = isObj(agent) ? agent : null;
+  var items = data && Array.isArray(data.items) ? data.items : [];
+  state.agentItems = items.slice(0, 10);
+  state.agentPending = Number(data && data.pending) || 0;
+  state.agentWorking = Number(data && data.working) || 0;
+  if (ui.agentBox) ui.agentBox.hidden = state.surfaceKind !== 'hmi';
+  renderAgentInbox();
+}
+
+async function sendToAgent() {
+  if (state.agentBusy) return;
+  var text = ui.prompt ? ui.prompt.value.trim() : '';
+  if (!text) {
+    toast('warn', '先把场景描述写进 Prompt', '「交给 Agent」用的就是这个输入框里的文本');
+    if (ui.prompt) ui.prompt.focus();
+    return;
+  }
+  state.agentBusy = true;
+  if (ui.agentRequest) ui.agentRequest.disabled = true;
+  try {
+    var record = await requestJson('/api/agent/request', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ text: text })
+    });
+    toast('success', '已进收件箱 · 没有生成、没有推送',
+      '去 Harness 会话里说一句「看下后台」我就去捞 · ' + ((record && record.id) || ''));
+    pollStatus();     // 复用现有轮询函数，立刻刷新状态区
+  } catch (error) {
+    toast('error', '收件箱收单失败', error.message || '后台没应答');
+  } finally {
+    state.agentBusy = false;
+    if (ui.agentRequest) ui.agentRequest.disabled = false;
+  }
+}
+
+async function clearAgentInbox() {
+  if (state.agentBusy) return;
+  state.agentBusy = true;
+  if (ui.agentClear) ui.agentClear.disabled = true;
+  try {
+    var payload = await requestJson('/api/agent/clear', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: '{}'
+    });
+    var removed = Number(payload && payload.removed) || 0;
+    toast('info', removed ? '已清掉 ' + removed + ' 条已处理记录' : '没有已处理的记录',
+      removed ? '待捞 / 处理中的仍然保留' : '收件箱里只有待捞和处理中的');
+    pollStatus();
+  } catch (error) {
+    toast('error', '清空已处理失败', error.message || '后台没应答');
+  } finally {
+    state.agentBusy = false;
+    if (ui.agentClear) ui.agentClear.disabled = false;
   }
 }
 
@@ -1913,7 +2201,17 @@ function bindEvents() {
   if (ui.chips) ui.chips.addEventListener('click', onChipClick);
   if (ui.chipsHmi) ui.chipsHmi.addEventListener('click', onChipClick);
 
+  if (ui.hmiUseModel) ui.hmiUseModel.addEventListener('change', function () {
+    state.useModel = !!ui.hmiUseModel.checked;
+    if (ui.generateLabel && !state.generating) ui.generateLabel.textContent = genLabelText();
+    toast('info', state.useModel ? '已开启「模型写块」' : '已关闭「模型写块」',
+      state.useModel ? '车机块改由本地模型写、服务端 compileHmiBlocks 纠偏（可能要几十秒）'
+                     : '车机场景回到服务端直接组装（默认流程）');
+  });
+
   if (ui.generate) ui.generate.addEventListener('click', generateScene);
+  if (ui.agentRequest) ui.agentRequest.addEventListener('click', sendToAgent);
+  if (ui.agentClear) ui.agentClear.addEventListener('click', clearAgentInbox);
   if (ui.push) ui.push.addEventListener('click', pushToApp);
   if (ui.copySse) ui.copySse.addEventListener('click', function () {
     copyText(ui.sseUrl ? ui.sseUrl.value : '', 'SSE 地址已复制');
@@ -2007,6 +2305,7 @@ function init() {
     ui.sseUrl.value = origin + '/stream';
   }
   renderHistory();
+  renderAgentInbox();      // 先画空收件箱，pollStatus 回来再填
   pollStatus();
   setInterval(updatePhoneTime, 30000);
   setInterval(pollStatus, 3000);

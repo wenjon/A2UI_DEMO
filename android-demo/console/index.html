@@ -503,6 +503,17 @@ button{cursor:pointer}
 /* --------------------------- 车机 HMI 模式（1920×1200）------------------ */
 .seg.surf{margin-top:9px}
 .seg.surf button{font-size:10px;padding:7px 6px}
+.opt-check{
+  display:grid;grid-template-columns:auto 1fr;gap:2px 8px;margin-top:8px;padding:8px 10px;
+  border:1px solid rgba(129,140,248,.24);border-radius:10px;background:rgba(129,140,248,.06);cursor:pointer;
+}
+.opt-check input{grid-row:1 / span 2;width:14px;height:14px;margin:2px 0 0;accent-color:var(--accent);cursor:pointer}
+.opt-check b{font-size:11px;font-weight:600;color:#e0e7ff}
+.opt-check span{font-size:9.5px;line-height:1.5;color:#7f8ea6}
+.hmi-model{display:flex;flex-direction:column;gap:4px;border-top:1px dashed rgba(148,163,184,.16);padding-top:6px}
+.hmi-model-head{font-family:var(--mono);font-size:9px;letter-spacing:.3px;color:#a5b4fc}
+.hmi-model-lines{font-family:var(--mono);font-size:9.5px;line-height:1.6;color:#8fb6ad;white-space:pre-wrap;word-break:break-word;background:rgba(8,11,17,.55);border:1px solid rgba(45,212,191,.16);border-radius:7px;padding:5px 7px}
+.hmi-model-more{font-family:var(--mono);font-size:9px;color:#5b6b81}
 .hmi-bar{
   flex:none;margin:0 0 8px;border:1px solid rgba(45,212,191,.22);border-radius:10px;padding:8px 10px 9px;
   background:linear-gradient(135deg,rgba(45,212,191,.09),rgba(129,140,248,.07));
@@ -547,8 +558,58 @@ button{cursor:pointer}
 .hmi-cell span{font-size:8px;color:#5f6e84;text-align:center;line-height:1.35}
 .hmi-foot{flex:none;font-size:9px;line-height:1.5;color:#64748b;border-top:1px dashed rgba(148,163,184,.16);padding-top:7px}
 .hmi-foot code{font-family:var(--mono);color:#93c5fd}
+.hmi-sim{
+  flex:none;font-family:var(--mono);font-size:9.5px;line-height:1.55;color:#8fb6ad;letter-spacing:.2px;
+  border:1px solid rgba(45,212,191,.22);border-radius:8px;padding:5px 8px;background:rgba(8,11,17,.55);
+}
+.hmi-sim b{color:#d7fef6;font-weight:650}
+.hmi-sim.pending{border-color:rgba(251,191,36,.3);color:#e8c177}
+.hmi-sim.pending b{color:#fcd34d}
+.sim-row{margin-top:8px;padding:8px 10px;border:1px solid rgba(45,212,191,.22);border-radius:10px;background:rgba(45,212,191,.05)}
 .push-note{font-size:9.5px;line-height:1.55;color:#8fb6ad;border-left:2px solid rgba(45,212,191,.4);padding:2px 0 2px 8px}
 .push-note b{color:#d7fef6;font-weight:600}
+
+/* ------------------------ 交给 Agent 推理（收件箱，只在车机模式出现）-------- */
+.agent-box{
+  display:flex;flex-direction:column;gap:7px;padding:9px 10px 10px;
+  border:1px solid rgba(129,140,248,.24);border-radius:11px;background:rgba(129,140,248,.05);
+}
+.agent-row{display:flex;align-items:center;gap:7px}
+.agent-btn{
+  flex:1;min-width:0;height:36px;border:1px solid rgba(129,140,248,.34);border-radius:9px;
+  background:linear-gradient(120deg,rgba(129,140,248,.18),rgba(45,212,191,.12));
+  color:#dbe4ff;font-size:11.5px;font-weight:650;letter-spacing:.1px;
+  display:flex;align-items:center;justify-content:center;gap:6px;transition:.16s;
+}
+.agent-btn:hover{border-color:rgba(129,140,248,.55);color:#fff;background:linear-gradient(120deg,rgba(129,140,248,.26),rgba(45,212,191,.2))}
+.agent-btn:disabled{opacity:.62;cursor:wait}
+.agent-clear{
+  flex:none;height:36px;padding:0 10px;border-radius:9px;border:1px solid var(--line);
+  background:transparent;color:var(--dim);font-size:10.5px;transition:.18s;
+}
+.agent-clear:hover{color:var(--text);border-color:var(--line2)}
+.agent-clear:disabled{opacity:.5;cursor:wait}
+.agent-note{font-size:9.5px;line-height:1.55;color:#7f8ea6}
+.agent-note b{color:#c7d2fe;font-weight:600}
+.agent-note code{font-family:var(--mono);font-size:9px;color:#7dd3fc}
+.agent-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:1px}
+.agent-count{font-family:var(--mono);font-size:9.5px;color:#8291ab;letter-spacing:.2px}
+.agent-list{display:flex;flex-direction:column;gap:5px;max-height:186px;overflow-y:auto}
+.agent-item{
+  border:1px solid var(--line);background:rgba(13,18,26,.6);border-radius:9px;padding:7px 8px;
+  display:flex;flex-direction:column;gap:2px;
+}
+.agent-item b{font-size:11px;font-weight:600;line-height:1.35;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.agent-item .st{font-size:10px;line-height:1.42;color:#94a3b8}
+.agent-item .meta{font-size:9px;color:#5b6b81;font-family:var(--mono)}
+.agent-item.pending{border-color:rgba(251,191,36,.26)}
+.agent-item.pending .st{color:#e8c177}
+.agent-item.working{border-color:rgba(129,140,248,.32)}
+.agent-item.working .st{color:#c7d2fe}
+.agent-item.done{border-color:rgba(52,211,153,.26)}
+.agent-item.done .st{color:#6ee7b7}
+.agent-item.failed{border-color:rgba(251,113,133,.3)}
+.agent-item.failed .st{color:#fda4af}
 
 /* ------------------------------- responsive ----------------------------- */
 @media (max-width:1420px){
@@ -641,6 +702,36 @@ button{cursor:pointer}
         <button class="chip" data-prompt="空调调到 22 度，开启除霜和座椅加热，音量 8">车控面板</button>
         <button class="chip" data-prompt="2D 平面地图找车位，隐藏缩放控件">2D 找车位</button>
       </div>
+      <label class="opt-check" id="hmiModelRow" hidden>
+        <input type="checkbox" id="hmiUseModel">
+        <b>模型写块（本地小模型）</b>
+        <span>勾上：车机块由本地模型写、服务端 compileHmiBlocks 纠偏，可能要几十秒。不勾：服务端直接组装（和现在一样）。</span>
+      </label>
+
+      <div class="input-wrap sim-row" id="simRow" hidden>
+        <label for="simPreset">模拟车况（docs 第 3 节的预设）</label>
+        <select id="simPreset">
+          <option value="">不带（默认读数）</option>
+          <option value="city-cruise">city-cruise · 市区巡航</option>
+          <option value="jam">jam · 市区拥堵</option>
+          <option value="highway-acc">highway-acc · 高速 ACC 跟车</option>
+          <option value="parking-search">parking-search · 找车位</option>
+          <option value="charging">charging · 充电中</option>
+          <option value="arrival">arrival · 即将到达</option>
+          <option value="rain-night">rain-night · 雨夜</option>
+          <option value="fuel-city">fuel-city · 燃油车对照</option>
+        </select>
+      </div>
+
+      <div class="agent-box" id="agentBox" hidden>
+        <div class="agent-row">
+          <button class="agent-btn" id="agentRequest" type="button">⇢ 交给 Agent（这个会话来推理）</button>
+          <button class="agent-clear" id="agentClear" type="button">清空已处理</button>
+        </div>
+        <div class="agent-note">这条分支后台<b>不生成、不推理、不推送</b>：只把上面输入框里的描述记进收件箱。去 Harness 会话里说一句「看下后台」，Agent 会捞单、推理出块，再自己调 <code>/api/generate</code>（带 script）+ <code>/api/push</code>。</div>
+        <div class="agent-head"><span class="eyebrow">Agent 收件箱</span><span class="agent-count" id="agentCount">待捞 0</span></div>
+        <div class="agent-list" id="agentList"><div class="empty-line">还没有交给 Agent 的场景</div></div>
+      </div>
 
       <button id="generate" class="primary-btn" type="button"><span id="generateIcon">✦</span><span id="generateLabel">生成界面</span><kbd>Ctrl ↵</kbd></button>
 
@@ -728,6 +819,11 @@ button{cursor:pointer}
       </div>
       <div class="hmi-slots" id="hmiSlots"></div>
       <div class="hmi-note" id="hmiNote"></div>
+      <div class="hmi-model" id="hmiModelInfo" hidden>
+        <span class="hmi-model-head" id="hmiModelHead">模型写块</span>
+        <div class="hmi-model-lines" id="hmiModelLines"></div>
+        <span class="hmi-model-more" id="hmiModelMore"></span>
+      </div>
     </div>
 
     <div class="editor-shell" id="editorShell">
@@ -782,7 +878,7 @@ button{cursor:pointer}
         <div class="limit-card"><b>部件范围</b><span>Basic Catalog 子集：Text / Column / Row / Card / Button / TextField / CheckBox / Slider / Divider / Image / Icon / List。</span></div>
         <div class="limit-card"><b>图片</b><span>Image 只渲染渐变占位和描述，不加载网络图片。</span></div>
         <div class="limit-card"><b>动作</b><span>点击按钮只在本控制台提示 ACTION 和 context，不会回传到 App 或后端。</span></div>
-        <div class="limit-card"><b>车机 HMI 场景</b><span>选「车机 HMI」时由 hmi-cli.ts 确定性组装（原型 + 槽位 + 地图素材），中间预览只换成 16:10 横屏框，真实画面在 App 的 WebView 查看器里。</span></div>
+        <div class="limit-card"><b>车机 HMI 场景</b><span>选「车机 HMI」时由 hmi-cli.ts 确定性组装（原型 + 槽位 + 地图素材），中间预览只换成 16:10 横屏框，真实画面在 App 的 WebView 查看器里。勾上「模型写块（本地小模型）」后改由本地模型写块、服务端编译纠偏（失败自动回退），预览区会显示 provider / 模型 / 模型写的块 / 用时。</span></div>
       </div>
     </div>
   </div>
